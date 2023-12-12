@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace FirstConsoleApp
 {
@@ -6,7 +7,7 @@ namespace FirstConsoleApp
     {
         static void Main()
         {
-            #region 2 ლექცია
+            #region 2 ლექცია IF ELSE
 
             // + - * / %
             // > < >= <= != == && ||
@@ -171,8 +172,134 @@ namespace FirstConsoleApp
             #endregion
 
 
+            #region 3 ლექცია ციკლები და Exception - ები
+
+            //try
+            //{
+            //    int x = 12;
+            //    int y = 0;
+
+            //    int result = x / y;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"{ex.Message}");
+            //}
 
 
+            //bool x = int.TryParse(Console.ReadLine(), out int parsedresult);
+
+
+
+            //while
+
+            //int i = 0;
+            //while (i < 10)
+            //{
+            //    i++;
+            //    Console.WriteLine("Nika Chkhartishvili");
+            //}
+
+            //try
+            //{
+            //    int keyword = default;
+            //    do
+            //    {
+            //        Console.Write("ENTER THE KEYWORD: ");
+            //        keyword = int.Parse(Console.ReadLine());
+            //    } while (keyword != 17);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
+
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Console.WriteLine("Nika Chkhartishvili");
+            //}
+
+
+            //foreach (var item in collection)
+            //{
+
+            //}
+
+
+            //      დავალება 1
+            // •	დაწერეთ პროგრამა რომელიც კონსოლში დაბეჭდავს პირველ 10 რიცხვს
+
+
+            //for (int i = 1; i <= 10; i++)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+
+            //int i = 1;
+            //while (i <= 10)
+            //{
+            //    Console.WriteLine(i);
+            //    i++;
+            //}
+
+
+            //int i = 10;
+            //while (i > 0)
+            //{
+            //    Console.WriteLine(i);
+            //    i--;
+            //}
+
+            //for (int i = 10 ; i > 0; i--)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+
+            //      დავალება 2
+            // •	დაწერეთ პროგრამა რომელიც კონსოლში დაბეჭდავს ყველა რიცხვის საშუალო არითემტიკულს იქამდე სადამდეც მომხმარებელი იტყვის, ანუ მაქსმიალურ რიცხვს შემოიყვანს მომხმარებელი კონსოლიდან.
+
+
+            //Console.Write("MAX VALUE: ");
+            //double max = double.Parse(Console.ReadLine());
+            //double sum = 0;
+
+            //for (int i = 1; i <= max; i++)
+            //{
+            //    sum += i;
+            //}
+
+            //double result = sum/max;
+            //Console.WriteLine(result);
+
+
+            //      დავალება 3
+            // •	დაწერეთ პროგრამა რომელიც კონსოლში დაბეჭდავს ტექსტს Hello World იქამდე სანამ შემოყვანილი ტექსტი არ იქნება exit.
+
+
+            //string text = string.Empty;
+            //while (text != "exit")
+            //{
+            //    Console.WriteLine("Hello world");
+            //    text = Console.ReadLine();
+            //}
+
+
+
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    Console.WriteLine($"i: {i}");
+            //    for (int j = 0; j < 5; j++)
+            //    {
+            //        Console.WriteLine($"j: {j}");
+            //    }
+            //}
+
+
+
+            #endregion
         }
     }
 }
