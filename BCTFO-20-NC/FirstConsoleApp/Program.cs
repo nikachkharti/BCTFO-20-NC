@@ -300,6 +300,89 @@ namespace FirstConsoleApp
 
 
             #endregion
+
+
+            #region 4 ლექცია მასივი
+
+            //string ana = "Ana";
+            //string luka = "luka";
+            //string levani = "levani";
+
+
+            //გრძელი ჩანაწერი
+            //string[] students = new string[3];
+            //students[0] = "ana";
+            //students[1] = "luka";
+            //students[2] = "levani";
+
+
+            //string test = "TEST";
+
+            ////shortcut
+            //string[] students = { "ana", "luka", "levani", "nuca", "charles", "aleksandre", "", test };
+
+            //for (int i = 0; i < students.Length; i++)
+            //{
+            //    Console.WriteLine(students[i]);
+            //}
+
+            //SINGLE RESPONSIBILITY -- ერთი პასუხისმგებლობა
+
+            //Random random = new Random();
+
+            //int[] intArray = new int[3];
+
+            //for (int i = 0; i < intArray.Length; i++)
+            //{
+            //    intArray[i] = random.Next(100);
+            //}
+
+            //Console.WriteLine("------------------------------");
+
+            //for (int i = 0; i < intArray.Length; i++)
+            //{
+            //    Console.WriteLine(intArray[i]);
+            //}
+
+
+
+            //სტანდარტული მთელი რიცხვების array
+            //int[] numbers = new int[3];
+            //numbers[0] = 10;
+            //numbers[1] = 30;
+            //numbers[2] = 18;
+
+
+            //jagged array  -- მასივების მასივი
+            //int[][] jaggedNumbers = new int[3][];
+
+            //jaggedNumbers[0] = new int[4] { 1, 2, 12, 3 };
+            //jaggedNumbers[1] = new int[5] { 21, 232, 111, 5, 4 };
+            //jaggedNumbers[2] = new int[1] { 55 };
+
+
+            //for (int i = 0; i < jaggedNumbers.Length; i++)
+            //{
+            //    for (int j = 0; j < jaggedNumbers[i].Length; j++)
+            //    {
+            //        Console.WriteLine(jaggedNumbers[i][j]);
+            //    }
+            //}
+
+
+
+            // მატრიცა 2D Array
+            //int[,] intAr = new int[3, 4]; 
+
+            //intAr[0, 0] = 12; 
+            //intAr[0, 1] = 13; 
+            //intAr[0, 2] = 18;
+
+
+
+
+            #endregion
+
         }
     }
 }
