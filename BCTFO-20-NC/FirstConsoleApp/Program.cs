@@ -501,12 +501,48 @@
 
 
 
-
-
-
-
-
             #region 5 ლექცია String
+
+            //string txt1 = "hello world";
+            //string txt2 = "my name is nika chkahrtishvili";
+
+            //char[] copyToArray = new char[txt1.Length];
+
+            //Console.WriteLine(txt1 + " " + txt2);
+            //Console.WriteLine($"{txt1} {txt2}");
+            //Console.WriteLine("{0} {1}", txt1, txt2);
+
+            //Console.WriteLine(string.Compare(txt1, txt2));  // -1   0   1
+            //Console.WriteLine(txt1.CompareTo(txt2));  // -1   0   1
+
+            //Console.WriteLine(string.CompareOrdinal(txt1, txt2));  // -1   0   1
+
+            //Console.WriteLine(txt1.ToUpper());
+            //Console.WriteLine(txt2.ToLower());
+
+            //Console.WriteLine(txt1.Contains("LLO", StringComparison.OrdinalIgnoreCase));
+
+            //Console.WriteLine(string.Concat(txt1, " ", txt2));
+
+            //txt1.CopyTo(0, copyToArray, 0, 5);
+
+            //Console.WriteLine(txt1.StartsWith("ldddd"));
+            //Console.WriteLine(txt1.EndsWith("ldddd"));
+
+            //Console.WriteLine(txt2.IndexOf('m'));
+            //Console.WriteLine(txt2.LastIndexOf('m'));
+
+            //Console.WriteLine(txt1.Insert(txt1.Length, " I am a programmer"));
+
+            //string x = string.Join(';', txt1, txt2);
+            //Console.WriteLine(x);
+
+            //Console.WriteLine(txt1.Replace("hello", "gaumarjos"));
+            //Console.WriteLine(txt2.Substring(0, txt2.Length - 3));
+
+            //Console.WriteLine(txt1.Trim('h', 'd'));
+
+            //string[] splitedText = txt2.Split(' ');
 
 
 
