@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-
-namespace FirstConsoleApp
+﻿namespace FirstConsoleApp
 {
     internal class Program
     {
@@ -380,8 +377,141 @@ namespace FirstConsoleApp
 
 
 
+            // საშინაო დავალებები
+
+
+            //დავალება 1
+            //•	დაწერეთ პროგრამა რომელიც კონსოლში დაბეჭდავს მასივში შემავალი ყველა ლუწი ელემენტის ჯამს.
+
+            //int[] collection = { 10, 1, 2, 3, 4 };
+            //int evenSum = 0;
+
+            //for (int i = 0; i < collection.Length; i++)
+            //{
+            //    if (collection[i] % 2 == 0)
+            //    {
+            //        evenSum += collection[i];
+            //    }
+            //}
+
+            //Console.WriteLine(evenSum);
+
+
+            //დავალება 2
+            //•	დაწერეთ პროგრამა რომელიც ერთ მასივიდან მეორეში გადააკოპირებს ყველა ელემენტს(ჩათვალეთ რომ ორივე მასივის ზომა ერთი და იგივეა).
+
+
+            //int[] collection = { 10, 1, 2, 3, 4 };
+            //int[] copyCollection = new int[collection.Length];
+
+            //for (int i = 0; i < collection.Length; i++)
+            //    copyCollection[i] = collection[i];
+
+            //foreach (int item in copyCollection)
+            //    Console.WriteLine(item);
+
+
+
+            //დავალება 3
+            //•	დაწერეთ პროგრამა რომელიც კონსოლში დაბეჭდავს მხოლოდ მასივის უნიკალურ ელემენტებს ანუ ისეთ ელემენტებს
+            //რომლებიც არსებულ მასივში მხოლოდ ერთხელ გვხვდებიან.
+
+
+            //int[] collection = { 10, 1, 2, 1, 3, 3, 4 };
+
+            //for (int i = 0; i < collection.Length; i++)
+            //{
+            //    bool isUnique = true;
+
+            //    for (int j = 0; j < collection.Length; j++)
+            //    {
+            //        if (i != j && collection[i] == collection[j])
+            //        {
+            //            isUnique = false;
+            //            break;
+            //        }
+            //    }
+
+            //    if (isUnique)
+            //        Console.WriteLine(collection[i]);
+            //}
+
+
+            //დავალება 4
+            //•	დაწერეთ პროგრამა რომელიც მასივში მოძებნის მაქსიმალურ ელემენტს.
+
+            //int[] collection = { 10, 1, 2, 1, 3, 333, 4 };
+            //int max = collection[0];
+
+            //for (int i = 0; i < collection.Length; i++)
+            //{
+            //    if (collection[i] > max)
+            //    {
+            //        max = collection[i];
+            //    }
+            //}
+
+            //Console.WriteLine(max);
+
+
+            //დავალება 5
+            //•	დაწერეთ პროგრამა რომელიც მასივში მოძებნის მაქსიმალური ელემენტის ინდექსს.
+
+
+            //int[] collection = { 10, 1, 2, 1, 3, 333, 4 };
+            //int max = collection[0];
+            //int index = 0;
+
+            //for (int i = 0; i < collection.Length; i++)
+            //{
+            //    if (collection[i] > max)
+            //    {
+            //        index = i;
+            //    }
+            //}
+
+            //Console.WriteLine(index);
+
+
+            //დავალება 6
+            //•	დაალაგეთ მოცემული მასივი ზრდადობის მიხედვით. (არ გამოიყენოთ C#-ში არსებული მზა ფუნქციები მაგალითად OrderBy ან რაიმე მსგავსი სრული ფუნქციონალი
+
+
+            //int[] collection = { 10, 1, 2, 3, 131, 2, 44 };
+
+            //for (int i = 0; i < collection.Length - 1; i++)
+            //{
+            //    for (int j = i + 1; j < collection.Length; j++)
+            //    {
+            //        if (collection[j] < collection[i])
+            //        {
+            //            int x = collection[j];
+            //            collection[j] = collection[i];
+            //            collection[i] = x;
+            //        }
+            //    }
+            //}
+
+
+            //foreach (var item in collection)
+            //    Console.WriteLine(item);
+
 
             #endregion
+
+
+
+
+
+
+
+
+            #region 5 ლექცია String
+
+
+
+            #endregion
+
 
         }
     }
