@@ -549,6 +549,59 @@
             #endregion
 
 
+            #region 6 ლექცია მეთოდები, ფუნქციები File კლასი
+
+            try
+            {
+                string messageText = GetInfoToDisplay();
+
+                switch (DisplayType())
+                {
+                    case 'C':
+                        DisplayInConsole(messageText);
+                        break;
+                    case 'F':
+                        DisplayInFile("../../../DisplayFile.txt", messageText);
+                        break;
+                    default:
+                        DisplayErrorMessage();
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+            #endregion
+        }
+
+        static string GetInfoToDisplay()
+        {
+            Console.Write("Enter the information to display: ");
+            string info = Console.ReadLine();
+
+            return info;
+        }
+        static void DisplayErrorMessage()
+        {
+            Console.WriteLine("Invalid parameter");
+        }
+        static void DisplayInFile(string path, string message)
+        {
+            File.WriteAllText(path, message);
+        }
+        static void DisplayInConsole(string message)
+        {
+            Console.WriteLine(message);
+        }
+        static char DisplayType()
+        {
+            Console.Write("Choose the file display type C for console F for file: ");
+            char operation = char.Parse(Console.ReadLine());
+
+            return operation;
         }
     }
 }
