@@ -1,4 +1,5 @@
-﻿#region 1 ლექცია
+﻿Console.WriteLine();
+#region 1 ლექცია
 
 #region საკლასო დავალებები
 /*
