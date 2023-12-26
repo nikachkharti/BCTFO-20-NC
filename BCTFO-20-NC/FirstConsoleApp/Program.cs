@@ -1,4 +1,6 @@
-﻿namespace FirstConsoleApp
+﻿using FirstConsoleApp.Models.SubFolder;
+
+namespace FirstConsoleApp
 {
     internal class Program
     {
@@ -551,31 +553,78 @@
 
             #region 6 ლექცია მეთოდები, ფუნქციები File კლასი
 
-            try
-            {
-                string messageText = GetInfoToDisplay();
+            //try
+            //{
+            //    string messageText = GetInfoToDisplay();
 
-                switch (DisplayType())
-                {
-                    case 'C':
-                        DisplayInConsole(messageText);
-                        break;
-                    case 'F':
-                        DisplayInFile("../../../DisplayFile.txt", messageText);
-                        break;
-                    default:
-                        DisplayErrorMessage();
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            //    switch (DisplayType())
+            //    {
+            //        case 'C':
+            //            DisplayInConsole(messageText);
+            //            break;
+            //        case 'F':
+            //            DisplayInFile("../../../DisplayFile.txt", messageText);
+            //            break;
+            //        default:
+            //            DisplayErrorMessage();
+            //            break;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
 
 
             #endregion
+
+
+
+            //Person firstPerson = new Person("Nika", "Chkhartishvili", 28);
+
+            //firstPerson.firstName = "Nika";
+            //firstPerson.lastName = "Chkhartishvili";
+            //firstPerson.age = 28;
+
+            //Console.WriteLine($"{firstPerson.firstName} {firstPerson.lastName} {firstPerson.age}");
+
+
+            //Person secondPerson = new Person();
+            //secondPerson.firstName = "Lasha";
+            //secondPerson.lastName = "Andguladze";
+            //secondPerson.age = 25;
+
+            //Console.WriteLine($"{secondPerson.firstName} {secondPerson.lastName} {secondPerson.age}");
+
+
+
+            //Person secondPerson = new Person()
+            //{
+            //    firstName = "Lasha",
+            //    lastName = "Andguladze",
+            //    age = 25
+            //};
+            //Console.WriteLine($"{secondPerson.firstName} {secondPerson.lastName} {secondPerson.age}");
+
+
+
+            Person thirPerson = new Person();
+            Console.Write("Firstname: ");
+            thirPerson.FirstName = Console.ReadLine();
+            Console.Write("Lastname: ");
+            thirPerson.LastName = Console.ReadLine();
+            Console.Write("Age: ");
+            thirPerson.Age = int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"{thirPerson.FirstName} {thirPerson.LastName} {thirPerson.Age}");
+
+
+
+
+
+
         }
+
 
         static string GetInfoToDisplay()
         {
