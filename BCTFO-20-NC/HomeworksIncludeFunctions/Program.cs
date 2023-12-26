@@ -1,4 +1,7 @@
-﻿Console.WriteLine();
+﻿using System.ComponentModel;
+using static System.Net.Mime.MediaTypeNames;
+
+Console.WriteLine();
 #region 1 ლექცია
 
 #region საკლასო დავალებები
@@ -997,6 +1000,202 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 #region 5 ლექცია
 
-// შესასრულებელი გაქვთ !!! მერე ავტივრთავ
+
+//•	დაწერეთ ფუნქცია რომელიც პარამეტრად აიღებს ტექსტს, ფუნქციამ უნდა დააბრუნოს ამ ტექსტში არსებული იმ სიმბოლოების რაოდენობა რომელსაც მომხმარებელი გადასცემს ამ ფუნქციას.
+
+//Console.WriteLine(CharacterCounter("Hello world", 'o'));
+//int CharacterCounter(string arg, char symbol)
+//{
+//    int counter = 0;
+//    for (int i = 0; i < arg.Length; i++)
+//    {
+//        if (arg[i] == 'o')
+//        {
+//            counter++;
+//        }
+//    }
+
+//    return counter;
+//}
+
+
+
+//•	დაწერეთ ფუნქცია რომელიც გამოითვლის და დააბრუნებს მასივის შემადგენელი ყველა ელემენტის ჯამს.
+
+//int[] collection = { 1, 2, 3 };
+//Console.WriteLine(SumArrayElements(collection));
+//int SumArrayElements(int[] arrayToSum)
+//{
+//    int sum = 0;
+//    for (int i = 0; i < arrayToSum.Length; i++)
+//    {
+//        //sum = sum + arrayToSum[i];
+//        sum += arrayToSum[i];
+//    }
+
+//    return sum;
+//}
+
+
+//•	დაწერეთ ფუნქცია რომელიც გამოითვლის და დააბრუნებს მასივის შემადგენელი ყველა კენტი ელემენტის ჯამს.
+
+
+//int[] collection = { 1, 2, 3 };
+//Console.WriteLine(SumArrayElements(collection));
+//int SumArrayElements(int[] arrayToSum)
+//{
+//    int sum = 0;
+//    for (int i = 0; i < arrayToSum.Length; i++)
+//    {
+//        if (arrayToSum[i] % 2 != 0)
+//        {
+//            sum += arrayToSum[i];
+//        }
+//    }
+
+//    return sum;
+//}
+
+
+
+//•	დაწერეთ ფუნქცია რომელიც დააბრუნებს ორი გადაცემული რცხვის ჯამს
+
+//Console.WriteLine(Sum(10,11));
+//int Sum(int first, int second)
+//{
+//    return first + second;
+//}
+
+
+//•	დაწერეთ ფუნქცია რომელიც მასივში მოძებნის მაქსიმალურ ელემენტს.
+
+
+//int[] collection = { 1, 2, 3 };
+//Console.WriteLine(FindMax(collection));
+
+//int FindMax(int[] array)
+//{
+//    int max = array[0];
+//    for (int i = 0; i < array.Length; i++)
+//    {
+//        if (array[i] > max)
+//            max = array[i];
+//    }
+
+//    return max;
+//}
+
+
+//•	დაწერეთ ფუნქცია რომელიც მასივში მოძებნის იმ ელემენტს რომელსაც მომხმარებელი გადასცემს.
+
+//string[] names = { "Giorgi", "Davit", "Nika", "Giorgi" };
+
+//var result = FindElement(names, "Nika");
+//Console.WriteLine(result);
+
+
+//string FindElement(string[] collection, string element)
+//{
+//    string value = string.Empty;
+//    for (int i = 0; i < collection.Length; i++)
+//    {
+//        if (collection[i] == element)
+//        {
+//            value = collection[i];
+//        }
+//    }
+//    return value;
+//}
+
+
+
+//•	დაწერეთ ფუნქცია რომელიც დაალაგებს int ების მასივს ზრდადობის მიხედვით.
+//(არ გამოიყენოთ C#-ში არსებული მზა ფუნქციები მაგალითად OrderBy ან რაიმე მსგავსი სრული ფუნქციონალი დაწერეთ ხელით)
+
+
+//int[] collection = { 1, 101, 2, 14, 7, 6, 721 };
+//int[] sortedCollection = Sort(collection);
+
+//foreach (var item in sortedCollection)
+//{
+//    Console.WriteLine(item);
+//}
+
+//int[] Sort(int[] collection)
+//{
+//    for (int i = 0; i < collection.Length - 1; i++)
+//    {
+//        for (int j = i + 1; j < collection.Length; j++)
+//        {
+//            if (collection[j] < collection[i])
+//            {
+//                int t = collection[j];
+//                collection[j] = collection[i];
+//                collection[i] = t;
+//            }
+//        }
+//    }
+
+//    return collection;
+//}
+
+
+
+//• დაწერეთ ფუნქცია Any, ფუნქციამ უნდა შეამოწმოს გადაცემული ტექსტი შეიცავს თუ არა კონკრეტულ გადაცემულ სიმბოლოს.
+
+
+//Console.WriteLine(Any("Hello World", 'o'));
+
+//bool Any(string text, char symbol)
+//{
+//    for (int i = 0; i < text.Length; i++)
+//    {
+//        if (text[i] == symbol)
+//        {
+//            return true;
+//        }
+//    }
+
+//    return false;
+//}
+
+
+//• დაწერეთ ფუნქცია All, ფუნქციამ უნდა შეამოწმოს გადაცემული ტექსტის ყველა ელემენტი უდრის თუ არა გადაცემულ კონკრეტულ სიმბოლოს.
+
+
+//Console.WriteLine(All("oooo", 'o'));
+
+//bool All(string text, char symbol)
+//{
+//    for (int i = 0; i < text.Length; i++)
+//    {
+//        if (text[i] != symbol)
+//        {
+//            return false;
+//        }
+//    }
+
+//    return true;
+//}
+
+
+
+//•	დაწერეთ ფუნქცია სახელად IsNullOrEmpty ფუნქციამ უნდა შეამოწმოს გადაცემული სტრინგი ცარიელია თუ არა?
+
+//Console.WriteLine(IsNullOrWhiteSpace("    "));
+//bool IsNullOrEmpty(string value)
+//{
+//    return value == null || value.Length == 0;
+//}
+
+
+//•	დაწერეთ ფუნქცია სახელად IsNullOrWhiteSpace ფუნქციამ უნდა შეამოწმოს გადაცემული სტრინგი ცარიელია თუ არა და გადაცემული სტრინგი შედგება თუ არა Space-ებისგან.
+
+//bool IsNullOrWhiteSpace(string value)
+//{
+//    return value == null || value.Length == 0 || All(value, ' ');
+//}
+
+
 
 #endregion
