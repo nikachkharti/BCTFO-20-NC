@@ -1,4 +1,4 @@
-﻿namespace Homeworks
+﻿namespace FirstConsoleApp.Models
 {
     public class Person
     {
@@ -18,6 +18,7 @@
             }
         }
 
+
         private string pin;
         public string Pin
         {
@@ -30,33 +31,5 @@
                 }
             }
         }
-
-        private string phoneNumber;
-        public string PhoneNumber
-        {
-            get { return phoneNumber; }
-            set
-            {
-                if (value.Length == 9)
-                {
-                    phoneNumber = value;
-                }
-            }
-        }
-
-
-        private string email;
-        public string Email
-        {
-            get { return email; }
-            set
-            {
-                if (value.Contains('@') && value.Contains('.'))
-                {
-                    email = value;
-                }
-            }
-        }
-
     }
 }

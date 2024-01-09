@@ -1,6 +1,8 @@
-﻿using Homeworks;
+﻿using Homeworks.MiniBank;
+using Homeworks.MiniBank.MiniBankExceptions;
+using System.Collections;
 
-//Console.WriteLine();
+Console.WriteLine();
 #region 1 ლექცია
 
 #region საკლასო დავალებები
@@ -1201,8 +1203,8 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 
 
-
 #region ლექცია 7 კლასები და ობიექტები
+
 
 
 #region საშინაო დავალებები
@@ -1211,84 +1213,6 @@ for (int i = 0; i < collection.Length - 1; i++)
 //კლასი ინფორმაციას უნდა იღებდეს კონსტრუქტორიდან.მოახდინეთ თქვენი კლასის დემონსტრირება კონსოლში.
 
 
-Person person = new Person()
-{
-    FirstName = "Nika",
-    LastName = "Chkhartishvili",
-    Age = 28,
-    Pin = "12345678945"
-};
-
-
-Customer nika = new Customer()
-{
-    FirstName = "Nika",
-    LastName = "Chkhartishvili",
-    Age = 28,
-    Email = "nika@gmail.com",
-    Pin = "12345678945",
-    PhoneNumber = "123456789",
-    Salary = 100
-};
-
-
-Teacher giorgi = new Teacher()
-{
-    FirstName = "Giorgi",
-    LastName = "Chkhartishvili",
-    Age = 28,
-    Email = "giorgi@gmail.com",
-    Pin = "12345678245",
-    PhoneNumber = "223456789",
-    Salary = 100,
-    Subject = "Javascript"
-};
-
-
-
-Administration daviti = new Administration()
-{
-    FirstName = "Daviti",
-    LastName = "Chkhartishvili",
-    Age = 28,
-    Email = "daviti@gmail.com",
-    Pin = "12345628245",
-    PhoneNumber = "253456789",
-    Salary = 10000
-};
-
-
-
-Person person2 = daviti;
-Person person3 = giorgi;
-Person person4 = nika;
-
-
-
-
-
-void SayHelloToPerson(Person person)
-{
-    Console.WriteLine($"Hello {person.FirstName} {person.LastName}");
-}
-
-
-//void SayHelloCustomer(Customer customer)
-//{
-//    Console.WriteLine($"Hello {person.FirstName} {person.LastName}");
-//}
-
-//void SayHelloToTeacher(Teacher teacher)
-//{
-//    Console.WriteLine($"Hello {person.FirstName} {person.LastName}");
-//}
-
-
-//void SayHelloToAdministration(Administration administration)
-//{
-//    Console.WriteLine($"Hello {person.FirstName} {person.LastName}");
-//}
-
 
 
 
@@ -1296,6 +1220,7 @@ void SayHelloToPerson(Person person)
 //•	ანგარიშის ნომერი (22 ნიშნა)
 //•	ვალუტა(სამნიშნა)
 //•	ბალანსი(არ უნდა იყოს უარყოფითი)
+
 
 //•	დაწერეთ კლიენტის კლასი, რომელსაც ექნება
 //•	სახელი
@@ -1306,7 +1231,96 @@ void SayHelloToPerson(Person person)
 //მოახდინეთ თქვენს მიერ შექმნილი კლასების დემონსტრირება კონსოლში ობიექტების სახით. ობიექტებს უნდა შეეძლოთ თანხის განაღდება ბალანსის შევსება, ერთმანეთისთვის თნხის გადარიცხვა.
 
 
+
+
+
+
+
+//try
+//{
+//    Account account1 = new Account()
+//    {
+//        AccountNumber = "1234567894112345678941",
+//        Balance = 100,
+//        Currency = "GEL"
+//    };
+
+//    Client client1 = new Client()
+//    {
+//        FirstName = "Tamazi",
+//        LastName = "Goderdzishvili",
+//        Age = 20,
+//        Email = "tamazi@gmail.com",
+//        PhoneNumber = "555221177",
+//        Pin = "12345678945",
+//        Account = account1
+//    };
+
+//    Client client2 = new Client()
+//    {
+//        FirstName = "Mariam",
+//        LastName = "Khutishvili",
+//        Age = 20,
+//        Email = "mariam@gmail.com",
+//        PhoneNumber = "555221177",
+//        Pin = "12345678945",
+//        Account = new Account()
+//        {
+//            AccountNumber = "2234567894112345678941",
+//            Balance = 100,
+//            Currency = "GEL"
+//        }
+//    };
+
+//    Client client3 = new Client()
+//    {
+//        FirstName = "Giorgi",
+//        LastName = "Gujarelidze",
+//        Age = 30,
+//        Email = "giorgi@gmail.com",
+//        PhoneNumber = "555221177",
+//        Pin = "12345678945",
+//        Account = new Account
+//        {
+//            AccountNumber = "3234567894112345678941",
+//            Balance = 100,
+//            Currency = "GEL"
+//        }
+//    };
+
+
+//    Console.WriteLine($" {client3.FirstName} {client3.LastName} --- {client3.Account.Balance}");
+//    Console.WriteLine($" {client2.FirstName} {client2.LastName} --- {client2.Account.Balance}");
+
+//    client3.Account.Transfer(client2.Account, 150000);
+//    Console.WriteLine("---------------------------------");
+
+//    Console.WriteLine($" {client3.FirstName} {client3.LastName} --- {client3.Account.Balance}");
+//    Console.WriteLine($" {client2.FirstName} {client2.LastName} --- {client2.Account.Balance}");
+//}
+//catch (Exception ex)
+//{
+//    Console.WriteLine(ex.Message);
+//}
+
+
+
+
 #endregion
+
+
+
+
+
+//object[] intArray = new object[3] { 10, "Nika", true };
+
+
+//object x = 12;
+//int y = (int)x;
+
+
+//C# 1.0  boxing unboxing
+
 
 
 
