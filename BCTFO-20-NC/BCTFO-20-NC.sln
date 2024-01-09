@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstConsoleApp", "FirstConsoleApp\FirstConsoleApp.csproj", "{202BD8F8-73CF-4A1A-8A74-63A4AACCA720}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeworksIncludeFunctions", "HomeworksIncludeFunctions\HomeworksIncludeFunctions.csproj", "{A02076F8-2840-449C-A3ED-DE0FC352D969}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homeworks", "HomeworksIncludeFunctions\Homeworks.csproj", "{A02076F8-2840-449C-A3ED-DE0FC352D969}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

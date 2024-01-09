@@ -608,15 +608,17 @@ namespace FirstConsoleApp
 
 
 
-            Person thirPerson = new Person();
-            Console.Write("Firstname: ");
-            thirPerson.FirstName = Console.ReadLine();
-            Console.Write("Lastname: ");
-            thirPerson.LastName = Console.ReadLine();
-            Console.Write("Age: ");
-            thirPerson.Age = int.Parse(Console.ReadLine());
+            //Person thirPerson = new Person();
+            //Console.Write("Firstname: ");
+            //thirPerson.FirstName = Console.ReadLine();
+            //Console.Write("Lastname: ");
+            //thirPerson.LastName = Console.ReadLine();
+            //Console.Write("Age: ");
+            //thirPerson.Age = int.Parse(Console.ReadLine());
 
-            Console.WriteLine($"{thirPerson.FirstName} {thirPerson.LastName} {thirPerson.Age}");
+            //Console.WriteLine($"{thirPerson.FirstName} {thirPerson.LastName} {thirPerson.Age}");
+
+
 
 
 

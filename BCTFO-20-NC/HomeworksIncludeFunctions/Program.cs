@@ -1,7 +1,6 @@
-﻿using System.ComponentModel;
-using static System.Net.Mime.MediaTypeNames;
+﻿using Homeworks;
 
-Console.WriteLine();
+//Console.WriteLine();
 #region 1 ლექცია
 
 #region საკლასო დავალებები
@@ -1195,6 +1194,124 @@ for (int i = 0; i < collection.Length - 1; i++)
 //{
 //    return value == null || value.Length == 0 || All(value, ' ');
 //}
+
+
+
+#endregion
+
+
+
+
+#region ლექცია 7 კლასები და ობიექტები
+
+
+#region საშინაო დავალებები
+
+//•	დავალება 1: შექმენით კლასი რიმლითაც აღწერთ საკუთარ თავს. კლასს უნდა ჰქოონდეს შემდეგი ინფორმაცია თქვენი სახელი, გვარი, ასაკი, პირადი ნომერი, ტელეფონის ნომერი, ელ-ფოსტა.
+//კლასი ინფორმაციას უნდა იღებდეს კონსტრუქტორიდან.მოახდინეთ თქვენი კლასის დემონსტრირება კონსოლში.
+
+
+Person person = new Person()
+{
+    FirstName = "Nika",
+    LastName = "Chkhartishvili",
+    Age = 28,
+    Pin = "12345678945"
+};
+
+
+Customer nika = new Customer()
+{
+    FirstName = "Nika",
+    LastName = "Chkhartishvili",
+    Age = 28,
+    Email = "nika@gmail.com",
+    Pin = "12345678945",
+    PhoneNumber = "123456789",
+    Salary = 100
+};
+
+
+Teacher giorgi = new Teacher()
+{
+    FirstName = "Giorgi",
+    LastName = "Chkhartishvili",
+    Age = 28,
+    Email = "giorgi@gmail.com",
+    Pin = "12345678245",
+    PhoneNumber = "223456789",
+    Salary = 100,
+    Subject = "Javascript"
+};
+
+
+
+Administration daviti = new Administration()
+{
+    FirstName = "Daviti",
+    LastName = "Chkhartishvili",
+    Age = 28,
+    Email = "daviti@gmail.com",
+    Pin = "12345628245",
+    PhoneNumber = "253456789",
+    Salary = 10000
+};
+
+
+
+Person person2 = daviti;
+Person person3 = giorgi;
+Person person4 = nika;
+
+
+
+
+
+void SayHelloToPerson(Person person)
+{
+    Console.WriteLine($"Hello {person.FirstName} {person.LastName}");
+}
+
+
+//void SayHelloCustomer(Customer customer)
+//{
+//    Console.WriteLine($"Hello {person.FirstName} {person.LastName}");
+//}
+
+//void SayHelloToTeacher(Teacher teacher)
+//{
+//    Console.WriteLine($"Hello {person.FirstName} {person.LastName}");
+//}
+
+
+//void SayHelloToAdministration(Administration administration)
+//{
+//    Console.WriteLine($"Hello {person.FirstName} {person.LastName}");
+//}
+
+
+
+
+//•	დავალება 2: დაწერეთ ანგარიშს კლასი, რომელსაც ექნება
+//•	ანგარიშის ნომერი (22 ნიშნა)
+//•	ვალუტა(სამნიშნა)
+//•	ბალანსი(არ უნდა იყოს უარყოფითი)
+
+//•	დაწერეთ კლიენტის კლასი, რომელსაც ექნება
+//•	სახელი
+//•	გვარი
+//•	პირადი ნომერი (11 ნიშნა)
+//•	ანგარიში
+
+//მოახდინეთ თქვენს მიერ შექმნილი კლასების დემონსტრირება კონსოლში ობიექტების სახით. ობიექტებს უნდა შეეძლოთ თანხის განაღდება ბალანსის შევსება, ერთმანეთისთვის თნხის გადარიცხვა.
+
+
+#endregion
+
+
+
+
+
 
 
 
