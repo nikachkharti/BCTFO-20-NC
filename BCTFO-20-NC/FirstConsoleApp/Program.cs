@@ -1,9 +1,51 @@
-﻿using FirstConsoleApp.Models.SubFolder;
+﻿using FirstConsoleApp.Models;
 
 namespace FirstConsoleApp
 {
     internal class Program
     {
+        class Eagle : Bird, IFlyer, ITest
+        {
+            public override void Eat()
+            {
+                Console.WriteLine("Eatring Fish");
+            }
+
+            void IFlyer.Fly()
+            {
+                throw new NotImplementedException();
+            }
+
+            void ITest.Fly()
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        class Penguin : Bird
+        {
+            public override void Eat()
+            {
+                Console.WriteLine("Eatring Meat");
+            }
+        }
+
+        interface ITest
+        {
+            public void Fly();
+        }
+
+        interface IFlyer
+        {
+            public void Fly();
+        }
+
+        abstract class Bird
+        {
+            public abstract void Eat();
+        }
+
+
         static void Main()
         {
             #region 2 ლექცია IF ELSE
@@ -579,54 +621,59 @@ namespace FirstConsoleApp
             #endregion
 
 
+            #region 9 ლექცია აბსტრაქცია
 
-            //Person firstPerson = new Person("Nika", "Chkhartishvili", 28);
+            //ენკაფსულაცია მემკვიდრეობა პოლიმორფიზმი აბსტრაქცია
 
-            //firstPerson.firstName = "Nika";
-            //firstPerson.lastName = "Chkhartishvili";
-            //firstPerson.age = 28;
+            //Person person = new Person();
+            //person.FirstName = "Nika";
+            //person.LastName = "Chkhartishvili";
 
-            //Console.WriteLine($"{firstPerson.firstName} {firstPerson.lastName} {firstPerson.age}");
-
-
-            //Person secondPerson = new Person();
-            //secondPerson.firstName = "Lasha";
-            //secondPerson.lastName = "Andguladze";
-            //secondPerson.age = 25;
-
-            //Console.WriteLine($"{secondPerson.firstName} {secondPerson.lastName} {secondPerson.age}");
+            //person.SayHello();
 
 
+            //Employee employee = new Employee();
+            //employee.FirstName = "Girogi";
+            //employee.LastName = "Giorgadze";
+            //employee.Salary = 1000;
 
-            //Person secondPerson = new Person()
-            //{
-            //    firstName = "Lasha",
-            //    lastName = "Andguladze",
-            //    age = 25
-            //};
-            //Console.WriteLine($"{secondPerson.firstName} {secondPerson.lastName} {secondPerson.age}");
+            //employee.SayHello();
 
 
 
-            //Person thirPerson = new Person();
-            //Console.Write("Firstname: ");
-            //thirPerson.FirstName = Console.ReadLine();
-            //Console.Write("Lastname: ");
-            //thirPerson.LastName = Console.ReadLine();
-            //Console.Write("Age: ");
-            //thirPerson.Age = int.Parse(Console.ReadLine());
+            //Teacher teacher = new Teacher();
+            //teacher.FirstName = "Davit";
+            //teacher.LastName = "Giorgadze";
+            //teacher.Salary = 1000;
+            //teacher.PhoneNumber = "555337788";
 
-            //Console.WriteLine($"{thirPerson.FirstName} {thirPerson.LastName} {thirPerson.Age}");
+            //teacher.SayHello();
+
+            //Administration administration = new Administration();
+            //administration.FirstName = "Davit";
+            //administration.LastName = "Giorgadze";
+            //administration.Salary = 1000;
+            //administration.PhoneNumber = "555337788";
+            //administration.Password = "SECRET123";
+
+            //administration.SayHello();
+
+            //Callcenter call = new Callcenter();
+            //call.FirstName = "Davit";
+            //call.LastName = "Giorgadze";
+            //call.Salary = 1000;
+            //call.PhoneNumber = "555337788";
+            //call.PhoneNumbers = "551222222";
+
+            //call.SayHello();
 
 
 
-
-
+            #endregion
 
 
 
         }
-
 
         static string GetInfoToDisplay()
         {

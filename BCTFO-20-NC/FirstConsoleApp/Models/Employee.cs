@@ -1,6 +1,6 @@
 ﻿namespace FirstConsoleApp.Models
 {
-    public class Customer : Person
+    public abstract class Employee : Person
     {
         private string phoneNumber;
         public string PhoneNumber
@@ -11,20 +11,6 @@
                 if (value.Length == 9)
                 {
                     phoneNumber = value;
-                }
-            }
-        }
-
-
-        private string email;
-        public string Email
-        {
-            get { return email; }
-            set
-            {
-                if (value.Contains('@') && value.Contains('.'))
-                {
-                    email = value;
                 }
             }
         }
