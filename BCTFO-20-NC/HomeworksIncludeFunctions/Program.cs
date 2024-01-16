@@ -1,5 +1,6 @@
 ﻿using Homeworks.FightGame;
 using Homeworks.MiniBank;
+using Homeworks.MiniBank.Logger;
 using Homeworks.MiniBank.MiniBankExceptions;
 using System.Collections;
 using System.Diagnostics.Tracing;
@@ -1384,3 +1385,70 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 #endregion
 
+
+
+#region ლექცია 9 აბსტრაქცია
+
+//1 დავალება
+//წინა გაკვეთლებზე დაწერილ საბანკო აპლიკაციას ჰქონდა გარკვეული ოპერაციების (თანხის განაღდება, გადარიცხვა, შეტანა) ფუნქციონალი რომელიც ავამუშავეთ,
+//მაგრამ კონსოლური ფანჯრის გათიშვის შემდეგ გადარიცხვის შესახებ ისტორია იკარგებოდა.
+//თქვენი დავალებაა ააწყოთ Logger ანუ განხორციელებული ტრანზაქციების შესახებ ინფორმაციის შემნახავი პროგრამა.
+// ინფორმაციის დამახსოვრება შეგვიძლია 2 გზით
+
+//პირვველი: განხორციელებული ტრანზაქციის შესახებ ინფრმაცია დაიბეჭდოს კონსოლში.
+//მეორე: განხორციელებული ტანზაქციის შესახებ ინფორამცია ჩაიწეროს და დამახსოვრედს ფაილში.
+
+//როდესაც მომხმარებელი განახორციელებს რომელიმე ოპერაციას მომხმარებელს კონსოლიდან უნდა მიეცეს არჩევანი განხორციელებული ტრანზაქცია ჩაიწეროს ფაილში, თუ დაიბეჭდოს კონსოლში.
+//Logger - ის ფუნქციონალის ასაწყობად აუცილებლად გამოიყენეთ
+//ინტერფეისი ან აბსტრაქტული კლასი, თქვენი სურვილის მიხედვით.
+
+//თუ მომხმარებელი აირჩევს ფაილს ფაილში უნდა ჩაიწეროს შემდეგი ინფორმაცია, მაგალითად:
+
+//"მომხმარებელმა ნიკა ჩხარტიშვილი გადაურიცხა 500 ლარი მომხმარებელს გიორგი გიორგაძე, გადარიცხვის თარიღი: ----მიმდინარე თარიღი---"
+//"მომხმარებელმა ნიკა ჩხარტიშვილი შეიტანა 500 ლარი გადარიცხვის თარიღი: ---მიმდინარე თარიღი---"
+//და ა.შ.
+
+
+//Client giorgi = new()
+//{
+//    FirstName = "Girogi",
+//    LastName = "Giorgadze",
+//    Age = 28,
+//    Email = "gio@gmail.com",
+//    PhoneNumber = "123456789",
+//    Pin = "12345678978",
+//    Account = new Account
+//    {
+//        AccountNumber = "1234567897812345678978",
+//        Balance = 100,
+//        Currency = "GEL"
+//    }
+//};
+
+//giorgi.Account.Fill(100);
+
+//Console.Write("[F] for file logging [C] for console logging ");
+//char logType = char.Parse(Console.ReadLine());
+
+//switch (logType)
+//{
+//    case 'F':
+//        FileLogger.Log($"{giorgi.FirstName} {giorgi.LastName} Filled the balance current balance is {giorgi.Account.Balance} GEL{Environment.NewLine}");
+//        break;
+
+//    case 'C':
+//        ConsoleLogger.Log($"{giorgi.FirstName} {giorgi.LastName} Filled the balance current balance is {giorgi.Account.Balance} GEL");
+//        break;
+
+//    default:
+//        Console.WriteLine("INCORRECT LOG TYPE");
+//        break;
+//}
+
+
+
+
+
+
+
+#endregion
