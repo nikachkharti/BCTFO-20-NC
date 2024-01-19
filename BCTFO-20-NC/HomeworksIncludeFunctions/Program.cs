@@ -1,4 +1,5 @@
-﻿using Homeworks.FightGame;
+﻿using Homeworks;
+using Homeworks.FightGame;
 using Homeworks.MiniBank;
 using Homeworks.MiniBank.Logger;
 using Homeworks.MiniBank.MiniBankExceptions;
@@ -1457,6 +1458,13 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 
 #region ლექცია 10
+
+
+//CustomDate curentDate = new CustomDate(2024, 1, 19);
+//CustomDate newDate = new CustomDate(2024, 1, 20);
+
+
+//Console.WriteLine(newDate - curentDate);
 
 
 
