@@ -1452,3 +1452,12 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 
 #endregion
+
+
+
+
+#region ლექცია 10
+
+
+
+#endregion
