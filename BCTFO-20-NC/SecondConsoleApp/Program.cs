@@ -94,6 +94,14 @@
             //}
             #endregion
 
+            #region 11 ლექცია ლისტი ალგორითმები
+            //List<int> intList = new List<int>();
+            //intList.Add(11);
+            //intList.Add(12);
+            //intList.Add(132);
+            //intList.Add(4);
+            //intList.Add(14);
+            #endregion
         }
     }
 }
