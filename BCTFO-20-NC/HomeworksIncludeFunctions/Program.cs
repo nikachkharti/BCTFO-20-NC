@@ -1469,3 +1469,14 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 
 #endregion
+
+
+int[] testArray = new int[2] { 11, 1 };
+var x = MyAlgorithms.Sum(testArray);
+
+
+
+
+Console.ReadLine();
+
+
