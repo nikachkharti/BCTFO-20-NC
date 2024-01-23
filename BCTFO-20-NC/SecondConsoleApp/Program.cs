@@ -1,4 +1,6 @@
-﻿namespace SecondConsoleApp
+﻿using System.Text;
+
+namespace SecondConsoleApp
 {
     internal class Program
     {
@@ -101,6 +103,65 @@
             //intList.Add(132);
             //intList.Add(4);
             //intList.Add(14);
+            #endregion
+
+            #region 12 ლექცია მონაცემთა სტრუქტურები
+
+
+            //LIST
+            //List<Patient> names = new List<Patient>()
+            //{
+            //    new Patient() {FullName = "Nika"},
+            //    new Patient() {FullName = "Giorgi"},
+            //    new Patient() {FullName = "Daviti"},
+            //    new Patient() {FullName = "Irakli"},
+            //    new Patient() {FullName = "Irakli"},
+            //    new Patient() {FullName = "Irakli"}
+            //};
+
+
+            //HASHSET
+            //HashSet<int> intSet = new() { 1, 2, 3 };
+            //HashSet<int> intSet2 = new() { 1, 2, 3, 5 };
+
+            //var res = intSet2.IsSupersetOf(intSet);
+
+
+            //LINKEDLIST
+            //LinkedList<string> people = new LinkedList<string>();
+
+
+            //QUEUE -- FIFO
+            //Doctor dr = new Doctor("Gregory House");
+
+            //Queue<Patient> patients = new();
+            //patients.Enqueue(new Patient("Nika Chkartishvili"));
+            //patients.Enqueue(new Patient("Lasha Andguladze"));
+            //patients.Enqueue(new Patient("Tinatin Rodinadze"));
+            //patients.Enqueue(new Patient("Tamar Bedoshvili"));
+
+            //while (patients.Count > 0)
+            //{
+            //    StartWork(dr, patients); 
+            //}
+            //Console.WriteLine("WORK FINISH");
+
+
+            //STACK -- LIFO
+            //Stack<string> people = new(names);
+
+
+            //DICTIONARY
+            //Dictionary<string, int> dict = new()
+            //{
+            //    {"Five", 5 },
+            //    {"Three", 3 },
+            //    {"Eleven", 11 }
+            //};
+
+            //dict["Five"] = 12;
+
+
             #endregion
         }
     }
