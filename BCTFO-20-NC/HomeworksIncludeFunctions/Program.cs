@@ -1472,40 +1472,6 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 
 
-#region ლექცია 12 Generics
-
-/*
-
-int[] intAr = { 1, 2, 3, 412, 5, 12, 60 };
-string[] texts = { "zsdads", "1qwer", "asdag" };
-List<string> names = new() { "nika", "giorgi", "daviti" };
-
-var result = MyAlgorithms.Sort(texts);
-
-interface IUniqueIdentifier<T>
-{
-    public T UniqueId { get; set; }
-}
-
-class Student : IUniqueIdentifier<int>
-{
-    public string Name { get; set; }
-    public int UniqueId { get; set; }
-
-    public Student(int uid, string name)
-    {
-        UniqueId = uid;
-        Name = name;
-    }
-}
-
-
-Student<string> std1 = new("ASDF123", "Nika Chkhartishvili");
-Student<int> std2 = new(11, "Levani Svanidze");
-
-*/
-
-#endregion
 
 
 
