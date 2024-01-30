@@ -1474,6 +1474,82 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 
 
+#region ლექცია 13 Generic
+
+
+//6.დაალაგეთ მანაქნები ეკონომიურობის მიხედვით.
+//5.მოძებნეთ 10 ყველაზე ეკონომიური მანქანა.
+
+
+string[] data = File.ReadAllLines(@"../../../vehicles.csv");
+Vehicle[] cars = Select(data);
+Vehicle[] sortedCars = Sort(cars);
+Vehicle[] economicCars = Take(cars, 10);
+
+
+#endregion
+
+
+Vehicle[] Take(Vehicle[] cars, int quanitity)
+{
+    if (quanitity > cars.Length)
+        throw new ArgumentOutOfRangeException();
+
+    Vehicle[] mostEconomicCars = new Vehicle[10];
+
+    for (int i = 0; i < quanitity; i++)
+    {
+        mostEconomicCars[i] = sortedCars[i];
+    }
+
+    return mostEconomicCars;
+
+}
+static Vehicle[] Sort(Vehicle[] cars)
+{
+    for (int i = 0; i < cars.Length - 1; i++)
+    {
+        for (int j = i + 1; j < cars.Length; j++)
+        {
+            if (cars[i].Combined < cars[j].Combined)
+            {
+                Vehicle temp = cars[j];
+                cars[j] = cars[i];
+                cars[i] = temp;
+            }
+        }
+    }
+
+    return cars;
+}
+static Vehicle[] FindMercedeses(Vehicle[] cars)
+{
+    List<Vehicle> mercedeses = new();
+
+    for (int i = 0; i < cars.Length; i++)
+    {
+        if (cars[i].Make.Contains("Mercedes"))
+        {
+            mercedeses.Add(cars[i]);
+        }
+    }
+
+    return mercedeses.ToArray();
+}
+static Vehicle[] Select(string[] data)
+{
+    Vehicle[] result = new Vehicle[data.Length];
+
+    for (int i = 0; i < data.Length; i++)
+    {
+        result[i] = Vehicle.Parse(data[i]);
+    }
+
+    return result;
+}
+
+
+
 
 
 Console.ReadLine();
