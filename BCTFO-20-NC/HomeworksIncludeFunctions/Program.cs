@@ -5,6 +5,7 @@ using Homeworks.MiniBank.Logger;
 using Homeworks.MiniBank.MiniBankExceptions;
 using System.Collections;
 using System.Diagnostics.Tracing;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 Console.WriteLine();
 #region 1 ლექცია
@@ -1473,85 +1474,52 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 
 
-
 #region ლექცია 13 Generic
 
+//string[] data = File.ReadAllLines(@"../../../vehicles.csv");
+//Vehicle[] cars = MyAlgorithms.Select(data);
+//var mercedeses = MyAlgorithms.Where(cars, x => x.Make.Contains("Subaru"));
 
-//6.დაალაგეთ მანაქნები ეკონომიურობის მიხედვით.
-//5.მოძებნეთ 10 ყველაზე ეკონომიური მანქანა.
+#endregion
 
 
-string[] data = File.ReadAllLines(@"../../../vehicles.csv");
-Vehicle[] cars = Select(data);
-Vehicle[] sortedCars = Sort(cars);
-Vehicle[] economicCars = Take(cars, 10);
+
+#region ლექცია 14 დელეგატები, ანონიმური ფუნქციები
+
+//DELEGATE დელეგატი
+
+//FUNC -- არის დელეგატის ტიპი რომელსაც შეუძლია ისეთ ფუნქციის მიღება რომელსაც დასაბრუნებელ ტიპს ვურჩევთ ჩვენ თვითონ.
+//ACTION -- არის დელეგატის ტიპი რომელსაც შეუძლია ისეთი ფუნქციის მიღება რომელიც აბრუნებს void - ს.
+
+
+//PREDICATE -- არის დელეაგტის ტიპი რომესლაც შეუძლია ისეთი ფუნქციის მიღება რომელიც აბრუნებს კონკრეტულად BOOLEAN მნიშვნელობას.
+
+
+
+//public delegate void DisplayInformation(string message);
+
+
+
+//int[] numbers = { 10, 10, 2, -12, -44, 7 };
+//var r = MyAlgorithms.Take(numbers, 3);
 
 
 #endregion
 
 
-Vehicle[] Take(Vehicle[] cars, int quanitity)
-{
-    if (quanitity > cars.Length)
-        throw new ArgumentOutOfRangeException();
-
-    Vehicle[] mostEconomicCars = new Vehicle[10];
-
-    for (int i = 0; i < quanitity; i++)
-    {
-        mostEconomicCars[i] = sortedCars[i];
-    }
-
-    return mostEconomicCars;
-
-}
-static Vehicle[] Sort(Vehicle[] cars)
-{
-    for (int i = 0; i < cars.Length - 1; i++)
-    {
-        for (int j = i + 1; j < cars.Length; j++)
-        {
-            if (cars[i].Combined < cars[j].Combined)
-            {
-                Vehicle temp = cars[j];
-                cars[j] = cars[i];
-                cars[i] = temp;
-            }
-        }
-    }
-
-    return cars;
-}
-static Vehicle[] FindMercedeses(Vehicle[] cars)
-{
-    List<Vehicle> mercedeses = new();
-
-    for (int i = 0; i < cars.Length; i++)
-    {
-        if (cars[i].Make.Contains("Mercedes"))
-        {
-            mercedeses.Add(cars[i]);
-        }
-    }
-
-    return mercedeses.ToArray();
-}
-static Vehicle[] Select(string[] data)
-{
-    Vehicle[] result = new Vehicle[data.Length];
-
-    for (int i = 0; i < data.Length; i++)
-    {
-        result[i] = Vehicle.Parse(data[i]);
-    }
-
-    return result;
-}
-
-
-
-
 
 Console.ReadLine();
+
+
+
+
+
+
+
+
+
+
+
+
 
 

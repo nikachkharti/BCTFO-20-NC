@@ -1,16 +1,56 @@
-﻿namespace Homeworks
+﻿using System.Globalization;
+
+namespace Homeworks
 {
+
+
+
     public static class MyAlgorithms
     {
-        public static T[] SetDefaultValue<T>(T[] array)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = default;
-            }
+        #region EXTRA
+        //public static void Log<T>(Action<T> action, T message)
+        //{
+        //    action(message);
+        //}
 
-            return array;
-        }
+        //public static T[] FindAllWithArray<T>(T[] array, T element)
+        //{
+        //    int counter = 0;
+        //    for (int i = 0; i < array.Length; i++)
+        //    {
+        //        if (array[i].Equals(element))
+        //            counter++;
+        //    }
+
+        //    T[] result = new T[counter];
+        //    int resultIndex = 0;
+
+        //    for (int i = 0; i < array.Length; i++)
+        //    {
+        //        if (element.Equals(array[i]))
+        //        {
+        //            result[resultIndex] = element;
+        //            resultIndex++;
+        //        }
+        //    }
+
+        //    return result;
+        //}
+
+
+        //public static T[] SetDefaultValue<T>(T[] array)
+        //{
+        //    for (int i = 0; i < array.Length; i++)
+        //    {
+        //        array[i] = default;
+        //    }
+
+        //    return array;
+        //}
+
+        #endregion
+
+
         public static T GetLastElement<T>(T[] array)
         {
             return array[array.Length - 1];
@@ -107,42 +147,19 @@
             }
             return default;
         }
-        public static T[] FindAll<T>(T[] array, T element)
+        public static T[] Where<T>(T[] array, Func<T, bool> filterFunction)
         {
             List<T> result = new();
 
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i].Equals(element))
+                if (filterFunction(array[i]))
                 {
-                    result.Add(element);
+                    result.Add(array[i]);
                 }
             }
 
             return result.ToArray();
-        }
-        public static T[] FindAllWithArray<T>(T[] array, T element)
-        {
-            int counter = 0;
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i].Equals(element))
-                    counter++;
-            }
-
-            T[] result = new T[counter];
-            int resultIndex = 0;
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (element.Equals(array[i]))
-                {
-                    result[resultIndex] = element;
-                    resultIndex++;
-                }
-            }
-
-            return result;
         }
         public static int FindIndex<T>(T[] array, T element)
         {
@@ -178,6 +195,29 @@
             }
 
             return sumResult;
+        }
+        public static T[] Take<T>(T[] array, int quanitity)
+        {
+            T[] result = new T[quanitity];
+
+            for (int i = 0; i < quanitity; i++)
+            {
+                result[i] = array[i];
+            }
+
+            return result;
+
+        }
+        public static Vehicle[] Select(string[] data)
+        {
+            Vehicle[] result = new Vehicle[data.Length];
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                result[i] = Vehicle.Parse(data[i]);
+            }
+
+            return result;
         }
     }
 }
