@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace Homeworks
+﻿namespace Homeworks
 {
     public static class MyAlgorithms
     {
@@ -46,7 +44,6 @@ namespace Homeworks
         //}
 
         #endregion
-
         public static T GetLastElement<T>(T[] array)
         {
             return array[array.Length - 1];
@@ -73,7 +70,6 @@ namespace Homeworks
 
             return resultStack.ToList();
         }
-
         public static T[] Sort<T>(T[] array, Func<T, T, bool> comparer)
         {
             for (int i = 0; i < array.Length - 1; i++)
@@ -91,7 +87,6 @@ namespace Homeworks
 
             return array;
         }
-
         public static T[] Copy<T>(T[] source, T[] destination)
         {
             for (int i = 0; i < source.Length; i++)
@@ -101,7 +96,6 @@ namespace Homeworks
 
             return destination;
         }
-
         public static bool Any<T>(T[] array, Predicate<T> predicate)
         {
             for (int i = 0; i < array.Length; i++)
@@ -113,7 +107,6 @@ namespace Homeworks
             }
             return false;
         }
-
         public static bool All<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = 0; i < array.Length; i++)
@@ -125,7 +118,6 @@ namespace Homeworks
             }
             return true;
         }
-
         public static T FirstOrDefault<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = 0; i < array.Length; i++)
@@ -137,7 +129,6 @@ namespace Homeworks
             }
             return default;
         }
-
         public static T LastOrDefault<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = array.Length - 1; i >= 0; i--)
@@ -149,32 +140,40 @@ namespace Homeworks
             }
             return default;
         }
-        public static T[] Where<T>(T[] array, Func<T, bool> filterFunction)
+
+
+        public static IEnumerable<T> Where<T>(IEnumerable<T> source, Func<T, bool> predicate)
         {
             List<T> result = new();
 
-            for (int i = 0; i < array.Length; i++)
+            foreach (var item in source)
             {
-                if (filterFunction(array[i]))
+                if (predicate(item))
                 {
-                    result.Add(array[i]);
+                    result.Add(item);
                 }
             }
 
-            return result.ToArray();
+            return result;
         }
-        public static int FindIndex<T>(T[] array, Func<T, bool> predicate)
+        public static int FindIndex<T>(IEnumerable<T> source, Func<T, bool> predicate)
         {
-            for (int i = 0; i < array.Length; i++)
+            int index = 0;
+
+            foreach (var item in source)
             {
-                if (predicate(array[i]))
+                if (predicate(item))
                 {
-                    return i;
+                    return index;
                 }
+
+                index++;
             }
 
             return -1;
         }
+
+
         public static int FindLastIndex<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = array.Length - 1; i >= 0; i--)

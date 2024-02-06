@@ -1,4 +1,4 @@
-﻿using System.Text;
+﻿using Homeworks;
 
 namespace SecondConsoleApp
 {
@@ -163,6 +163,22 @@ namespace SecondConsoleApp
 
 
             #endregion
+
+
+            #region 15 ლექცია IEnumerable Regex
+
+
+            int[] intNumbers = { 1, 2, 3, 4, 5 };
+            List<int> intList = new() { 1, 2, 3, 4, 5 };
+            HashSet<int> intSet = new() { 1, 2, 3, 4, 5 };
+            Dictionary<int, string> intDictionary = new() { };
+
+
+            var result = MyAlgorithms.FindIndex(intSet, x => x < 0);
+
+
+            #endregion
+
         }
     }
 }
