@@ -2,9 +2,6 @@
 
 namespace Homeworks
 {
-
-
-
     public static class MyAlgorithms
     {
         #region EXTRA
@@ -50,7 +47,6 @@ namespace Homeworks
 
         #endregion
 
-
         public static T GetLastElement<T>(T[] array)
         {
             return array[array.Length - 1];
@@ -77,13 +73,14 @@ namespace Homeworks
 
             return resultStack.ToList();
         }
-        public static T[] Sort<T>(T[] array) where T : IComparable<T>
+
+        public static T[] Sort<T>(T[] array, Func<T, T, bool> comparer)
         {
             for (int i = 0; i < array.Length - 1; i++)
             {
                 for (int j = i + 1; j < array.Length; j++)
                 {
-                    if (array[j].CompareTo(array[i]) == -1)
+                    if (comparer(array[j], array[i]))
                     {
                         T t = array[j];
                         array[j] = array[i];
@@ -94,6 +91,7 @@ namespace Homeworks
 
             return array;
         }
+
         public static T[] Copy<T>(T[] source, T[] destination)
         {
             for (int i = 0; i < source.Length; i++)
@@ -103,46 +101,50 @@ namespace Homeworks
 
             return destination;
         }
-        public static bool Any<T>(T[] array, T element)
+
+        public static bool Any<T>(T[] array, Predicate<T> predicate)
         {
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i].Equals(element))
+                if (predicate(array[i]))
                 {
                     return true;
                 }
             }
             return false;
         }
-        public static bool All<T>(T[] array, T element)
+
+        public static bool All<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = 0; i < array.Length; i++)
             {
-                if (!array[i].Equals(element))
+                if (!predicate(array[i]))
                 {
                     return false;
                 }
             }
             return true;
         }
-        public static T FirstOrDefault<T>(T[] array, T element)
+
+        public static T FirstOrDefault<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i].Equals(element))
+                if (predicate(array[i]))
                 {
-                    return element;
+                    return array[i];
                 }
             }
             return default;
         }
-        public static T LastOrDefault<T>(T[] array, T element)
+
+        public static T LastOrDefault<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = array.Length - 1; i >= 0; i--)
             {
-                if (array[i].Equals(element))
+                if (predicate(array[i]))
                 {
-                    return element;
+                    return array[i];
                 }
             }
             return default;
@@ -161,11 +163,11 @@ namespace Homeworks
 
             return result.ToArray();
         }
-        public static int FindIndex<T>(T[] array, T element)
+        public static int FindIndex<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i].Equals(element))
+                if (predicate(array[i]))
                 {
                     return i;
                 }
@@ -173,11 +175,11 @@ namespace Homeworks
 
             return -1;
         }
-        public static int FindLastIndex<T>(T[] array, T element)
+        public static int FindLastIndex<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = array.Length - 1; i >= 0; i--)
             {
-                if (array[i].Equals(element))
+                if (predicate(array[i]))
                 {
                     return i;
                 }
@@ -196,6 +198,20 @@ namespace Homeworks
 
             return sumResult;
         }
+        public static int Sum(int[] array, Func<int, bool> predicate)
+        {
+            int sumResult = 0;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (predicate(array[i]))
+                {
+                    sumResult += array[i];
+                }
+            }
+
+            return sumResult;
+        }
         public static T[] Take<T>(T[] array, int quanitity)
         {
             T[] result = new T[quanitity];
@@ -208,13 +224,13 @@ namespace Homeworks
             return result;
 
         }
-        public static Vehicle[] Select(string[] data)
+        public static TResult[] Select<TSource, TResult>(TSource[] data, Func<TSource, TResult> selector)
         {
-            Vehicle[] result = new Vehicle[data.Length];
+            TResult[] result = new TResult[data.Length];
 
             for (int i = 0; i < data.Length; i++)
             {
-                result[i] = Vehicle.Parse(data[i]);
+                result[i] = selector(data[i]);
             }
 
             return result;

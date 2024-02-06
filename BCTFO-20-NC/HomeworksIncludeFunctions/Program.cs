@@ -1499,9 +1499,8 @@ for (int i = 0; i < collection.Length - 1; i++)
 //public delegate void DisplayInformation(string message);
 
 
-
-//int[] numbers = { 10, 10, 2, -12, -44, 7 };
-//var r = MyAlgorithms.Take(numbers, 3);
+//int[] numbers = { 100, 2, 31 };
+//var result = MyAlgorithms.Sort(numbers, (x, y) => x > y);
 
 
 #endregion
