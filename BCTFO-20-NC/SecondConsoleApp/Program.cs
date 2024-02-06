@@ -1,4 +1,5 @@
 ﻿using Homeworks;
+using System.Text.RegularExpressions;
 
 namespace SecondConsoleApp
 {
@@ -168,14 +169,30 @@ namespace SecondConsoleApp
             #region 15 ლექცია IEnumerable Regex
 
 
-            int[] intNumbers = { 1, 2, 3, 4, 5 };
-            List<int> intList = new() { 1, 2, 3, 4, 5 };
-            HashSet<int> intSet = new() { 1, 2, 3, 4, 5 };
-            Dictionary<int, string> intDictionary = new() { };
+            //int[] intNumbers = { 1, 2, 3, 4, 5 };
+            //List<int> intList = new() { 1, 2, 3, 4, 5 };
+            //HashSet<int> intSet = new() { 1, 2, 3, 4, 5 };
+            //Dictionary<int, string> intDictionary = new() { };
 
 
-            var result = MyAlgorithms.FindIndex(intSet, x => x < 0);
+            //var result = MyAlgorithms.FindIndex(intSet, x => x < 0);
 
+
+
+            //"REGULAR EXPRESSION  REGEX"
+
+            // () [] {} --> [მოსაძებნი მნიშვნელობა] {ზომა}  (დაჯგუფებისთვის)
+            // ^ -- Regex დასაწყისი
+            // $ -- Regex დასასრული
+
+            // [a-g]
+
+            //inv12345678
+
+            //string value = "09/01/2024";
+
+            //Regex regex = new("^0?[1-9]|1[0-2]$/");
+            //var result = regex.IsMatch(value);
 
             #endregion
 
