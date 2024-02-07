@@ -1,5 +1,4 @@
 ﻿using Homeworks;
-using System.Text.RegularExpressions;
 
 namespace SecondConsoleApp
 {
@@ -165,7 +164,6 @@ namespace SecondConsoleApp
 
             #endregion
 
-
             #region 15 ლექცია IEnumerable Regex
 
 
@@ -196,6 +194,37 @@ namespace SecondConsoleApp
 
             #endregion
 
+
+            #region 16 ლექცია Unit testing Value reference Extension methods
+
+            //List<int> intlist = new() { 1, 1, 2, 3, 4 };
+            //var x = MyAlgorithms.Distinct(intlist);
+
+
+            //int i = 20;
+            //int z = 20;
+
+
+            //HashSet<string> numbersAsString = new() { "10", "20", "40", "51", "-31", "-225" };
+
+            //უნდა გარდაქმნათ რიცხვების ლისტად, მოძებნოთ ყველა უარყოფით კენტი რიცხვი
+
+
+            //var result = numbersAsString
+            //    .Select(int.Parse)
+            //    .Where(x => x % 2 != 0 && x < 0)
+            //    .Count(x => x % 7 == 0);
+
+
+            //var resykt = numbersAsString
+            //    .MySelect(int.Parse)
+            //    .MyWhere(x => x % 2 != 0 && x < 0);
+
+
+
+            #endregion
+
         }
+
     }
 }

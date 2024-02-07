@@ -44,20 +44,27 @@
         //}
 
         #endregion
-        public static T GetLastElement<T>(T[] array)
-        {
-            return array[array.Length - 1];
-        }
-        public static T[] Reverse<T>(T[] array)
-        {
-            T[] result = new T[array.Length];
 
-            for (int i = 0; i < array.Length; i++)
+        public static IEnumerable<T> Distinct<T>(IEnumerable<T> source, IEqualityComparer<T> comparer = null)
+        {
+            HashSet<T> set = new(comparer);
+
+            foreach (var item in source)
             {
-                result[i] = array[array.Length - 1 - i];
+                set.Add(item);
             }
 
-            return result;
+            return set;
+        }
+        public static IEnumerable<T> MyReverse<T>(this IEnumerable<T> source)
+        {
+            Stack<T> stack = new();
+            foreach (var item in source)
+            {
+                stack.Push(item);
+            }
+
+            return stack;
         }
         public static List<T> Reverse<T>(List<T> list)
         {
@@ -70,31 +77,22 @@
 
             return resultStack.ToList();
         }
-        public static T[] Sort<T>(T[] array, Func<T, T, bool> comparer)
+        public static IList<T> Sort<T>(this IList<T> collection, Func<T, T, bool> comparer)
         {
-            for (int i = 0; i < array.Length - 1; i++)
+            for (int i = 0; i < collection.Count - 1; i++)
             {
-                for (int j = i + 1; j < array.Length; j++)
+                for (int j = i + 1; j < collection.Count; j++)
                 {
-                    if (comparer(array[j], array[i]))
+                    if (comparer(collection[j], collection[i]))
                     {
-                        T t = array[j];
-                        array[j] = array[i];
-                        array[i] = t;
+                        T t = collection[j];
+                        collection[j] = collection[i];
+                        collection[i] = t;
                     }
                 }
             }
 
-            return array;
-        }
-        public static T[] Copy<T>(T[] source, T[] destination)
-        {
-            for (int i = 0; i < source.Length; i++)
-            {
-                destination[i] = source[i];
-            }
-
-            return destination;
+            return collection;
         }
         public static bool Any<T>(T[] array, Predicate<T> predicate)
         {
@@ -140,9 +138,7 @@
             }
             return default;
         }
-
-
-        public static IEnumerable<T> Where<T>(IEnumerable<T> source, Func<T, bool> predicate)
+        public static IEnumerable<T> MyWhere<T>(this IEnumerable<T> source, Func<T, bool> predicate)
         {
             List<T> result = new();
 
@@ -172,8 +168,6 @@
 
             return -1;
         }
-
-
         public static int FindLastIndex<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = array.Length - 1; i >= 0; i--)
@@ -223,16 +217,10 @@
             return result;
 
         }
-        public static TResult[] Select<TSource, TResult>(TSource[] data, Func<TSource, TResult> selector)
+        public static IEnumerable<TResult> MySelect<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector)
         {
-            TResult[] result = new TResult[data.Length];
-
-            for (int i = 0; i < data.Length; i++)
-            {
-                result[i] = selector(data[i]);
-            }
-
-            return result;
+            foreach (var item in source)
+                yield return selector(item);
         }
     }
 }
