@@ -5,7 +5,9 @@
         Csharp = 1,
         Javascript = 2,
         SQL = 3,
-        React = 4
+        React = 4,
+        Math = 5,
+        Biochemistry = 6
     }
 
     class Student
@@ -13,8 +15,15 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public Subject Subject { get; set; }
+        public int FaculityId { get; set; }
     }
 
+
+    class Faculity
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
 
     internal class Program
     {
@@ -293,15 +302,22 @@
 
             //GROUPPPING...
 
+            List<Faculity> faculities = new()
+            {
+                new Faculity{ Id = 1,Name = "Computer Science"},
+                new Faculity{ Id = 2,Name = "Mathematics"},
+                new Faculity{ Id = 3,Name = "Medical"}
+            };
+
             List<Student> students = new()
             {
-                new Student { Id = 1,Name = "Temuri",Subject = Subject.Csharp},
-                new Student { Id = 2,Name = "Daviti",Subject = Subject.Javascript},
-                new Student { Id = 3,Name = "Giorgi",Subject = Subject.Csharp},
-                new Student { Id = 4,Name = "Alex",Subject = Subject.Csharp},
-                new Student { Id = 5,Name = "Ani",Subject = Subject.React},
-                new Student { Id = 6,Name = "Keti",Subject = Subject.SQL},
-                new Student { Id = 7,Name = "Mariami",Subject = Subject.SQL}
+                new Student { Id = 1,Name = "Temuri",Subject = Subject.Csharp,FaculityId = 1},
+                new Student { Id = 2,Name = "Daviti",Subject = Subject.Javascript, FaculityId = 1},
+                new Student { Id = 3,Name = "Giorgi",Subject = Subject.Csharp, FaculityId = 1},
+                new Student { Id = 4,Name = "Alex",Subject = Subject.Biochemistry, FaculityId = 3},
+                new Student { Id = 5,Name = "Ani",Subject = Subject.Math , FaculityId = 2},
+                new Student { Id = 6,Name = "Keti",Subject = Subject.SQL, FaculityId = 1},
+                new Student { Id = 7,Name = "Mariami",Subject = Subject.Math , FaculityId = 2}
             };
 
 
@@ -357,6 +373,20 @@
 
 
 
+
+
+
+            //JOINING...
+
+
+            //var result = from f in faculities
+            //             join s in students
+            //             on f.Id equals s.FaculityId into eGroup
+            //             select new
+            //             {
+            //                 Faculity = f.Name,
+            //                 Students = eGroup
+            //             };
 
 
 
