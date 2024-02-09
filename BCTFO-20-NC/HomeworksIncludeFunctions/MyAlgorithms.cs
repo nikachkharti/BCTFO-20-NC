@@ -94,11 +94,11 @@
 
             return collection;
         }
-        public static bool Any<T>(T[] array, Predicate<T> predicate)
+        public static bool MyAny<T>(this IEnumerable<T> source, Predicate<T> predicate)
         {
-            for (int i = 0; i < array.Length; i++)
+            foreach (var item in source)
             {
-                if (predicate(array[i]))
+                if (predicate(item))
                 {
                     return true;
                 }
@@ -140,17 +140,11 @@
         }
         public static IEnumerable<T> MyWhere<T>(this IEnumerable<T> source, Func<T, bool> predicate)
         {
-            List<T> result = new();
-
             foreach (var item in source)
             {
                 if (predicate(item))
-                {
-                    result.Add(item);
-                }
+                    yield return item;
             }
-
-            return result;
         }
         public static int FindIndex<T>(IEnumerable<T> source, Func<T, bool> predicate)
         {

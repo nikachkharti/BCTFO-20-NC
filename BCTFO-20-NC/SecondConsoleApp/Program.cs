@@ -1,7 +1,19 @@
 ﻿using Homeworks;
+using System.Numerics;
+using System.Text.RegularExpressions;
 
 namespace SecondConsoleApp
 {
+    class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Subject { get; set; }
+    }
+
+
+
+
     internal class Program
     {
         static void Main(string[] args)
@@ -221,6 +233,75 @@ namespace SecondConsoleApp
             //    .MyWhere(x => x % 2 != 0 && x < 0);
 
 
+
+            #endregion
+
+
+            #region 17 LINQ
+
+            //Extension მეთოდები               //LINQ Query
+
+            //SELECTIVE OPERATORS: Select SelectMany
+            //RESTRINCTION OPERATORS : Where Find FirstOrDefault LastOrDefault First Last...
+            //AGGREGATE TYPES: Count Sum Average
+            //ORDERED TYPES: OrderBy OrderByDescending
+            //GROUP TYPES: Group by
+
+
+            List<int> intList = new() { 1, 10, 2 };
+            var result = intList.OrderByDescending(x => x);
+
+
+
+            var data = File.ReadAllLines(@"C:\Users\User\Desktop\IT STEP\BCTFO-20-NC\BCTFO-20-NC\HomeworksIncludeFunctions\vehicles.csv");
+
+
+            //var vehicles = data
+            //    .Skip(1)
+            //    .Select(Vehicle.Parse)
+            //    .OrderByDescending(x => x.Combined)
+            //    .Take(10);
+            //.Where(x => x.Make.Contains("BMW", StringComparison.OrdinalIgnoreCase));
+
+
+
+
+            var vehicles = from item in data
+                           .Skip(1)
+                           let vehicle = Vehicle.Parse(item)
+                           orderby vehicle.Combined descending
+                           group vehicle by vehicle.Make;
+
+
+
+            //List<Student> students = new()
+            //{
+            //    new Student { Id = 1,Name = "Temuri",Subject = "C#"},
+            //    new Student { Id = 2,Name = "Daviti",Subject = "JS"},
+            //    new Student { Id = 3,Name = "Giorgi",Subject = "C#"},
+            //    new Student { Id = 4,Name = "Alex",Subject = "Angular"},
+            //    new Student { Id = 5,Name = "Ani",Subject = "Angular"},
+            //    new Student { Id = 6,Name = "Keti",Subject = "JS"},
+            //    new Student { Id = 7,Name = "Mariami",Subject = "C#"}
+            //};
+
+
+            //IEnumerable<IGrouping<string, Student>> groups = students.GroupBy(x => x.Subject);
+
+            ////IEnumerable<IGrouping<string, Student>> groups = from student in students
+            ////                                                 group student by student.Subject;
+
+
+            //foreach (var group in groups)
+            //{
+            //    Console.WriteLine($"{group.Key} {group.Sum(x => x.Id)}");
+
+            //    foreach (var student in group)
+            //    {
+            //        Console.WriteLine($"{student.Name}");
+            //    }
+            //    Console.WriteLine("-------");
+            //}
 
             #endregion
 
