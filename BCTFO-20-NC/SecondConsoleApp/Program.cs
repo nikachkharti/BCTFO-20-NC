@@ -1,7 +1,21 @@
-﻿using Homeworks;
-
-namespace SecondConsoleApp
+﻿namespace SecondConsoleApp
 {
+    enum Subject
+    {
+        Csharp = 1,
+        Javascript = 2,
+        SQL = 3,
+        React = 4
+    }
+
+    class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public Subject Subject { get; set; }
+    }
+
+
     internal class Program
     {
         static void Main(string[] args)
@@ -223,6 +237,135 @@ namespace SecondConsoleApp
 
 
             #endregion
+
+
+            #region 17 ლექცია LINQ
+
+            //Extension Methods     Query
+
+            //SELECTIVE Operators category //Select, SelectMany
+            //RESTRICTION Operators category // Where Find FirstOrDefault First Single SingleOrDefault Last LastOrDefault Find FindIndex...
+            //AGGREGATE Operators category // Count Sum Average
+            //ORDER Operators category // Order OrderBy OrderByDescending
+            //GROUPPING Operators category // GroupBy
+            //JOIN Operators category // GroupJoin InnerJOin LeftOuterJoin CrossJoin
+
+
+
+            //string[] data = File.ReadAllLines(@"C:\Users\User\Desktop\IT STEP\BCTFO-20-NC\BCTFO-20-NC\HomeworksIncludeFunctions\vehicles.csv");
+
+            //1.
+            //var bmws = data
+            //    .Skip(1)
+            //    .Select(Vehicle.Parse)
+            //    .Where(x => x.Make.Contains("BMW", StringComparison.OrdinalIgnoreCase));
+
+
+
+            //var bmws = from x in data.Skip(1)
+            //                let vehicle = Vehicle.Parse(x)
+            //                where vehicle.Make.Contains("BMW", StringComparison.OrdinalIgnoreCase)
+            //                select vehicle;
+
+
+
+
+            //2.
+            //var topTenEconomicCars = data
+            //    .Skip(1)
+            //    .Select(Vehicle.Parse)
+            //    .OrderByDescending(v => v.Combined)
+            //    .Take(10);
+
+
+
+
+            //var topTenEconomicCars = (from x in data.Skip(1)
+            //                          let vehicle = Vehicle.Parse(x)
+            //                          orderby vehicle.Combined descending
+            //                          select vehicle).Take(10);
+
+
+
+
+
+
+
+            //GROUPPPING...
+
+            List<Student> students = new()
+            {
+                new Student { Id = 1,Name = "Temuri",Subject = Subject.Csharp},
+                new Student { Id = 2,Name = "Daviti",Subject = Subject.Javascript},
+                new Student { Id = 3,Name = "Giorgi",Subject = Subject.Csharp},
+                new Student { Id = 4,Name = "Alex",Subject = Subject.Csharp},
+                new Student { Id = 5,Name = "Ani",Subject = Subject.React},
+                new Student { Id = 6,Name = "Keti",Subject = Subject.SQL},
+                new Student { Id = 7,Name = "Mariami",Subject = Subject.SQL}
+            };
+
+
+
+            //IEnumerable<IGrouping<Subject, Student>> studentGroup = students.GroupBy(x => x.Subject);
+
+
+            //IEnumerable<IGrouping<Subject, Student>> studentGroup = from student in students
+            //                                                        group student by student.Subject;
+
+
+            //სტუდენტების რაოდენბოა საგნების მიხედვით
+            //foreach (var group in studentGroup)
+            //    Console.WriteLine($"{group.Key} {group.Count()}");
+
+
+
+            //კონკრეტული სტუდენტების ჩამონათვალი საგნების მიხედვით
+            //foreach (var group in studentGroup)
+            //{
+            //    Console.WriteLine($"{group.Key} {group.Count()}");
+
+            //    foreach (var student in group)
+            //        Console.WriteLine($"{student.Name}");
+
+            //    Console.WriteLine("---------------");
+            //}
+
+
+
+
+            //დაჯგუფებული მონაცემების სორტირება ჯგუფის Key -ს მიხედვით
+            //var studentGroup = from student in students
+            //                   group student by student.Subject into eGroup
+            //                   orderby eGroup.Key
+            //                   select new
+            //                   {
+            //                       Key = eGroup.Key,
+            //                       Employees = eGroup
+            //                   };
+
+
+
+            //დაჯგუფებული მონაცემების სორტირება ჯგუფის Key -ს მიხედვითაც და  თვითონ ჯგუფში არსებული სტუდენტების Id ითაც
+            //var studentGroup = from student in students
+            //                   group student by student.Subject into eGroup
+            //                   orderby eGroup.Key
+            //                   select new
+            //                   {
+            //                       Key = eGroup.Key,
+            //                       Employees = eGroup.OrderBy(x => x.Id)
+            //                   };
+
+
+
+
+
+
+
+
+            #endregion
+
+
+
 
         }
 

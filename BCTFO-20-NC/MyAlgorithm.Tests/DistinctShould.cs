@@ -13,8 +13,8 @@
             List<string> expectedNames = new() { "Aleksandre", "Levani", "Giorgi" };
 
             //Act
-            List<int> actual = MyAlgorithms.Distinct(dataToTest).ToList();
-            List<string> actualNames = MyAlgorithms.Distinct(names).ToList();
+            List<int> actual = MyAlgorithms.MyDistinct(dataToTest).ToList();
+            List<string> actualNames = MyAlgorithms.MyDistinct(names).ToList();
 
             //Assert
             Assert.Equal(expected, actual);
@@ -41,7 +41,7 @@
             };
 
 
-            var actual = MyAlgorithms.Distinct(peopleToTest, new PersonEquilityComparer());
+            var actual = MyAlgorithms.MyDistinct(peopleToTest, new PersonEquilityComparer());
 
             Assert.Equal(expected, actual, new PersonEquilityComparer());
         }

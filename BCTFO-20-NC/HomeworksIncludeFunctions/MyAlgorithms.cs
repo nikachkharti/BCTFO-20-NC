@@ -44,8 +44,7 @@
         //}
 
         #endregion
-
-        public static IEnumerable<T> Distinct<T>(IEnumerable<T> source, IEqualityComparer<T> comparer = null)
+        public static IEnumerable<T> MyDistinct<T>(IEnumerable<T> source, IEqualityComparer<T> comparer = null)
         {
             HashSet<T> set = new(comparer);
 
@@ -66,7 +65,7 @@
 
             return stack;
         }
-        public static List<T> Reverse<T>(List<T> list)
+        public static List<T> MyReverse<T>(List<T> list)
         {
             Stack<T> resultStack = new();
 
@@ -77,7 +76,7 @@
 
             return resultStack.ToList();
         }
-        public static IList<T> Sort<T>(this IList<T> collection, Func<T, T, bool> comparer)
+        public static IList<T> MySort<T>(this IList<T> collection, Func<T, T, bool> comparer)
         {
             for (int i = 0; i < collection.Count - 1; i++)
             {
@@ -94,7 +93,7 @@
 
             return collection;
         }
-        public static bool Any<T>(T[] array, Predicate<T> predicate)
+        public static bool MyAny<T>(T[] array, Predicate<T> predicate)
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -105,7 +104,7 @@
             }
             return false;
         }
-        public static bool All<T>(T[] array, Func<T, bool> predicate)
+        public static bool MyAll<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -116,7 +115,7 @@
             }
             return true;
         }
-        public static T FirstOrDefault<T>(T[] array, Func<T, bool> predicate)
+        public static T MyFirstOrDefault<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -127,7 +126,7 @@
             }
             return default;
         }
-        public static T LastOrDefault<T>(T[] array, Func<T, bool> predicate)
+        public static T MyLastOrDefault<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = array.Length - 1; i >= 0; i--)
             {
@@ -152,7 +151,7 @@
 
             return result;
         }
-        public static int FindIndex<T>(IEnumerable<T> source, Func<T, bool> predicate)
+        public static int MyFindIndex<T>(IEnumerable<T> source, Func<T, bool> predicate)
         {
             int index = 0;
 
@@ -168,7 +167,7 @@
 
             return -1;
         }
-        public static int FindLastIndex<T>(T[] array, Func<T, bool> predicate)
+        public static int MyFindLastIndex<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = array.Length - 1; i >= 0; i--)
             {
@@ -180,7 +179,7 @@
 
             return -1;
         }
-        public static int Sum(int[] array)
+        public static int MySum(int[] array)
         {
             int sumResult = 0;
 
@@ -191,7 +190,7 @@
 
             return sumResult;
         }
-        public static int Sum(int[] array, Func<int, bool> predicate)
+        public static int MySum(int[] array, Func<int, bool> predicate)
         {
             int sumResult = 0;
 
@@ -205,7 +204,7 @@
 
             return sumResult;
         }
-        public static T[] Take<T>(T[] array, int quanitity)
+        public static T[] MyTake<T>(T[] array, int quanitity)
         {
             T[] result = new T[quanitity];
 
