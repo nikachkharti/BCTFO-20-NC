@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "Name": "Iakob Qobalia",
+    "IdentityNumber": "31024852345",
+    "PhoneNumber": "555337681",
+    "Email": "Iakob.Qobalia@gmail.com",
+    "Type": 0
+  },
+  {
+    "Id": 2,
+    "Name": "Beso Gurgenidze",
+    "IdentityNumber": "56007853214",
+    "PhoneNumber": "551447788",
+    "Email": "Beso.Gurgenidze@gmail.com",
+    "Type": 0
+  },
+  {
+    "Id": 3,
+    "Name": "Zaal Khurtsilava",
+    "IdentityNumber": "12358795143",
+    "PhoneNumber": "551447851",
+    "Email": "Zaal.Khurtsilava@gmail.com",
+    "Type": 0
+  },
+  {
+    "Id": 4,
+    "Name": "Otar Jughashvili",
+    "IdentityNumber": "65874147985",
+    "PhoneNumber": "559995412",
+    "Email": "Otar.Jughashvili@gmail.com",
+    "Type": 0
+  },
+  {
+    "Id": 5,
+    "Name": "Nani Chavchavadze",
+    "IdentityNumber": "31008749621",
+    "PhoneNumber": "599933592",
+    "Email": "Nani.Chavchanidze@gmail.com",
+    "Type": 0
+  },
+  {
+    "Id": 6,
+    "Name": "Darejan Diasamidze",
+    "IdentityNumber": "89124769534",
+    "PhoneNumber": "551785495",
+    "Email": "Darejan.Diasamidze@gmail.com",
+    "Type": 0
+  },
+  {
+    "Id": 7,
+    "Name": "Andria Shengelia",
+    "IdentityNumber": "87456974125",
+    "PhoneNumber": "593742003",
+    "Email": "Andria.Shengelia@gmail.com",
+    "Type": 0
+  },
+  {
+    "Id": 8,
+    "Name": "Sopi Jishkariani",
+    "IdentityNumber": "25469835473",
+    "PhoneNumber": "551718814",
+    "Email": "Sofi.Jishkariani@gmail.com",
+    "Type": 0
+  },
+  {
+    "Id": 9,
+    "Name": "LTD Tegeta Motors",
+    "IdentityNumber": "21368459",
+    "PhoneNumber": "555998877",
+    "Email": "info@Tegeta.ge",
+    "Type": 1
+  },
+  {
+    "Id": 10,
+    "Name": "LTD IT Academy STEP",
+    "IdentityNumber": "58746789",
+    "PhoneNumber": "557899886",
+    "Email": "info@itstep.ge",
+    "Type": 1
+  }
+]
