@@ -40,6 +40,8 @@
             emailLabel = new Label();
             accountTypeValue = new TextBox();
             accountTypeLabel = new Label();
+            clearBtn = new Button();
+            addCustomerBtn = new Button();
             SuspendLayout();
             // 
             // headerLabel
@@ -145,12 +147,36 @@
             accountTypeLabel.TabIndex = 3;
             accountTypeLabel.Text = "ანგარიშის ტიპი";
             // 
+            // clearBtn
+            // 
+            clearBtn.Cursor = Cursors.Hand;
+            clearBtn.Location = new Point(879, 425);
+            clearBtn.Name = "clearBtn";
+            clearBtn.Size = new Size(253, 34);
+            clearBtn.TabIndex = 4;
+            clearBtn.Text = "ფორმის გასუფთავება";
+            clearBtn.UseVisualStyleBackColor = true;
+            clearBtn.Click += clearBtn_Click;
+            // 
+            // addCustomerBtn
+            // 
+            addCustomerBtn.Cursor = Cursors.Hand;
+            addCustomerBtn.Location = new Point(12, 425);
+            addCustomerBtn.Name = "addCustomerBtn";
+            addCustomerBtn.Size = new Size(267, 34);
+            addCustomerBtn.TabIndex = 4;
+            addCustomerBtn.Text = "მომხმარებლის დამატება";
+            addCustomerBtn.UseVisualStyleBackColor = true;
+            addCustomerBtn.Click += addCustomerBtn_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1144, 744);
+            Controls.Add(addCustomerBtn);
+            Controls.Add(clearBtn);
             Controls.Add(accountTypeLabel);
             Controls.Add(emailLabel);
             Controls.Add(phoneLabel);
@@ -185,5 +211,7 @@
         private Label emailLabel;
         private TextBox accountTypeValue;
         private Label accountTypeLabel;
+        private Button clearBtn;
+        private Button addCustomerBtn;
     }
 }

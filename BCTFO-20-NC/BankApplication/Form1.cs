@@ -44,6 +44,24 @@ namespace BankApplication
             }
         }
 
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
+
+        private void addCustomerBtn_Click(object sender, EventArgs e)
+        {
+            var newCustomer = GetCustomer();
+
+            if (newCustomer != null)
+            {
+                _repository.AddNewCustomer(newCustomer);
+            }
+        }
+
+
+
         private void FillForm(Customer item)
         {
             nameValue.Text = item.Name;
@@ -52,5 +70,29 @@ namespace BankApplication
             phoneValue.Text = item.PhoneNumber;
             accountTypeValue.Text = item.Type.ToString();
         }
+
+        private Customer GetCustomer()
+        {
+            Customer customer = new();
+
+            customer.Name = nameValue.Text;
+            customer.IdentityNumber = pinValue.Text;
+            customer.Email = emailValue.Text;
+            customer.PhoneNumber = phoneValue.Text;
+            customer.Type = int.Parse(accountTypeValue.Text);
+
+            return customer;
+        }
+
+        private void ClearForm()
+        {
+            nameValue.Text = string.Empty;
+            pinValue.Text = string.Empty;
+            emailValue.Text = string.Empty;
+            phoneValue.Text = string.Empty;
+            accountTypeValue.Text = string.Empty;
+        }
+
+
     }
 }

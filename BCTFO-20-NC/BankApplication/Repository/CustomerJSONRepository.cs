@@ -26,6 +26,21 @@ namespace BankApplication.Repository
             return result;
         }
 
+        private static string ToJson(Customer model)
+        {
+            string jsonObject = JsonSerializer.Serialize(model);
+            return jsonObject;
+        }
+
+
+        public void AddNewCustomer(Customer model)
+        {
+            model.Id = _data.Max(x => x.Id) + 1;
+
+            var result = ToJson(model);
+            //TODO Save()
+        }
+
         public List<Customer> GetAllCustomers()
         {
             if (_data.Count <= 0)
@@ -51,6 +66,11 @@ namespace BankApplication.Repository
             }
 
             return result;
+        }
+
+        public void Save(string input)
+        {
+            throw new NotImplementedException();
         }
     }
 }

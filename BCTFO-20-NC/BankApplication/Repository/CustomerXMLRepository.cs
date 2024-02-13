@@ -40,6 +40,11 @@ namespace BankApplication.Repository
             return result;
         }
 
+        public void AddNewCustomer(Customer model)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Customer> GetAllCustomers()
         {
             if (_data.Count <= 0)
@@ -65,6 +70,11 @@ namespace BankApplication.Repository
             }
 
             return result;
+        }
+
+        public void Save(string input)
+        {
+            throw new NotImplementedException();
         }
     }
 }
