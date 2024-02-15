@@ -1,83 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-	<row>
+	<Customer>
 		<Id>1</Id>
 		<Name>Iakob Qobalia</Name>
 		<IdentityNumber>31024852345</IdentityNumber>
 		<PhoneNumber>555337681</PhoneNumber>
 		<Email>Iakob.Qobalia@gmail.com</Email>
 		<Type>0</Type>
-	</row>
-	<row>
+	</Customer>
+	<Customer>
 		<Id>2</Id>
 		<Name>Beso Gurgenidze</Name>
 		<IdentityNumber>56007853214</IdentityNumber>
 		<PhoneNumber>551447788</PhoneNumber>
 		<Email>Beso.Gurgenidze@gmail.com</Email>
 		<Type>0</Type>
-	</row>
-	<row>
+	</Customer>
+	<Customer>
 		<Id>3</Id>
 		<Name>Zaal Khurtsilava</Name>
 		<IdentityNumber>12358795143</IdentityNumber>
 		<PhoneNumber>551447851</PhoneNumber>
 		<Email>Zaal.Khurtsilava@gmail.com</Email>
 		<Type>0</Type>
-	</row>
-	<row>
+	</Customer>
+	<Customer>
 		<Id>4</Id>
 		<Name>Otar Jughashvili</Name>
 		<IdentityNumber>65874147985</IdentityNumber>
 		<PhoneNumber>559995412</PhoneNumber>
 		<Email>Otar.Jughashvili@gmail.com</Email>
 		<Type>0</Type>
-	</row>
-	<row>
+	</Customer>
+	<Customer>
 		<Id>5</Id>
 		<Name>Nani Chavchavadze</Name>
 		<IdentityNumber>31008749621</IdentityNumber>
 		<PhoneNumber>599933592</PhoneNumber>
 		<Email>Nani.Chavchanidze@gmail.com</Email>
 		<Type>0</Type>
-	</row>
-	<row>
+	</Customer>
+	<Customer>
 		<Id>6</Id>
 		<Name>Darejan Diasamidze</Name>
 		<IdentityNumber>89124769534</IdentityNumber>
 		<PhoneNumber>551785495</PhoneNumber>
 		<Email>Darejan.Diasamidze@gmail.com</Email>
 		<Type>0</Type>
-	</row>
-	<row>
+	</Customer>
+	<Customer>
 		<Id>7</Id>
 		<Name>Andria Shengelia</Name>
 		<IdentityNumber>87456974125</IdentityNumber>
 		<PhoneNumber>593742003</PhoneNumber>
 		<Email>Andria.Shengelia@gmail.com</Email>
 		<Type>0</Type>
-	</row>
-	<row>
+	</Customer>
+	<Customer>
 		<Id>8</Id>
 		<Name>Sopi Jishkariani</Name>
 		<IdentityNumber>25469835473</IdentityNumber>
 		<PhoneNumber>551718814</PhoneNumber>
 		<Email>Sofi.Jishkariani@gmail.com</Email>
 		<Type>0</Type>
-	</row>
-	<row>
+	</Customer>
+	<Customer>
 		<Id>9</Id>
 		<Name>LTD Tegeta Motors</Name>
 		<IdentityNumber>21368459</IdentityNumber>
 		<PhoneNumber>555998877</PhoneNumber>
 		<Email>info@Tegeta.ge</Email>
 		<Type>1</Type>
-	</row>
-	<row>
+	</Customer>
+	<Customer>
 		<Id>10</Id>
 		<Name>LTD IT Academy STEP</Name>
 		<IdentityNumber>58746789</IdentityNumber>
 		<PhoneNumber>557899886</PhoneNumber>
 		<Email>info@itstep.ge</Email>
 		<Type>1</Type>
-	</row>
+	</Customer>
 </root>

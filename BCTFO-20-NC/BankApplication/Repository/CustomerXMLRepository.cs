@@ -21,7 +21,7 @@ namespace BankApplication.Repository
             XmlDocument xDoc = new();
             xDoc.LoadXml(input);
 
-            XmlNodeList rowNodes = xDoc.SelectNodes("//row");
+            XmlNodeList rowNodes = xDoc.SelectNodes("//Customer");
 
             foreach (XmlNode rowNode in rowNodes)
             {
