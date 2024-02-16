@@ -57,6 +57,7 @@ namespace BankApplication
             if (newCustomer != null)
             {
                 _repository.AddNewCustomer(newCustomer);
+                MessageBox.Show("მომხმარებელი წარმატებით დარეგისტრირდა");
             }
         }
 

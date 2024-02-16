@@ -9,11 +9,24 @@ namespace BankApplication.Repository
         private List<Customer> _data = new();
         public CustomerCSVRepository()
         {
-            _data = File
-                .ReadAllLines(_fileLocation)
-                .Skip(1)
-                .Select(Parse)
-                .ToList();
+            using (StreamReader reader = new(_fileLocation))
+            {
+                //პირველი ხაზის გამოტოვება
+                reader.ReadLine();
+
+                string line = string.Empty;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    Customer parsedCustomer = Parse(line);
+                    _data.Add(parsedCustomer);
+                }
+            }
+
+            //_data = File
+            //    .ReadAllLines(_fileLocation)
+            //    .Skip(1)
+            //    .Select(Parse)
+            //    .ToList();
         }
 
         private static Customer Parse(string input)
@@ -36,9 +49,19 @@ namespace BankApplication.Repository
             return result;
         }
 
+        private static string ToCSV(Customer model) => $"{model.Id},{model.Name},{model.IdentityNumber},{model.PhoneNumber},{model.Email},{model.Type}";
+
         public void AddNewCustomer(Customer model)
         {
-            throw new NotImplementedException();
+            if (model is null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+
+            model.Id = _data.Max(x => x.Id) + 1;
+
+            var result = ToCSV(model);
+            Save(result);
         }
 
         public List<Customer> GetAllCustomers()
@@ -70,7 +93,12 @@ namespace BankApplication.Repository
 
         public void Save(string input)
         {
-            throw new NotImplementedException();
+            using (StreamWriter writer = new(_fileLocation, append: true))
+            {
+                writer.Write($"\n{input}");
+            }
+
+            //File.AppendAllText(_fileLocation, $"\n{input}");
         }
     }
 }

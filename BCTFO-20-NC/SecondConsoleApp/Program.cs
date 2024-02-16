@@ -12,6 +12,16 @@ namespace SecondConsoleApp
     }
 
 
+    struct PersonValue
+    {
+        public int Age { get; set; }
+    }
+
+    class PersonReference
+    {
+        public int Age { get; set; }
+
+    }
 
 
     internal class Program
@@ -248,12 +258,12 @@ namespace SecondConsoleApp
             //GROUP TYPES: Group by
 
 
-            List<int> intList = new() { 1, 10, 2 };
-            var result = intList.OrderByDescending(x => x);
+            //List<int> intList = new() { 1, 10, 2 };
+            //var result = intList.OrderByDescending(x => x);
 
 
 
-            var data = File.ReadAllLines(@"C:\Users\User\Desktop\IT STEP\BCTFO-20-NC\BCTFO-20-NC\HomeworksIncludeFunctions\vehicles.csv");
+            //var data = File.ReadAllLines(@"C:\Users\User\Desktop\IT STEP\BCTFO-20-NC\BCTFO-20-NC\HomeworksIncludeFunctions\vehicles.csv");
 
 
             //var vehicles = data
@@ -266,11 +276,11 @@ namespace SecondConsoleApp
 
 
 
-            var vehicles = from item in data
-                           .Skip(1)
-                           let vehicle = Vehicle.Parse(item)
-                           orderby vehicle.Combined descending
-                           group vehicle by vehicle.Make;
+            //var vehicles = from item in data
+            //               .Skip(1)
+            //               let vehicle = Vehicle.Parse(item)
+            //               orderby vehicle.Combined descending
+            //               group vehicle by vehicle.Make;
 
 
 
@@ -305,7 +315,24 @@ namespace SecondConsoleApp
 
             #endregion
 
+
+
+            PersonValue itemValue = new() { Age = 18 };
+            PersonReference itemReference = new() { Age = 18 };
+
         }
+
+        static void IncreasePersonReferenceAges(PersonReference item)
+        {
+            item.Age = 33;
+        }
+
+
+        static void IncreasePersonValueAge(PersonValue item)
+        {
+            item.Age = 33;
+        }
+
 
     }
 }
