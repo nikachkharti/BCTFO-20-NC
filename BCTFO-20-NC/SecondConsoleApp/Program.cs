@@ -10,20 +10,6 @@ namespace SecondConsoleApp
         public string Name { get; set; }
         public string Subject { get; set; }
     }
-
-
-    struct PersonValue
-    {
-        public int Age { get; set; }
-    }
-
-    class PersonReference
-    {
-        public int Age { get; set; }
-
-    }
-
-
     internal class Program
     {
         static void Main(string[] args)
@@ -315,24 +301,6 @@ namespace SecondConsoleApp
 
             #endregion
 
-
-
-            PersonValue itemValue = new() { Age = 18 };
-            PersonReference itemReference = new() { Age = 18 };
-
         }
-
-        static void IncreasePersonReferenceAges(PersonReference item)
-        {
-            item.Age = 33;
-        }
-
-
-        static void IncreasePersonValueAge(PersonValue item)
-        {
-            item.Age = 33;
-        }
-
-
     }
 }
