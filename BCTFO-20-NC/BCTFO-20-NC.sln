@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondConsoleApp", "SecondC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAlgorithm.Tests", "MyAlgorithm.Tests\MyAlgorithm.Tests.csproj", "{E328A70F-CA3E-426D-ADFC-085194C206FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApplication", "BankApplication\BankApplication.csproj", "{DF0DB6B0-D8F5-4E42-8EFE-9B9926640C6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankApplication", "BankApplication\BankApplication.csproj", "{DF0DB6B0-D8F5-4E42-8EFE-9B9926640C6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
