@@ -326,8 +326,7 @@ namespace SecondConsoleApp
             #endregion
 
 
-
-            #region 18 REFLECTION
+            #region 18 REFLECTION AND ATTRIBURES
 
 
             //CIL - Common Intemadiate Language
@@ -376,43 +375,44 @@ namespace SecondConsoleApp
             //ConstructorInfo[] constructors = studentObjectInfo.GetConstructors();
             //var constructorParameters = constructors.Select(x => x.GetParameters()).ToArray();
 
+            //static void Info(object arg)
+            //{
+            //    Type type = arg.GetType();
+            //    Console.WriteLine(type.FullName);
+            //    Console.WriteLine(type.Name);
+            //}
 
-            Lesson lesson = new();
-            lesson.Name = "C#";
-            lesson.StartDate = DateTime.Now;
-            lesson.EndDate = DateTime.Now.AddDays(1);
+            //static void Info<T>()
+            //{
+            //    Type type = typeof(T);
+            //    Console.WriteLine(type.FullName);
+            //    Console.WriteLine(type.Name);
+            //}
+
+            //Lesson lesson = new();
+            //lesson.Name = "C#";
+            //lesson.StartDate = DateTime.Now;
+            //lesson.EndDate = DateTime.Now.AddDays(1);
 
 
-            List<ValidationResult> validationResults = new();
-            ValidationContext validationContext = new(lesson);
+            //List<ValidationResult> validationResults = new();
+            //ValidationContext validationContext = new(lesson);
 
 
-            if (!Validator.TryValidateObject(lesson, validationContext, validationResults, true))
-            {
-                validationResults.ForEach(x => Console.WriteLine(x.ErrorMessage));
-            }
-            else
-            {
-                Console.WriteLine(lesson.Name);
-            }
+            //if (!Validator.TryValidateObject(lesson, validationContext, validationResults, true))
+            //{
+            //    validationResults.ForEach(x => Console.WriteLine(x.ErrorMessage));
+            //}
+            //else
+            //{
+            //    Console.WriteLine(lesson.Name);
+            //}
 
             #endregion
 
         }
 
-        static void Info(object arg)
-        {
-            Type type = arg.GetType();
-            Console.WriteLine(type.FullName);
-            Console.WriteLine(type.Name);
-        }
 
-        static void Info<T>()
-        {
-            Type type = typeof(T);
-            Console.WriteLine(type.FullName);
-            Console.WriteLine(type.Name);
-        }
 
     }
 }
