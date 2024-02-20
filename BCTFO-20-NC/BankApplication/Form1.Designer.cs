@@ -191,7 +191,7 @@
             Controls.Add(headerLabel);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "ნიკა ჩხარტიშვილი";
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();

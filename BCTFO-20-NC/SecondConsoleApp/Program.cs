@@ -1,15 +1,39 @@
-﻿using Homeworks;
-using System.Numerics;
-using System.Text.RegularExpressions;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SecondConsoleApp
 {
     class Student
     {
-        public int Id { get; set; }
+        [MaxLength(2, ErrorMessage = "Maximum simbolo unda iyos 2")]
         public string Name { get; set; }
-        public string Subject { get; set; }
+        public string LastName { get; set; }
+
+        private int age;
+        public int Age
+        {
+            get { return age; }
+            set
+            {
+                if (value > 18)
+                {
+                    age = value;
+                }
+            }
+        }
+
+        public Student()
+        {
+        }
+
+        public Student(string name, string lastName, int age)
+        {
+            Name = name;
+            LastName = lastName;
+            Age = age;
+        }
+
     }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -301,6 +325,94 @@ namespace SecondConsoleApp
 
             #endregion
 
+
+
+            #region 18 REFLECTION
+
+
+            //CIL - Common Intemadiate Language
+            //            |
+            //            |
+            //            | IL Code Assembley
+            //            |
+            //            |
+            //CLR - Common Language Runtime (JIT COMPILER) --- Just In Time
+            //            |
+            //            |
+            //            |
+            //            |
+            //         ASSEMBLER
+            //            |
+            //            |
+            //            |
+            //     Native Code (010110) 
+
+
+
+
+            //Student s1 = new();
+            //s1.Name = "N";
+            //s1.Age = 21;
+
+            //List<ValidationResult> validationResults = new();
+            //ValidationContext validationContext = new(s1);
+
+
+            //if (!Validator.TryValidateObject(s1, validationContext, validationResults, true))
+            //{
+            //    validationResults.ForEach(x => Console.WriteLine(x.ErrorMessage));
+            //}
+            //else
+            //{
+            //    Console.WriteLine(s1.Name);
+            //}
+
+
+
+            //Type studentObjectInfo = s1.GetType();
+
+            //PropertyInfo[] prop = studentObjectInfo.GetProperties();
+            //MethodInfo[] methods = studentObjectInfo.GetMethods();
+            //ConstructorInfo[] constructors = studentObjectInfo.GetConstructors();
+            //var constructorParameters = constructors.Select(x => x.GetParameters()).ToArray();
+
+
+            Lesson lesson = new();
+            lesson.Name = "C#";
+            lesson.StartDate = DateTime.Now;
+            lesson.EndDate = DateTime.Now.AddDays(1);
+
+
+            List<ValidationResult> validationResults = new();
+            ValidationContext validationContext = new(lesson);
+
+
+            if (!Validator.TryValidateObject(lesson, validationContext, validationResults, true))
+            {
+                validationResults.ForEach(x => Console.WriteLine(x.ErrorMessage));
+            }
+            else
+            {
+                Console.WriteLine(lesson.Name);
+            }
+
+            #endregion
+
         }
+
+        static void Info(object arg)
+        {
+            Type type = arg.GetType();
+            Console.WriteLine(type.FullName);
+            Console.WriteLine(type.Name);
+        }
+
+        static void Info<T>()
+        {
+            Type type = typeof(T);
+            Console.WriteLine(type.FullName);
+            Console.WriteLine(type.Name);
+        }
+
     }
 }
