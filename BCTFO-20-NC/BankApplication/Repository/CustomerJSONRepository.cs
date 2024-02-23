@@ -28,7 +28,7 @@ namespace BankApplication.Repository
 
         private static string ToJson(Customer model)
         {
-            string jsonObject = JsonSerializer.Serialize(model);
+            string jsonObject = JsonSerializer.Serialize(model, new JsonSerializerOptions { WriteIndented = true });
             return jsonObject;
         }
 
@@ -38,7 +38,7 @@ namespace BankApplication.Repository
             model.Id = _data.Max(x => x.Id) + 1;
 
             var result = ToJson(model);
-            //TODO Save()
+            Save(result);
         }
 
         public List<Customer> GetAllCustomers()
@@ -70,7 +70,27 @@ namespace BankApplication.Repository
 
         public void Save(string input)
         {
-            throw new NotImplementedException();
+            if (!input.StartsWith("{") || !input.EndsWith("}"))
+            {
+                throw new FormatException("Input is not valid JSON format");
+            }
+
+            if (!File.Exists(_fileLocation))
+            {
+                File.WriteAllText(_fileLocation, "[]");
+            }
+
+            string existingJson = File.ReadAllText(_fileLocation);
+
+            if (!string.IsNullOrWhiteSpace(existingJson))
+            {
+                existingJson = existingJson.Trim(']');
+            }
+
+            input = $",{input}";
+
+            File.WriteAllText(_fileLocation, $"{existingJson}{input}]");
+
         }
     }
 }

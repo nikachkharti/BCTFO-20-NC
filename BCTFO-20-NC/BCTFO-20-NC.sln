@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAlgorithm.Tests", "MyAlgo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankApplication", "BankApplication\BankApplication.csproj", "{DF0DB6B0-D8F5-4E42-8EFE-9B9926640C6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async", "Async\Async.csproj", "{9564A1CB-1FEB-4070-A9E0-8E3E98F488E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DF0DB6B0-D8F5-4E42-8EFE-9B9926640C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF0DB6B0-D8F5-4E42-8EFE-9B9926640C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF0DB6B0-D8F5-4E42-8EFE-9B9926640C6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9564A1CB-1FEB-4070-A9E0-8E3E98F488E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9564A1CB-1FEB-4070-A9E0-8E3E98F488E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9564A1CB-1FEB-4070-A9E0-8E3E98F488E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9564A1CB-1FEB-4070-A9E0-8E3E98F488E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

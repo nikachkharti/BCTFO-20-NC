@@ -78,5 +78,45 @@
     "PhoneNumber": "557899886",
     "Email": "info@itstep.ge",
     "Type": 1
+  },
+  {
+    "Id": 11,
+    "Name": "LTD Tegeta Motors",
+    "IdentityNumber": "21368459",
+    "PhoneNumber": "555998877",
+    "Email": "info@Tegeta.ge",
+    "Type": 1
+  },
+  {
+    "Id": 12,
+    "Name": "Zaal Khurtsilava",
+    "IdentityNumber": "12358795143",
+    "PhoneNumber": "551447851",
+    "Email": "Zaal.Khurtsilava@gmail.com",
+    "Type": 0
+  },
+  {
+    "Id": 13,
+    "Name": "Zaal Khurtsilava",
+    "IdentityNumber": "12358795143",
+    "PhoneNumber": "551447851",
+    "Email": "Zaal.Khurtsilava@gmail.com",
+    "Type": 0
+  },
+  {
+    "Id": 13,
+    "Name": "Beso Gurgenidze",
+    "IdentityNumber": "56007853214",
+    "PhoneNumber": "551447788",
+    "Email": "Beso.Gurgenidze@gmail.com",
+    "Type": 0
+  },
+  {
+    "Id": 14,
+    "Name": "Nani Chavchavadze",
+    "IdentityNumber": "31008749621",
+    "PhoneNumber": "599933592",
+    "Email": "Nani.Chavchanidze@gmail.com",
+    "Type": 0
   }
 ]

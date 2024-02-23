@@ -36,7 +36,7 @@ namespace SecondConsoleApp
 
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             #region 10 ლექცია ოპერატორების გადატვირთვა
             //class Student
@@ -408,6 +408,35 @@ namespace SecondConsoleApp
             //    Console.WriteLine(lesson.Name);
             //}
 
+            #endregion
+
+
+            #region 19 ASYNCHRONUS PROGRAMMING
+            //Console.WriteLine("MAIN DAIWYO");
+
+            //Task task1 = new(() =>
+            //{
+            //    Console.WriteLine("TASK 1 DAIWYO");
+            //    Thread.Sleep(100);
+            //    Console.WriteLine("TASK 1 DAMTAVRDA");
+            //});
+
+            //task1.Start();
+            //await task1;
+
+            //Task task2 = new(() =>
+            //{
+            //    Console.WriteLine("TASK 2 DAIWYO");
+            //    Thread.Sleep(10000);
+            //    Console.WriteLine("TASK 2 DAMTAVRDA");
+            //});
+
+            //task2.Start();
+            //await task2;
+
+
+            //Task.WaitAll(task1,task2);
+            //Console.WriteLine("MAIN DAMTAVRDA"); 
             #endregion
 
         }
