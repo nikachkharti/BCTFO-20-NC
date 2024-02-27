@@ -1,39 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace SecondConsoleApp
 {
-    class Student
-    {
-        [MaxLength(2, ErrorMessage = "Maximum simbolo unda iyos 2")]
-        public string Name { get; set; }
-        public string LastName { get; set; }
-
-        private int age;
-        public int Age
-        {
-            get { return age; }
-            set
-            {
-                if (value > 18)
-                {
-                    age = value;
-                }
-            }
-        }
-
-        public Student()
-        {
-        }
-
-        public Student(string name, string lastName, int age)
-        {
-            Name = name;
-            LastName = lastName;
-            Age = age;
-        }
-
-    }
-
     internal class Program
     {
         static void Main()
@@ -438,6 +407,121 @@ namespace SecondConsoleApp
             //Task.WaitAll(task1,task2);
             //Console.WriteLine("MAIN DAMTAVRDA"); 
             #endregion
+
+
+
+
+
+            #region პრინციპები/პატერნები
+
+
+            #region OOP
+            //1.მემკვიდრეობა - Inheritence
+            //2.აბსტრაქცია - Abstraction
+            //3.პოლიმორფიზმი - Polymorphyism
+
+            //4.ენკაფსულაცია - Encapsulation
+
+
+            #region მემკვიდრეობა
+
+            //class Person
+            //    {
+            //        public string FirstName { get; set; }
+            //        public string LastName { get; set; }
+            //        public string Pin { get; set; }
+            //    }
+
+            //    class Student : Person
+            //    {
+            //        public double Score { get; set; }
+            //    }
+
+            #endregion
+
+
+            #region აბსტრაქცია
+            //interface IPerson
+            //{
+            //    public string BloodGroup { get; set; }
+            //    void Walk();
+            //}
+
+            //abstract class Person
+            //{
+            //    public string FirstName { get; set; }
+            //    public string LastName { get; set; }
+            //    public string Pin { get; set; }
+
+            //    public abstract string Talk();
+            //}
+
+
+            //class Student : Person, IPerson
+            //{
+            //    public double Score { get; set; }
+            //    public string BloodGroup { get; set; }
+
+            //    public override string Talk() => $"Hello My name is {FirstName} {LastName} I have {Score} score";
+            //    public void Walk() => Console.WriteLine("WALKING...");
+            //}
+            #endregion
+
+
+
+            #region პოლიმორფიზმი
+            //MAKE_SPEAK(new Student() { FirstName = "Nika", LastName = "Chkharihhsivli", Pin = "123", Score = 20 });
+            //static void MAKE_SPEAK(Person person) => Console.WriteLine(person.Talk());
+            #endregion
+
+
+            #region ენაფსულაცია
+
+            //class Person
+            //{
+            //    public int Age { get; }
+            //    public Person(DateTime birthDate)
+            //    {
+            //        Age = DateTime.Now.Year - birthDate.Year;
+            //    }
+            //}
+
+
+            //Person p = new(new DateTime(year: 1995, month: 4, day: 6));
+            //Console.WriteLine(p.Age);
+
+
+            #endregion
+
+
+
+            #endregion
+
+
+            #region DRY -- Dont repeat yourelf
+
+            #endregion
+
+
+            #region SOLID
+            //1.Single Responsibility Prinicple --- ერთი პასუხისმგებლობის პრინციპი.
+            //2.Open Closed Principle --- კლასი უნდა იყოს ღია განვრცობისთვის მაგრამ დახურული ცვლილებისთვის.
+            //3.Liskov Subtitutional Prinicple --- მშობელი ობიექტები უნდა იყვნენ ჩანაცვლებადი შვილების მიერ ისე რომ არაფერი არ დაირღვეს.
+            //4.Interface Segregational Principle --- შვილი არ უნდა დავავალდებულოთ რომ მოახდინოს ისეთი ინტერფეისების იმპლემენტაცია, რომელიც მას არ სჭირდება.
+            //5.Dependency Inversion --- მაღალი დონის მოდულები (მშობელი ტიპები) არ უნდა იყვნენ დამოკიდებული დაბალი ტიპის მოდულებზე (წარმოებული ტიპები)  ორივე უნად იყვნენ დამოკიდებული აბსტრაქტულ ელემენტებზე.
+
+            #endregion
+
+
+            #region MVC
+            //1.Model
+            //2.View
+            //3.Controller
+            #endregion
+
+
+            #endregion
+
 
         }
 
