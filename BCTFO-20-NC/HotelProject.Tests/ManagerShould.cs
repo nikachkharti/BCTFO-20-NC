@@ -29,5 +29,24 @@ namespace HotelProject.Tests
 
             _managerRepository.AddManager(newManager);
         }
+
+        [Fact]
+        public void Update_Manager_In_Database()
+        {
+            Manager newManager = new()
+            {
+                Id = 4,
+                FirstName = "თორნიკე",
+                LastName = "ცაგარეიშვილი"
+            };
+
+            _managerRepository.UpdateManager(newManager);
+        }
+
+        [Fact]
+        public void Delete_Manager_In_Database()
+        {
+            _managerRepository.DeleteManager(4);
+        }
     }
 }

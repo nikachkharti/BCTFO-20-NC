@@ -4,12 +4,12 @@ using Microsoft.Data.SqlClient;
 
 namespace HotelProject.Repository
 {
-    public class ManagerRepository
+    public class HotelRepository
     {
-        public List<Manager> GetManagers()
+        public List<Hotel> GetHotels()
         {
-            List<Manager> result = new();
-            const string sqlExpression = "SELECT*FROM Managers";
+            List<Hotel> result = new();
+            const string sqlExpression = "SELECT*FROM Hotels";
 
             using (SqlConnection connection = new(ApplicationDbContext.ConnectionString))
             {
@@ -25,11 +25,15 @@ namespace HotelProject.Repository
                     {
                         if (reader.HasRows)
                         {
-                            result.Add(new Manager()
+                            result.Add(new Hotel()
                             {
                                 Id = reader.GetInt32(0),
-                                FirstName = !reader.IsDBNull(1) ? reader.GetString(1) : string.Empty,
-                                LastName = !reader.IsDBNull(2) ? reader.GetString(2) : string.Empty,
+                                Name = !reader.IsDBNull(1) ? reader.GetString(1) : string.Empty,
+                                Rating = !reader.IsDBNull(2) ? reader.GetDouble(2) : 0,
+                                Country = !reader.IsDBNull(3) ? reader.GetString(3) : string.Empty,
+                                City = !reader.IsDBNull(4) ? reader.GetString(4) : string.Empty,
+                                PhyisicalAddress = !reader.IsDBNull(5) ? reader.GetString(5) : string.Empty,
+                                ManagerId = !reader.IsDBNull(6) ? reader.GetInt32(6) : 0
                             });
                         }
                     }
@@ -45,10 +49,13 @@ namespace HotelProject.Repository
 
                 return result;
             }
+
         }
-        public void AddManager(Manager manager)
+
+        public void AddHotel(Hotel hotel)
         {
-            string sqlExpression = @$"INSERT INTO Managers(FirstName,LastName) VALUES (N'{manager.FirstName}',N'{manager.LastName}')";
+            string sqlExpression = @$"INSERT INTO Hotels(Name,Rating,Country,City,PhyisicalAddress,ManagerId)
+                                     VALUES (N'{hotel.Name}',N'{hotel.Rating}',N'{hotel.Country}',N'{hotel.City}',N'{hotel.PhyisicalAddress}',N'{hotel.ManagerId}')";
 
             using (SqlConnection connection = new(ApplicationDbContext.ConnectionString))
             {
@@ -69,9 +76,17 @@ namespace HotelProject.Repository
             }
 
         }
-        public void UpdateManager(Manager manager)
+
+        public void UpdateHotel(Hotel hotel)
         {
-            string sqlExpression = @$"UPDATE Managers SET FirstName = N'{manager.FirstName}',LastName = N'{manager.LastName}' WHERE Id = {manager.Id}";
+            string sqlExpression = @$"UPDATE Hotels SET
+                                     Name = N'{hotel.Name}',
+                                     Rating = N'{hotel.Rating}',
+                                     Country = N'{hotel.Country}',
+                                     City = N'{hotel.City}',
+                                     PhyisicalAddress = N'{hotel.PhyisicalAddress}',
+                                     ManagerId = N'{hotel.ManagerId}'
+                                    WHERE Id = {hotel.Id}";
 
             using (SqlConnection connection = new(ApplicationDbContext.ConnectionString))
             {
@@ -92,9 +107,10 @@ namespace HotelProject.Repository
             }
 
         }
-        public void DeleteManager(int id)
+
+        public void DeleteHotel(int id)
         {
-            string sqlExpression = @$"DELETE Managers WHERE Id = {id}";
+            string sqlExpression = @$"DELETE FROM Hotels WHERE Id = {id}";
 
             using (SqlConnection connection = new(ApplicationDbContext.ConnectionString))
             {
@@ -102,7 +118,13 @@ namespace HotelProject.Repository
                 {
                     connection.Open();
                     SqlCommand command = new(sqlExpression, connection);
-                    command.ExecuteNonQuery();
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected == 0)
+                    {
+                        throw new InvalidOperationException("No hotel found with the specified ID.");
+                    }
                 }
                 catch (Exception)
                 {

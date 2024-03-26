@@ -14,3 +14,16 @@ VALUES
 (N'გიორგი',N'გიორგაძე'),
 (N'თამაზი',N'გოდერძიშვილი'),
 (N'გიორგი',N'გუჯარელიძე')
+
+
+
+CREATE TABLE Hotels
+(
+	Id INT PRIMARY KEY IDENTITY NOT NULL,
+	[Name] NVARCHAR(50) NOT NULL,
+	Rating FLOAT NOT NULL,
+	Country NVARCHAR(50) NOT NULL,
+	City NVARCHAR(50) NOT NULL,
+	PhyisicalAddress NVARCHAR(50) NOT NULL,
+	ManagerId INT UNIQUE FOREIGN KEY REFERENCES Managers(Id)
+)
