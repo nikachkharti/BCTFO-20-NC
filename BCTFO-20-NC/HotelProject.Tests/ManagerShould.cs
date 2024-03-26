@@ -12,14 +12,14 @@ namespace HotelProject.Tests
         }
 
         [Fact]
-        public void Return_All_Managers_From_Database()
+        public async void Return_All_Managers_From_Database()
         {
-            var result = _managerRepository.GetManagers();
+            var result = await _managerRepository.GetManagers();
         }
 
 
         [Fact]
-        public void Add_New_Manager_In_Database()
+        public async void Add_New_Manager_In_Database()
         {
             Manager newManager = new()
             {
@@ -27,11 +27,11 @@ namespace HotelProject.Tests
                 LastName = "სვანიძე"
             };
 
-            _managerRepository.AddManager(newManager);
+            await _managerRepository.AddManager(newManager);
         }
 
         [Fact]
-        public void Update_Manager_In_Database()
+        public async void Update_Manager_In_Database()
         {
             Manager manager = new()
             {
@@ -40,13 +40,13 @@ namespace HotelProject.Tests
                 LastName = "ცაგარეიშვილი"
             };
 
-            _managerRepository.UpdateManager(manager);
+            await _managerRepository.UpdateManager(manager);
         }
 
         [Fact]
-        public void Delete_Manager_In_Database()
+        public async void Delete_Manager_In_Database()
         {
-            _managerRepository.DeleteManager(5);
+            await _managerRepository.DeleteManager(5);
         }
     }
 }
