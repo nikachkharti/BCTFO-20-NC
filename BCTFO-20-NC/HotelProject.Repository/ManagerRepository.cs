@@ -1,6 +1,8 @@
 ﻿using HotelProject.Data;
 using HotelProject.Models;
 using Microsoft.Data.SqlClient;
+using System.Data;
+
 
 namespace HotelProject.Repository
 {
@@ -9,7 +11,7 @@ namespace HotelProject.Repository
         public List<Manager> GetManagers()
         {
             List<Manager> result = new();
-            const string sqlExpression = "SELECT*FROM Managers";
+            const string sqlExpression = "sp_GetAllManagers";
 
             using (SqlConnection connection = new(ApplicationDbContext.ConnectionString))
             {
@@ -18,6 +20,7 @@ namespace HotelProject.Repository
                     connection.Open();
 
                     SqlCommand command = new(sqlExpression, connection);
+                    command.CommandType = CommandType.StoredProcedure;
 
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -48,7 +51,7 @@ namespace HotelProject.Repository
         }
         public void AddManager(Manager manager)
         {
-            string sqlExpression = @$"INSERT INTO Managers(FirstName,LastName) VALUES (N'{manager.FirstName}',N'{manager.LastName}')";
+            string sqlExpression = "sp_addManager";
 
             using (SqlConnection connection = new(ApplicationDbContext.ConnectionString))
             {
@@ -56,6 +59,10 @@ namespace HotelProject.Repository
                 {
                     connection.Open();
                     SqlCommand command = new(sqlExpression, connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("firstName", manager.FirstName);
+                    command.Parameters.AddWithValue("lastName", manager.LastName);
+
                     command.ExecuteNonQuery();
                 }
                 catch (Exception)
@@ -71,7 +78,7 @@ namespace HotelProject.Repository
         }
         public void UpdateManager(Manager manager)
         {
-            string sqlExpression = @$"UPDATE Managers SET FirstName = N'{manager.FirstName}',LastName = N'{manager.LastName}' WHERE Id = {manager.Id}";
+            string sqlExpression = "sp_UpdateManager";
 
             using (SqlConnection connection = new(ApplicationDbContext.ConnectionString))
             {
@@ -79,7 +86,17 @@ namespace HotelProject.Repository
                 {
                     connection.Open();
                     SqlCommand command = new(sqlExpression, connection);
-                    command.ExecuteNonQuery();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("firstName", manager.FirstName);
+                    command.Parameters.AddWithValue("lastName", manager.LastName);
+                    command.Parameters.AddWithValue("id", manager.Id);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected == 0)
+                    {
+                        throw new InvalidOperationException("No manager found with the specified ID.");
+                    }
                 }
                 catch (Exception)
                 {
@@ -94,7 +111,7 @@ namespace HotelProject.Repository
         }
         public void DeleteManager(int id)
         {
-            string sqlExpression = @$"DELETE Managers WHERE Id = {id}";
+            string sqlExpression = "sp_DeleteManager";
 
             using (SqlConnection connection = new(ApplicationDbContext.ConnectionString))
             {
@@ -102,7 +119,15 @@ namespace HotelProject.Repository
                 {
                     connection.Open();
                     SqlCommand command = new(sqlExpression, connection);
-                    command.ExecuteNonQuery();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("id", id);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected == 0)
+                    {
+                        throw new InvalidOperationException("No manager found with the specified ID.");
+                    }
                 }
                 catch (Exception)
                 {

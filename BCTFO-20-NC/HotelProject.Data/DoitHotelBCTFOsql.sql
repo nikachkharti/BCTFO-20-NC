@@ -27,3 +27,46 @@ CREATE TABLE Hotels
 	PhyisicalAddress NVARCHAR(50) NOT NULL,
 	ManagerId INT UNIQUE FOREIGN KEY REFERENCES Managers(Id)
 )
+
+
+--CREATE PROCEDURE sp_addManager
+--	@firstName NVARCHAR(50),
+--	@lastName NVARCHAR(50)
+--AS
+--BEGIN
+--	INSERT INTO Managers(FirstName,LastName)
+--	VALUES(@firstName,@lastName)
+--END
+
+
+
+--CREATE PROCEDURE sp_GetAllManagers
+--AS
+--BEGIN
+--	SELECT [Id]
+--		  ,[FirstName]
+--		  ,[LastName]
+--	FROM [DOITHotel_BCTFO].[dbo].[Managers]	
+--END
+
+
+ --CREATE PROCEDURE sp_UpdateManager
+ --	@firstName NVARCHAR(50),
+	--@lastName NVARCHAR(50),
+	--@id INT
+ --AS
+ --BEGIN
+	--UPDATE Managers
+	--   SET FirstName = @firstName
+	--	  ,LastName = @lastName
+	-- WHERE Id = @id
+ --END
+
+
+
+ -- CREATE PROCEDURE sp_DeleteManager
+	--@id INT
+ --AS
+ --BEGIN
+	--DELETE Managers WHERE Id = @id
+ --END
