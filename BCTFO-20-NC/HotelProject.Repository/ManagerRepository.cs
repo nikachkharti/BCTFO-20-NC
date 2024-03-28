@@ -3,7 +3,6 @@ using HotelProject.Models;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
-
 namespace HotelProject.Repository
 {
     public class ManagerRepository
@@ -29,9 +28,10 @@ namespace HotelProject.Repository
                         {
                             result.Add(new Manager()
                             {
-                                Id = reader.GetInt32(0),
+                                Id = !reader.IsDBNull(0) ? reader.GetInt32(0) : 0,
                                 FirstName = !reader.IsDBNull(1) ? reader.GetString(1) : string.Empty,
                                 LastName = !reader.IsDBNull(2) ? reader.GetString(2) : string.Empty,
+                                HotelId = !reader.IsDBNull(3) ? reader.GetInt32(3) : 0,
                             });
                         }
                     }
@@ -60,9 +60,16 @@ namespace HotelProject.Repository
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("firstName", manager.FirstName);
                     command.Parameters.AddWithValue("lastName", manager.LastName);
+                    command.Parameters.AddWithValue("hotelId", manager.HotelId);
 
                     await connection.OpenAsync();
-                    await command.ExecuteNonQueryAsync();
+
+                    int rowsAffected = await command.ExecuteNonQueryAsync();
+
+                    if (rowsAffected == 0)
+                    {
+                        throw new InvalidOperationException("Query didn't effect any data");
+                    }
                 }
                 catch (Exception)
                 {
@@ -87,6 +94,7 @@ namespace HotelProject.Repository
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("firstName", manager.FirstName);
                     command.Parameters.AddWithValue("lastName", manager.LastName);
+                    command.Parameters.AddWithValue("hotelId", manager.HotelId);
                     command.Parameters.AddWithValue("id", manager.Id);
 
                     await connection.OpenAsync();
@@ -94,7 +102,7 @@ namespace HotelProject.Repository
 
                     if (rowsAffected == 0)
                     {
-                        throw new InvalidOperationException("No manager found with the specified ID.");
+                        throw new InvalidOperationException("Query didn't effect any data");
                     }
                 }
                 catch (Exception)
@@ -125,7 +133,7 @@ namespace HotelProject.Repository
 
                     if (rowsAffected == 0)
                     {
-                        throw new InvalidOperationException("No manager found with the specified ID.");
+                        throw new InvalidOperationException("Query didn't effect any data");
                     }
                 }
                 catch (Exception)

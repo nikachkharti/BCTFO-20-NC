@@ -8,6 +8,7 @@
         public string Country { get; set; }
         public string City { get; set; }
         public string PhyisicalAddress { get; set; }
-        public int ManagerId { get; set; }
+
+
     }
 }
