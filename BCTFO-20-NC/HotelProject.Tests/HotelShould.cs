@@ -12,13 +12,13 @@ namespace HotelProject.Tests
         }
 
         [Fact]
-        public void Return_All_Hotels_From_Database()
+        public async void Return_All_Hotels_From_Database()
         {
-            var result = _hotelRepository.GetHotels();
+            var result = await _hotelRepository.GetHotels();
         }
 
         [Fact]
-        public void Add_New_Hotel_In_Database()
+        public async void Add_New_Hotel_In_Database()
         {
             Hotel newHotel = new()
             {
@@ -26,35 +26,33 @@ namespace HotelProject.Tests
                 Rating = 9.5,
                 Country = "საქართველო",
                 City = "თბილისი",
-                PhyisicalAddress = "ვარდების მოედანი",
-                ManagerId = 1
+                PhyisicalAddress = "ვარდების მოედანი"
             };
 
-            _hotelRepository.AddHotel(newHotel);
+            await _hotelRepository.AddHotel(newHotel);
         }
 
         [Fact]
-        public void Update_Hotel_In_Database()
+        public async void Update_Hotel_In_Database()
         {
             Hotel newHotel = new()
             {
                 Id = 1,
-                Name = "Radisson",
+                Name = "პირველი სასტუმრო",
                 Rating = 9.5,
                 Country = "საქართველო",
-                City = "ბათუმი",
-                PhyisicalAddress = "ვარდების მოედანი",
-                ManagerId = 1
+                City = "თბილისი",
+                PhyisicalAddress = "ვარდების მოედანი"
             };
 
-            _hotelRepository.UpdateHotel(newHotel);
+            await _hotelRepository.UpdateHotel(newHotel);
         }
 
 
         [Fact]
-        public void Delete_Hotel_From_Database()
+        public async void Delete_Hotel_From_Database()
         {
-            _hotelRepository.DeleteHotel(1);
+            await _hotelRepository.DeleteHotel(4);
         }
     }
 }
