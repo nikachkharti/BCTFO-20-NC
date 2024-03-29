@@ -1,5 +1,6 @@
 ﻿using HotelProject.Models;
 using HotelProject.Repository;
+using HotelProject.Repository.Exceptions;
 
 namespace HotelProject.Tests
 {
@@ -15,6 +16,20 @@ namespace HotelProject.Tests
         public async void Return_All_Managers_From_Database()
         {
             var result = await _managerRepository.GetManagers();
+        }
+
+
+        [Fact]
+        public async void Not_Add_New_Manager_In_Database()
+        {
+            Manager newManager = new()
+            {
+                FirstName = "ლევანი",
+                LastName = "სვანიძე",
+                HotelId = 55,
+            };
+
+            await Assert.ThrowsAsync<HotelNotFoundException>(async () => await _managerRepository.AddManager(newManager));
         }
 
         [Fact]

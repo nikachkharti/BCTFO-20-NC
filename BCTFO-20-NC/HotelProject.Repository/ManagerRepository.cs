@@ -1,5 +1,6 @@
 ﻿using HotelProject.Data;
 using HotelProject.Models;
+using HotelProject.Repository.Exceptions;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
@@ -7,6 +8,12 @@ namespace HotelProject.Repository
 {
     public class ManagerRepository
     {
+        private readonly HotelRepository _hotelRepository;
+        public ManagerRepository()
+        {
+            _hotelRepository = new HotelRepository();
+        }
+
         public async Task<List<Manager>> GetManagers()
         {
             List<Manager> result = new();
@@ -56,6 +63,18 @@ namespace HotelProject.Repository
             {
                 try
                 {
+                    var allHotels = await _hotelRepository.GetHotels();
+
+                    if (manager.HotelId <= 0)
+                    {
+                        throw new HotelNotFoundException();
+                    }
+
+                    if (!allHotels.Any(x => x.Id == manager.HotelId))
+                    {
+                        throw new HotelNotFoundException();
+                    }
+
                     SqlCommand command = new(sqlExpression, connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("firstName", manager.FirstName);

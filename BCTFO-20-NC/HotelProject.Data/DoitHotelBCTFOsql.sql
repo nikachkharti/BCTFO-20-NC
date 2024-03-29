@@ -137,3 +137,7 @@
 -- BEGIN
 --	DELETE Managers WHERE Id = @id
 -- END
+
+
+  --ALTER TABLE Hotels ADD CONSTRAINT CK_ValidRating
+  --CHECK(Rating >= 1.0 AND Rating <= 10.0)

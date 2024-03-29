@@ -1,5 +1,6 @@
 ﻿using HotelProject.Models;
 using HotelProject.Repository;
+using Microsoft.Data.SqlClient;
 
 namespace HotelProject.Tests
 {
@@ -16,6 +17,22 @@ namespace HotelProject.Tests
         {
             var result = await _hotelRepository.GetHotels();
         }
+
+        [Fact]
+        public async void Not_Add_New_Hotel_In_Database()
+        {
+            Hotel newHotel = new()
+            {
+                Name = "Radisson",
+                Rating = 12.0,
+                Country = "საქართველო",
+                City = "თბილისი",
+                PhyisicalAddress = "ვარდების მოედანი"
+            };
+
+            await Assert.ThrowsAsync<SqlException>(async () => await _hotelRepository.AddHotel(newHotel));
+        }
+
 
         [Fact]
         public async void Add_New_Hotel_In_Database()
