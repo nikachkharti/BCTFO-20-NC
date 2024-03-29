@@ -1,0 +1,26 @@
+﻿@model List<Hotel>
+<div class="row">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>სახელი</th>
+                <th>რეიტინგი</th>
+                <th>ქვეყანა</th>
+                <th>ქალაქი</th>
+                <th>მისამართი</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hotel in Model)
+            {
+                <tr>
+                    <td>@hotel.Name</td>
+                    <td>@hotel.Rating</td>
+                    <td>@hotel.Country</td>
+                    <td>@hotel.City</td>
+                    <td>@hotel.PhyisicalAddress</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
