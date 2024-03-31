@@ -52,6 +52,49 @@ namespace HotelProject.Repository
             }
 
         }
+        public async Task<Hotel> GetSingleHotel(int id)
+        {
+            Hotel result = new();
+            const string sqlExpression = "sp_GetSingleHotel";
+
+            using (SqlConnection connection = new(ApplicationDbContext.ConnectionString))
+            {
+                try
+                {
+                    await connection.OpenAsync();
+
+                    SqlCommand command = new(sqlExpression, connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("id", id);
+
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+
+                    while (await reader.ReadAsync())
+                    {
+                        if (reader.HasRows)
+                        {
+                            result.Id = reader.GetInt32(0);
+                            result.Name = !reader.IsDBNull(1) ? reader.GetString(1) : string.Empty;
+                            result.Rating = !reader.IsDBNull(2) ? reader.GetDouble(2) : 0;
+                            result.Country = !reader.IsDBNull(3) ? reader.GetString(3) : string.Empty;
+                            result.City = !reader.IsDBNull(4) ? reader.GetString(4) : string.Empty;
+                            result.PhyisicalAddress = !reader.IsDBNull(5) ? reader.GetString(5) : string.Empty;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    await connection.CloseAsync();
+                }
+
+                return result;
+            }
+
+        }
         public async Task AddHotel(Hotel hotel)
         {
             string sqlExpression = "sp_AddHotel";

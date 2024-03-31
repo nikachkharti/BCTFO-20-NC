@@ -64,5 +64,11 @@ namespace HotelProject.Tests
         {
             await _managerRepository.DeleteManager(4);
         }
+
+        [Fact]
+        public async void GetSingleManager()
+        {
+            var result = await _managerRepository.GetSingleManager(1);
+        }
     }
 }
