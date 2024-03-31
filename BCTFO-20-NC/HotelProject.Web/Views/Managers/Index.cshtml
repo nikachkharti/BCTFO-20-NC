@@ -1,1 +1,20 @@
-﻿<h1>მენეჯერები</h1>
+﻿@model List<Manager>
+<div class="row">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>სახელი</th>
+                <th>სასტუმრო</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var manager in Model)
+            {
+                <tr>
+                    <td>@manager.FirstName @manager.LastName</td>
+                    <td>@manager.HotelId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
