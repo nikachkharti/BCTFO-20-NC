@@ -1,0 +1,23 @@
+﻿@model Manager
+@{
+    ViewData["Title"] = "ახალი მენეჯერის დამატება";
+}
+<form asp-controller="Managers" asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="FirstName">სახელი</label>
+        <input class="form-control" asp-for="FirstName" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="LastName">გვარი</label>
+        <input class="form-control" asp-for="LastName" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="HotelId">სასტუმრო</label>
+        <input class="form-control" asp-for="HotelId" />
+    </div>
+    <div class="mb-3">
+        <input type="submit" class="btn btn-success" value="დამატება" />
+    </div>
+</form>
+
+

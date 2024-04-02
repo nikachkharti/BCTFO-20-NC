@@ -1,10 +1,14 @@
 ﻿@model List<Manager>
 <div class="row">
+    <a class="btn btn-success w-25 btn btn-primary" asp-controller="Managers" asp-action="Create">ახალი მენეჯერი</a>
+</div>
+<div class="row">
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>სახელი</th>
                 <th>სასტუმრო</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -13,6 +17,10 @@
                 <tr>
                     <td>@manager.FirstName @manager.LastName</td>
                     <td>@manager.HotelId</td>
+                    <td>
+                        <a class="btn btn-danger" asp-controller="Managers" asp-action="Delete" asp-route-id="@manager.Id">წაშლა</a>
+                        <a class="btn btn-info" asp-controller="Managers" asp-action="Update" asp-route-id="@manager.Id">განახლება</a>
+                    </td>
                 </tr>
             }
         </tbody>
