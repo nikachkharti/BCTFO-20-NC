@@ -71,5 +71,11 @@ namespace HotelProject.Tests
         {
             await _hotelRepository.DeleteHotel(4);
         }
+
+        [Fact]
+        public async void Get_Single_Hotel_From_Database()
+        {
+            await _hotelRepository.GetSingleHotel(4);
+        }
     }
 }

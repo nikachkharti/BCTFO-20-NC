@@ -1,0 +1,24 @@
+﻿@model List<Room>
+<div class="row">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>სახელი</th>
+                <th>სტატუსი</th>
+                <th>სასტუმრო</th>
+                <th>ფასი</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var room in Model)
+            {
+                <tr>
+                    <td>@room.Name</td>
+                    <td>@(room.IsFree ? "თავისუფალი" : "დაკავებული")</td>
+                    <td>@room.HotelId</td>
+                    <td>@room.DailyPrice</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
