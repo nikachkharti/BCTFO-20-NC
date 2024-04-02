@@ -1,0 +1,31 @@
+﻿@model Hotel
+@{
+    ViewData["Title"] = "სასტუმროს განახლება";
+}
+<form asp-controller="Hotels" asp-action="UpdatePOST" method="post">
+    <input hidden asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="Name">დასახელება</label>
+        <input class="form-control" asp-for="Name" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Rating">რეიტნგი</label>
+        <input class="form-control" asp-for="Rating" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Country">ქვეყანა</label>
+        <input class="form-control" asp-for="Country" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="City">ქალაქი</label>
+        <input class="form-control" asp-for="City" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="PhyisicalAddress">მისამართი</label>
+        <input class="form-control" asp-for="PhyisicalAddress" />
+    </div>
+    <div class="mb-3">
+        <input type="submit" class="btn btn-success" value="განახლება" />
+    </div>
+</form>
+
