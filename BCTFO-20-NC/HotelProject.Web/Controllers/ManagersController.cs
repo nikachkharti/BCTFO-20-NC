@@ -11,9 +11,11 @@ namespace HotelProject.Web.Controllers
     public class ManagersController : Controller
     {
         private readonly ManagerRepository _managerRepository;
-        public ManagersController(ManagerRepository managerRepository)
+        private readonly HotelRepository _hotelRepository;
+        public ManagersController(ManagerRepository managerRepository, HotelRepository hotelRepository)
         {
             _managerRepository = managerRepository;
+            _hotelRepository = hotelRepository;
         }
 
         public async Task<IActionResult> Index()
@@ -22,8 +24,10 @@ namespace HotelProject.Web.Controllers
             return View(result);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var hotels = await _hotelRepository.GetHotelsWithoutManager();
+            ViewBag.HotelId = new SelectList(hotels, "Id", "Name");
             return View();
         }
 

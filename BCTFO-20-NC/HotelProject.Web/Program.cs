@@ -12,6 +12,8 @@ namespace HotelProject.Web
 
             builder.Services.AddScoped<HotelRepository>();
             builder.Services.AddScoped<ManagerRepository>();
+            builder.Services.AddScoped<RoomRepository>();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();

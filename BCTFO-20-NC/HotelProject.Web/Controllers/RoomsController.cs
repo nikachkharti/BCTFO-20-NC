@@ -6,9 +6,9 @@ namespace HotelProject.Web.Controllers
     public class RoomsController : Controller
     {
         private readonly RoomRepository _roomRepository;
-        public RoomsController()
+        public RoomsController(RoomRepository roomRepository)
         {
-            _roomRepository = new();
+            _roomRepository = roomRepository;
         }
 
         public async Task<IActionResult> Index()

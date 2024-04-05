@@ -201,5 +201,49 @@ namespace HotelProject.Repository
             }
 
         }
+        public async Task<List<Hotel>> GetHotelsWithoutManager()
+        {
+            List<Hotel> result = new();
+            const string sqlExpression = "GetHotelsWithoutManager";
+
+            using (SqlConnection connection = new(ApplicationDbContext.ConnectionString))
+            {
+                try
+                {
+                    await connection.OpenAsync();
+
+                    SqlCommand command = new(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+
+                    while (await reader.ReadAsync())
+                    {
+                        if (reader.HasRows)
+                        {
+                            result.Add(new Hotel()
+                            {
+                                Id = reader.GetInt32(0),
+                                Name = !reader.IsDBNull(1) ? reader.GetString(1) : string.Empty,
+                                Rating = !reader.IsDBNull(2) ? reader.GetDouble(2) : 0,
+                                Country = !reader.IsDBNull(3) ? reader.GetString(3) : string.Empty,
+                                City = !reader.IsDBNull(4) ? reader.GetString(4) : string.Empty,
+                                PhyisicalAddress = !reader.IsDBNull(5) ? reader.GetString(5) : string.Empty
+                            });
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    await connection.CloseAsync();
+                }
+
+                return result;
+            }
+        }
     }
 }
