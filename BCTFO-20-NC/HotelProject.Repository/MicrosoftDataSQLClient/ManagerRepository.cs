@@ -1,12 +1,13 @@
 ﻿using HotelProject.Data;
 using HotelProject.Models;
 using HotelProject.Repository.Exceptions;
+using HotelProject.Repository.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace HotelProject.Repository
+namespace HotelProject.Repository.MicrosoftDataSQLClient
 {
-    public class ManagerRepository
+    public class ManagerRepository : IManagerRepository
     {
         private readonly HotelRepository _hotelRepository;
         public ManagerRepository()

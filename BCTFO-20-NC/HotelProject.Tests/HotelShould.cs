@@ -1,5 +1,5 @@
 ﻿using HotelProject.Models;
-using HotelProject.Repository;
+using HotelProject.Repository.MicrosoftDataSQLClient;
 using Microsoft.Data.SqlClient;
 
 namespace HotelProject.Tests

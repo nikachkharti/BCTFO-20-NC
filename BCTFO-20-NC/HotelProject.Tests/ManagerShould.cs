@@ -1,6 +1,6 @@
 ﻿using HotelProject.Models;
-using HotelProject.Repository;
 using HotelProject.Repository.Exceptions;
+using HotelProject.Repository.MicrosoftDataSQLClient;
 
 namespace HotelProject.Tests
 {
