@@ -57,8 +57,7 @@ namespace HotelProject.Data
 
                 ///Rating
                 entity.Property(x => x.Rating)
-                      .IsRequired()
-                      .HasMaxLength(50);
+                      .IsRequired();
 
                 ///Country
                 entity.Property(x => x.Country)

@@ -60,11 +60,6 @@ namespace HotelProject.Repository
                 .Where(x => x.Manager == null)
                 .ToListAsync();
 
-            if (entities == null)
-            {
-                throw new NullReferenceException("Entities not found");
-            }
-
             return entities;
         }
 
