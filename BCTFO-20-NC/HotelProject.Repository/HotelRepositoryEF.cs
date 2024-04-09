@@ -15,7 +15,12 @@ namespace HotelProject.Repository
 
         public async Task AddHotel(Hotel hotel)
         {
-            await _context.AddAsync(hotel);
+            if (hotel == null)
+            {
+                throw new ArgumentNullException("Invalid argument passed");
+            }
+
+            await _context.Hotels.AddAsync(hotel);
             await _context.SaveChangesAsync();
         }
 

@@ -1,11 +1,8 @@
 ﻿using HotelProject.Models;
-using HotelProject.Repository;
 using HotelProject.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-///TODO : 1.მენეჯერის დამატება შემეძლოს მხოლოდ იმ სასტუმროებზე რომელსაც ამ მომენტში მენეჯერი არ ჰყავს.
-///TODO : 2.სასტუმროს არჩევა არ უნდა ხდებოდეს ID - ის მიხედვით. უნდა ვირჩევდე IEnumerable<SelectListItem> - კოლექციის გამოყენებით
 
 namespace HotelProject.Web.Controllers
 {
@@ -28,7 +25,8 @@ namespace HotelProject.Web.Controllers
         public async Task<IActionResult> Create()
         {
             var hotels = await _hotelRepository.GetHotelsWithoutManager();
-            ViewBag.HotelId = new SelectList(hotels, "Id", "Name");
+            ViewBag.HotelsWithoutManagers = new SelectList(hotels, "Id", "Name");
+
             return View();
         }
 
@@ -57,6 +55,9 @@ namespace HotelProject.Web.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var result = await _managerRepository.GetSingleManager(id);
+            var hotels = await _hotelRepository.GetHotelsWithoutManager();
+            ViewBag.HotelsWithoutManagers = new SelectList(hotels, "Id", "Name");
+
             return View(result);
         }
 
