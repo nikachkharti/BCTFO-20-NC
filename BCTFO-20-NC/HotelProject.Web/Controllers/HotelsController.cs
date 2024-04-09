@@ -1,5 +1,4 @@
 ﻿using HotelProject.Models;
-using HotelProject.Repository;
 using HotelProject.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
