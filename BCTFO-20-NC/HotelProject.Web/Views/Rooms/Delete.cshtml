@@ -1,0 +1,31 @@
+﻿@model Room
+@{
+    ViewData["Title"] = "ოთახის წაშლა";
+}
+<form asp-controller="Rooms" asp-action="DeletePOST" method="post">
+    <input hidden asp-for="Id" />
+    <div class="mb-3">
+        <input class="form-control" asp-for="Name" disabled />
+    </div>
+    <div class="mb-3">
+        @if (Model.IsFree)
+        {
+            <span class="text-black">თავისუფალი</span>
+        }
+        else
+        {
+            <span class="text-black">დაკავებული</span>
+        }
+        <input class="form-control d-none" asp-for="DailyPrice" disabled />
+
+    </div>
+    <div class="mb-3">
+        <input class="form-control" asp-for="DailyPrice" disabled />
+    </div>
+    <div class="mb-3">
+        <input class="form-control" asp-for="Hotel.Name" disabled />
+    </div>
+    <div class="mb-3">
+        <input type="submit" class="btn btn-danger" value="წაშლა" />
+    </div>
+</form>
