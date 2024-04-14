@@ -1,6 +1,7 @@
 using HotelProject.Data;
 using HotelProject.Repository;
 using HotelProject.Repository.Interfaces;
+using HotelProject.Repository.MicrosoftDataSQLClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelProject.Web
@@ -18,7 +19,7 @@ namespace HotelProject.Web
             builder.Services.AddScoped<IHotelRepository, HotelRepositoryEF>();
             builder.Services.AddScoped<IManagerRepository, ManagerRepositoryEF>();
             builder.Services.AddScoped<IRoomRepository, RoomRepositoryEF>();
-            builder.Services.AddScoped<IGuestRepository, GuestRepositoryEF>();
+            builder.Services.AddScoped<IGuestRepository, GuestRepositoryEFRaw>();
             builder.Services.AddScoped<IReservationRepository, ReservationRepositoryEF>();
             builder.Services.AddScoped<IGuestReservationRepository, GuestReservationRepositoryEF>();
 
