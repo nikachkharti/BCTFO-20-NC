@@ -4,6 +4,7 @@ using HotelProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240413150825_UniquePin")]
+    partial class UniquePin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,9 +56,6 @@ namespace HotelProject.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PersonalNumber")
-                        .IsUnique();
-
-                    b.HasIndex("PhoneNumber")
                         .IsUnique();
 
                     b.ToTable("Guests");
@@ -283,20 +283,20 @@ namespace HotelProject.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CheckInDate = new DateTime(2024, 4, 13, 19, 10, 41, 999, DateTimeKind.Local).AddTicks(2974),
-                            CheckOutDate = new DateTime(2024, 4, 23, 19, 10, 41, 999, DateTimeKind.Local).AddTicks(2982)
+                            CheckInDate = new DateTime(2024, 4, 13, 19, 8, 25, 53, DateTimeKind.Local).AddTicks(6370),
+                            CheckOutDate = new DateTime(2024, 4, 23, 19, 8, 25, 53, DateTimeKind.Local).AddTicks(6378)
                         },
                         new
                         {
                             Id = 2,
-                            CheckInDate = new DateTime(2024, 4, 13, 19, 10, 41, 999, DateTimeKind.Local).AddTicks(2988),
-                            CheckOutDate = new DateTime(2024, 5, 13, 19, 10, 41, 999, DateTimeKind.Local).AddTicks(2988)
+                            CheckInDate = new DateTime(2024, 4, 13, 19, 8, 25, 53, DateTimeKind.Local).AddTicks(6383),
+                            CheckOutDate = new DateTime(2024, 5, 13, 19, 8, 25, 53, DateTimeKind.Local).AddTicks(6383)
                         },
                         new
                         {
                             Id = 3,
-                            CheckInDate = new DateTime(2024, 4, 13, 19, 10, 41, 999, DateTimeKind.Local).AddTicks(3007),
-                            CheckOutDate = new DateTime(2024, 5, 3, 19, 10, 41, 999, DateTimeKind.Local).AddTicks(3007)
+                            CheckInDate = new DateTime(2024, 4, 13, 19, 8, 25, 53, DateTimeKind.Local).AddTicks(6394),
+                            CheckOutDate = new DateTime(2024, 5, 3, 19, 8, 25, 53, DateTimeKind.Local).AddTicks(6394)
                         });
                 });
 

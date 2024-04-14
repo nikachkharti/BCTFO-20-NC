@@ -234,6 +234,8 @@ namespace HotelProject.Data
                 }
             );
 
+            modelBuilder.Entity<Guest>().HasIndex(x => x.PersonalNumber).IsUnique();
+            modelBuilder.Entity<Guest>().HasIndex(x => x.PhoneNumber).IsUnique();
 
             modelBuilder.Entity<Reservation>().HasData(
                 new Reservation()

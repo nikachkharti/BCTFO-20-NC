@@ -1,0 +1,18 @@
+﻿@model GuestReservation
+<form asp-controller="Guests" asp-action="DeletePOST" method="post">
+    <input hidden asp-for="Id" />
+    <input hidden asp-for="GuestId" />
+    <input hidden asp-for="ReservationId" />
+    <div class="mb-3">
+        <label class="form-label">@Model.Guest.FirstName @Model.Guest.LastName</label>
+        <input class="form-control" asp-for="GuestId" disabled />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Check in/out: @Model.Reservation.CheckInDate - @Model.Reservation.CheckOutDate</label>
+        <input class="form-control" asp-for="ReservationId" disabled />
+    </div>
+    <div class="mb-3">
+        <input type="submit" class="btn btn-danger" value="წაშლა" />
+    </div>
+</form>
+
