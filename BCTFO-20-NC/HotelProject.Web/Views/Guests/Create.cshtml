@@ -1,0 +1,40 @@
+﻿@model GuestReservationForCreatingDto
+@{
+    ViewData["Title"] = "ახალი სტუმარი";
+}
+
+<form asp-controller="Guests" asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="FirstName">სახელი</label>
+        <input class="form-control" asp-for="FirstName" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="LastName">გვარი</label>
+        <input class="form-control" asp-for="LastName" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="PersonalNumber">პირადი ნომერი</label>
+        <input class="form-control" asp-for="PersonalNumber" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="PhoneNumber">ტელეფონის ნომერი</label>
+        <input class="form-control" asp-for="PhoneNumber" />
+    </div>
+    <div class="mb-3">
+        <div class="row">
+            <div class="col">
+                <label asp-for="CheckInDate">შემოსვლის თარიღი</label>
+                <input class="form-control" asp-for="CheckInDate" />
+            </div>
+            <div class="col">
+                <label asp-for="CheckOutDate">გასვლის თარიღი</label>
+                <input class="form-control" asp-for="CheckOutDate" />
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <input type="submit" class="btn btn-success" value="დამატება" />
+    </div>
+</form>
+
+
