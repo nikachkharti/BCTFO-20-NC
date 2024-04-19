@@ -71,6 +71,24 @@ namespace HotelProject.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        //TODO დამოუკიდებლად დაწერეთ Update ის ლოგიკა გამოიყენეთ GuestWithReservationForUpdatingDto კლასი
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
+        {
+            var rawData = await _guestReservationRepository.GetById(id);
+            GuestWithReservationForUpdatingDto result = _mapper.Map<GuestWithReservationForUpdatingDto>(rawData);
+
+            return View(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdatePOST(GuestWithReservationForUpdatingDto model)
+        {
+            await _guestReservationRepository.Update(_mapper.Map<GuestReservation>(model));
+            await _guestRepository.Update(_mapper.Map<Guest>(model));
+            await _reservationRepository.Update(_mapper.Map<Reservation>(model));
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
