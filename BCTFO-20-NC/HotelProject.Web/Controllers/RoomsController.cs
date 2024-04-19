@@ -23,7 +23,7 @@ namespace HotelProject.Web.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var hotels = await _hotelRepository.GetHotels();
+            var hotels = await _hotelRepository.GetAllAsync();
             ViewBag.Hotels = new SelectList(hotels, "Id", "Name");
 
             return View();
@@ -53,7 +53,7 @@ namespace HotelProject.Web.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var result = await _roomRepository.GetSingleRoom(id);
-            var hotels = await _hotelRepository.GetHotels();
+            var hotels = await _hotelRepository.GetAllAsync();
             ViewBag.Hotels = new SelectList(hotels, "Id", "Name");
 
             return View(result);

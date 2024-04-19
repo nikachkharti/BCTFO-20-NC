@@ -6,8 +6,8 @@ namespace HotelProject.Repository.Interfaces
     {
         Task<List<T>> GetAllAsync(Expression<Func<T, bool>> filter, string includePropeties = null);
         Task<List<T>> GetAllAsync(string includePropeties = null);
-        Task<T> GetAsync(Expression<Func<T, bool>> filter);
+        Task<T> GetAsync(Expression<Func<T, bool>> filter, string includePropeties = null);
         Task AddAsync(T entity);
-        Task RemoveAsync(T entity);
+        void Remove(T entity);
     }
 }

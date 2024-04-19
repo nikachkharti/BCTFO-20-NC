@@ -4,6 +4,7 @@ using HotelProject.Repository.Exceptions;
 using HotelProject.Repository.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Linq.Expressions;
 
 namespace HotelProject.Repository.MicrosoftDataSQLClient
 {
@@ -14,6 +15,8 @@ namespace HotelProject.Repository.MicrosoftDataSQLClient
         {
             _hotelRepository = new HotelRepository();
         }
+
+        /* SQL CLIENT
 
         public async Task<List<Manager>> GetManagers()
         {
@@ -205,6 +208,38 @@ namespace HotelProject.Repository.MicrosoftDataSQLClient
                 }
             }
 
+        }
+
+         */
+
+        public Task<List<Manager>> GetAllAsync(Expression<Func<Manager, bool>> filter, string includePropeties = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Manager>> GetAllAsync(string includePropeties = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Manager> GetAsync(Expression<Func<Manager, bool>> filter, string includePropeties = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task AddAsync(Manager entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Manager entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Manager> Update(Manager entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

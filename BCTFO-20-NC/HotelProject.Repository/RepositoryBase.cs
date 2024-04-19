@@ -15,29 +15,67 @@ namespace HotelProject.Repository
             _dbSet = context.Set<T>();
         }
 
-        public Task AddAsync(T entity)
+        public async Task AddAsync(T entity)
         {
-            throw new NotImplementedException();
+            await _dbSet.AddAsync(entity);
         }
 
-        public Task<List<T>> GetAllAsync(Expression<Func<T, bool>> filter, string includePropeties = null)
+        public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> filter, string includePropeties = null)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = _dbSet;
+
+            if (!string.IsNullOrWhiteSpace(includePropeties))
+            {
+                foreach (var includeProperty in includePropeties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+
+            var entities = await query
+                .Where(filter)
+                .ToListAsync();
+
+            return entities;
         }
 
-        public Task<List<T>> GetAllAsync(string includePropeties = null)
+        public async Task<List<T>> GetAllAsync(string includePropeties = null)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = _dbSet;
+
+            if (!string.IsNullOrWhiteSpace(includePropeties))
+            {
+                foreach (var includeProperty in includePropeties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+
+            var entities = await query.ToListAsync();
+
+            return entities;
         }
 
-        public Task<T> GetAsync(Expression<Func<T, bool>> filter)
+        public async Task<T> GetAsync(Expression<Func<T, bool>> filter, string includePropeties = null)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = _dbSet;
+
+            if (!string.IsNullOrWhiteSpace(includePropeties))
+            {
+                foreach (var includeProperty in includePropeties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+
+            var entities = await query.FirstOrDefaultAsync(filter);
+
+            return entities;
         }
 
-        public Task RemoveAsync(T entity)
+        public void Remove(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Remove(entity);
         }
     }
 }
