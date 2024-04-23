@@ -1,0 +1,31 @@
+﻿@model UserLoginDto
+@{
+    ViewData["Title"] = "ავტორიზაცია";
+}
+<h1>ავტორიზაცია</h1>
+<div class="row">
+    <form asp-controller="Account" asp-action="Login" method="post">
+        <div class="mb-3">
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" asp-for="Email"></label>
+            <input class="form-control" asp-for="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" asp-for="Password"></label>
+            <input class="form-control" asp-for="Password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="ავტორიზაცია" />
+        </div>
+    </form>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

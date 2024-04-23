@@ -1,10 +1,12 @@
 ﻿using HotelProject.Data;
 using HotelProject.Models;
 using HotelProject.Repository.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelProject.Web.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class HotelsController : Controller
     {
         private readonly IHotelRepository _hotelRepository;
