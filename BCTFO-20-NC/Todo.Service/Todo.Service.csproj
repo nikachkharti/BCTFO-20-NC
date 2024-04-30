@@ -7,6 +7,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="AutoMapper" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Todo.Contracts\Todo.Contracts.csproj" />
 	  <ProjectReference Include="..\Todo.Entities\Todo.Entities.csproj" />
 	  <ProjectReference Include="..\Todo.Models\Todo.Models.csproj" />
 	</ItemGroup>

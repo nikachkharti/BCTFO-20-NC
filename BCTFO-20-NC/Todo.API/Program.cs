@@ -8,6 +8,7 @@ namespace Todo.API
 
             // Add services to the container.
             builder.AddDatabaseContext();
+            builder.AddScopedServices();
             builder.AddControllers();
             builder.AddEndpointsApiExplorer();
             builder.AddSwagger();
