@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Todo.Contracts\Todo.Contracts.csproj" />
+	  <ProjectReference Include="..\Todo.Data\Todo.Data.csproj" />
+	</ItemGroup>
+
+</Project>
