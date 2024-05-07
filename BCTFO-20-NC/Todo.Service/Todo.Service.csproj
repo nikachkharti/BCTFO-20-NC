@@ -8,10 +8,13 @@
 
 	<ItemGroup>
 	  <PackageReference Include="AutoMapper" Version="13.0.1" />
+	  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+	  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.1.2" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Todo.Contracts\Todo.Contracts.csproj" />
+	  <ProjectReference Include="..\Todo.Data\Todo.Data.csproj" />
 	  <ProjectReference Include="..\Todo.Entities\Todo.Entities.csproj" />
 	  <ProjectReference Include="..\Todo.Models\Todo.Models.csproj" />
 	</ItemGroup>
