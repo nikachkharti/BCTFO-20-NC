@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Todo.Entities;
 using Todo.Models;
+using Todo.Models.Identity;
 
 namespace Todo.Service
 {
@@ -13,6 +15,15 @@ namespace Todo.Service
                 config.CreateMap<TodoEntity, TodoForCreatingDto>();
                 config.CreateMap<TodoEntity, TodoForUpdatingDto>();
                 config.CreateMap<TodoEntity, TodoForGettingDto>();
+
+                config.CreateMap<UserDto, IdentityUser>().ReverseMap();
+                config.CreateMap<RegistrationRequestDto, IdentityUser>()
+                .ForMember(destination => destination.UserName, options => options.MapFrom(source => source.Email))
+                .ForMember(destination => destination.NormalizedUserName, options => options.MapFrom(source => source.Email.ToUpper()))
+                .ForMember(destination => destination.Email, options => options.MapFrom(source => source.Email))
+                .ForMember(destination => destination.NormalizedEmail, options => options.MapFrom(source => source.Email.ToUpper()))
+                .ForMember(destination => destination.PhoneNumber, options => options.MapFrom(source => source.PhoneNumber));
+
             });
 
             return configuration.CreateMapper();

@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Todo.Entities;
 
 namespace Todo.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
@@ -11,7 +13,12 @@ namespace Todo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.SeedTodos();
+            modelBuilder.SeedRoles();
+            modelBuilder.SeedUsers();
+            modelBuilder.SeedUserRoles();
         }
 
         public DbSet<TodoEntity> Todos { get; set; }
