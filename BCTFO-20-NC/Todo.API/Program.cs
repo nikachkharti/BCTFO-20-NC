@@ -11,7 +11,7 @@ namespace Todo.API
             builder.ConfigureJwtOptions();
             builder.AddIdentity();
             builder.AddAuthentication();
-            //builder.AddHttpContextAccessor();
+            builder.AddHttpContextAccessor();
             builder.AddScopedServices();
             builder.AddControllers();
             builder.AddEndpointsApiExplorer();

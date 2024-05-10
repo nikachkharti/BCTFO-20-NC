@@ -18,17 +18,17 @@ namespace Todo.Service.Implementations
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IJwtGenerator _jwtTokenGenerator;
         private readonly IMapper _mapper;
-        //private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private const string _adminRole = "Admin";
         private const string _customerRole = "Customer";
 
-        public AuthService(ApplicationDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IJwtGenerator jwtTokenGenerator /* IHttpContextAccessor httpContextAccessor*/)
+        public AuthService(ApplicationDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IJwtGenerator jwtTokenGenerator, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _userManager = userManager;
             _roleManager = roleManager;
             _jwtTokenGenerator = jwtTokenGenerator;
-            //_httpContextAccessor = httpContextAccessor;
+            _httpContextAccessor = httpContextAccessor;
             _mapper = MappingInitializer.Initialize();
         }
 
@@ -160,28 +160,28 @@ namespace Todo.Service.Implementations
         }
 
 
-        //private string GetAuthenticatedUserId()
-        //{
-        //    if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-        //    {
-        //        return _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //    }
-        //    else
-        //    {
-        //        throw new UnauthorizedAccessException("Can't get credentials of unauthorzied user");
-        //    }
-        //}
-        //private string GetAuthenticatedUserRole()
-        //{
-        //    if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-        //    {
-        //        return _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Role);
-        //    }
-        //    else
-        //    {
-        //        throw new UnauthorizedAccessException("Can't get credentials of unauthorzied user");
-        //    }
-        //}
+        private string GetAuthenticatedUserId()
+        {
+            if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                return _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            }
+            else
+            {
+                throw new UnauthorizedAccessException("Can't get credentials of unauthorzied user");
+            }
+        }
+        private string GetAuthenticatedUserRole()
+        {
+            if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                return _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Role);
+            }
+            else
+            {
+                throw new UnauthorizedAccessException("Can't get credentials of unauthorzied user");
+            }
+        }
 
     }
 }

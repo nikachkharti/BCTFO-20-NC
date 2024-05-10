@@ -64,7 +64,7 @@ namespace Todo.API
             });
         }
 
-        //public static void AddHttpContextAccessor(this WebApplicationBuilder builder) => builder.AddHttpContextAccessor();
+        public static void AddHttpContextAccessor(this WebApplicationBuilder builder) => builder.Services.AddHttpContextAccessor();
 
 
         public static void AddScopedServices(this WebApplicationBuilder builder)
