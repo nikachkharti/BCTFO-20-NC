@@ -81,5 +81,21 @@ namespace Todo.API
         {
             builder.Services.AddSwaggerGen();
         }
+
+        public static void AddCors(this WebApplicationBuilder builder)
+        {
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: builder.Configuration.GetValue<string>("Cors:AllowOrigin"), policy =>
+                {
+                    //policy.WithOrigins("http://example.com");
+                    policy.AllowAnyHeader();
+                    policy.AllowAnyMethod();
+                    policy.AllowAnyOrigin();
+                });
+            });
+        }
+
+
     }
 }

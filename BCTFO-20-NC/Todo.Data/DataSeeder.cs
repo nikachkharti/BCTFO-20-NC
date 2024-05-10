@@ -18,7 +18,8 @@ namespace Todo.Data
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddHours(1),
                         Status = Status.Todo,
-                        Priority = Priority.Medium
+                        Priority = Priority.Medium,
+                        UserId = "D514EDC9-94BB-416F-AF9D-7C13669689C9"
                     },
                     new TodoEntity
                     {
@@ -28,7 +29,8 @@ namespace Todo.Data
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddHours(1),
                         Status = Status.Todo,
-                        Priority = Priority.Low
+                        Priority = Priority.Low,
+                        UserId = "D514EDC9-94BB-416F-AF9D-7C13669689C9"
                     },
                     new TodoEntity
                     {
@@ -38,7 +40,8 @@ namespace Todo.Data
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddHours(5),
                         Status = Status.Doing,
-                        Priority = Priority.Urgent
+                        Priority = Priority.Urgent,
+                        UserId = "D514EDC9-94BB-416F-AF9D-7C13669689C9"
                     },
                     new TodoEntity
                     {
@@ -48,7 +51,8 @@ namespace Todo.Data
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddDays(7),
                         Status = Status.Todo,
-                        Priority = Priority.Low
+                        Priority = Priority.Low,
+                        UserId = "87746F88-DC38-4756-924A-B95CFF3A1D8A"
                     },
                     new TodoEntity
                     {
@@ -58,7 +62,8 @@ namespace Todo.Data
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddDays(3),
                         Status = Status.Todo,
-                        Priority = Priority.High
+                        Priority = Priority.High,
+                        UserId = "87746F88-DC38-4756-924A-B95CFF3A1D8A"
                     },
                     new TodoEntity
                     {
@@ -68,7 +73,8 @@ namespace Todo.Data
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddDays(10),
                         Status = Status.Doing,
-                        Priority = Priority.Medium
+                        Priority = Priority.Medium,
+                        UserId = "87746F88-DC38-4756-924A-B95CFF3A1D8A"
                     }
                 );
         }
