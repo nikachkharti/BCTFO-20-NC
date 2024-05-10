@@ -6,6 +6,7 @@ namespace Todo.API.Controllers
 {
     [Route("api/todos")]
     [ApiController]
+    [Authorize]
     public class TodosController : ControllerBase
     {
         private readonly ITodoService _todoService;
@@ -14,10 +15,13 @@ namespace Todo.API.Controllers
             _todoService = todoService;
         }
 
-        //TODO კონტროლერის მხარეს გამოვიძახო სხვა ფუნქციები სერვისებიდან
+        //TODO შექმენით endpoint რომელიც წამოიღებს კონკრეტული user-ის ყველა საქმეს
+        //TODO შექმენით endpoint რომელიც წამოიღებს კონკრეტული user-ის ერთ კონკრეტულ საქმეს
+        //TODO შექმენით endpoint რომელიც ბაზაში დაამატებს ახალ საქმეს რომელიმე კონკრეტული user - ისთვის (გაითვალისწინეთ რომ დაადოთ შემდეგი ვალიდაცია: user  - მა საქმის წაშლა უნდა მოახერხოს მხოლოდ საკუთარი თავისთვის თუ ის არ არის ადმინი)
+        //TODO შექმენით endpoint რომელიც ბაზიდან წაშლის უკვე არსებულ საქმეს რომელიც გაწერილია რომელიმე user - ზე (გაითვალისწინეთ რომ დაადოთ შემდეგი ვალიდაცია: user  - მა საქმის წაშლა უნდა მოახერხოს მხოლოდ საკუთარი თავისთვის თუ ის არ არის ადმინი)
+
 
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> AllTodos()
         {
             var result = await _todoService.GetAllTodosAsync();
