@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using Todo.Contracts;
 using Todo.Models.Identity;
-using Todo.Service.Implementations;
 
 namespace Todo.API.Controllers
 {
@@ -12,9 +11,11 @@ namespace Todo.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
+        private ApiResponse _response;
         public AuthController(IAuthService authService)
         {
             _authService = authService;
+            _response = new();
         }
 
 
@@ -24,12 +25,21 @@ namespace Todo.API.Controllers
             try
             {
                 await _authService.Register(model);
-                return Ok(model);
+
+                _response.Result = model;
+                _response.IsSuccess = true;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
+                _response.Message = "User registered succesfully";
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
+                _response.Message = ex.Message;
             }
+
+            return StatusCode(_response.StatusCode, _response);
         }
 
         [HttpPost("login")]
@@ -41,15 +51,28 @@ namespace Todo.API.Controllers
 
                 if (loginResponse == null)
                 {
-                    return BadRequest();
+                    _response.Result = null;
+                    _response.IsSuccess = false;
+                    _response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
+                    _response.Message = "Username or password is incorrect";
+
+                    return StatusCode(_response.StatusCode, _response);
                 }
 
-                return Ok(loginResponse);
+                _response.Result = loginResponse;
+                _response.IsSuccess = true;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
+                _response.Message = "User logged in successfully";
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
+                _response.Message = ex.Message;
             }
+
+            return StatusCode(_response.StatusCode, _response);
         }
 
 
@@ -60,12 +83,21 @@ namespace Todo.API.Controllers
             try
             {
                 await _authService.RegisterAdmin(model);
-                return Ok(model);
+
+                _response.Result = model;
+                _response.IsSuccess = true;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
+                _response.Message = "Admin registered succesfully";
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
+                _response.Message = ex.Message;
             }
+
+            return StatusCode(_response.StatusCode, _response);
         }
 
     }
