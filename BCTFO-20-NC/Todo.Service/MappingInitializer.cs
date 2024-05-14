@@ -12,9 +12,9 @@ namespace Todo.Service
         {
             MapperConfiguration configuration = new(config =>
             {
-                config.CreateMap<TodoEntity, TodoForCreatingDto>();
-                config.CreateMap<TodoEntity, TodoForUpdatingDto>();
-                config.CreateMap<TodoEntity, TodoForGettingDto>();
+                config.CreateMap<TodoEntity, TodoForCreatingDto>().ReverseMap();
+                config.CreateMap<TodoEntity, TodoForUpdatingDto>().ReverseMap();
+                config.CreateMap<TodoEntity, TodoForGettingDto>().ReverseMap();
 
                 config.CreateMap<UserDto, IdentityUser>().ReverseMap();
                 config.CreateMap<RegistrationRequestDto, IdentityUser>()

@@ -1,4 +1,5 @@
 ﻿using Todo.Entities;
+using Todo.Models.Identity;
 
 namespace Todo.Models
 {
@@ -11,5 +12,7 @@ namespace Todo.Models
         public DateTime EndDate { get; set; }
         public Status Status { get; set; }
         public Priority Priority { get; set; }
+        public string UserId { get; set; }
+        public UserDto User { get; set; }
     }
 }

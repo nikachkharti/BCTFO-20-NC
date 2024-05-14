@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 using Todo.Contracts;
 using Todo.Entities;
 using Todo.Models;
@@ -10,18 +12,24 @@ namespace Todo.Service.Implementations
     {
         private readonly ITodoRepository _todoRepository;
         private readonly IMapper _mapper;
-        public TodoService(ITodoRepository todoRepository)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public TodoService(ITodoRepository todoRepository, IHttpContextAccessor httpContextAccessor)
         {
             _todoRepository = todoRepository;
+            _httpContextAccessor = httpContextAccessor;
             _mapper = MappingInitializer.Initialize();
         }
 
-        public async Task AddTodoAsync(TodoForCreatingDto model)
+        public async Task AddTodoAsync(TodoForCreatingDto todoForCreatingDto)
         {
-            if (model is null)
+            if (todoForCreatingDto is null)
                 throw new ArgumentNullException("Invalid argument passed");
 
-            var result = _mapper.Map<TodoEntity>(model);
+            if (todoForCreatingDto.UserId != AuthenticatedUserId())
+                throw new UnauthorizedAccessException("Can't add different users todo");
+
+            var result = _mapper.Map<TodoEntity>(todoForCreatingDto);
             await _todoRepository.AddTodoAsync(result);
             await _todoRepository.Save();
         }
@@ -31,48 +39,87 @@ namespace Todo.Service.Implementations
             if (id <= 0)
                 throw new ArgumentException("Invalid argument passed");
 
-            var result = await _todoRepository.GetSingleTodoAsync(x => x.Id == id);
+            var rawTodo = await _todoRepository.GetSingleTodoAsync(x => x.Id == id);
 
-            if (result == null)
+            if (rawTodo == null)
                 throw new TodoNotFoundException();
 
-            _todoRepository.DeleteTodo(result);
-            await _todoRepository.Save();
+            if (rawTodo.UserId.Trim() == AuthenticatedUserId().Trim() || AuthenticatedUserRole().Trim() == "Admin")
+            {
+                _todoRepository.DeleteTodo(rawTodo);
+                await _todoRepository.Save();
+            }
+            else
+            {
+                throw new UnauthorizedAccessException("Can't delete different userds todo");
+            }
         }
 
-        public async Task<List<TodoForGettingDto>> GetAllTodosAsync()
+        public async Task<TodoForGettingDto> GetSingleTodoByUserId(int todoId, string userId)
         {
-            var raw = await _todoRepository.GetAllTodosAsync();
-
-            if (raw.Count == 0)
-                throw new TodoNotFoundException();
-
-            var result = _mapper.Map<List<TodoForGettingDto>>(raw);
-            return result;
-        }
-
-        public async Task<TodoForGettingDto> GetSingleTodoAsync(int id)
-        {
-            if (id <= 0)
+            if (todoId <= 0 || string.IsNullOrWhiteSpace(userId))
                 throw new ArgumentException("Invalid argument passed");
 
-            var raw = await _todoRepository.GetSingleTodoAsync(x => x.Id == id);
+            if (AuthenticatedUserId().Trim() != userId.Trim())
+                throw new UserNotFoundExcpetion();
 
-            if (raw == null)
+            var rawTodo = await _todoRepository.GetSingleTodoAsync(x => x.Id == todoId && x.UserId == userId);
+
+            if (rawTodo == null)
                 throw new TodoNotFoundException();
 
-            var result = _mapper.Map<TodoForGettingDto>(raw);
+            var result = _mapper.Map<TodoForGettingDto>(rawTodo);
             return result;
         }
 
-        public async Task UpdateTodoAsync(TodoForUpdatingDto model)
+        public async Task<List<TodoForGettingDto>> GetTodosOfUserAsync(string userId)
         {
-            if (model is null)
-                throw new ArgumentNullException("Invalid argument passed");
+            if (string.IsNullOrWhiteSpace(userId))
+                throw new ArgumentException("Invalid argument passed");
 
-            var result = _mapper.Map<TodoEntity>(model);
-            await _todoRepository.UpdateTodoAsync(result);
-            await _todoRepository.Save();
+            if (AuthenticatedUserId().Trim() != userId.Trim())
+                throw new UserNotFoundExcpetion();
+
+            var rawTodos = await _todoRepository.GetAllTodosAsync(x => x.UserId.Trim() == userId.Trim());
+            List<TodoForGettingDto> result = new();
+
+            if (rawTodos.Count > 0)
+                result = _mapper.Map<List<TodoForGettingDto>>(rawTodos);
+
+            return result;
         }
+
+        public Task UpdateTodoAsync(TodoForUpdatingDto todoForUpdatingDto)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        private string AuthenticatedUserId()
+        {
+            if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                var result = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                return result;
+            }
+            else
+            {
+                throw new UnauthorizedAccessException("Can't get credentials of unauthorized user");
+            }
+        }
+
+        private string AuthenticatedUserRole()
+        {
+            if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                var result = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Role);
+                return result;
+            }
+            else
+            {
+                throw new UnauthorizedAccessException("Can't get credentials of unauthorized user");
+            }
+        }
+
     }
 }
