@@ -9,6 +9,7 @@ using Todo.Service.Implementations;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Todo.Service.Jobs;
 
 namespace Todo.API
 {
@@ -16,6 +17,10 @@ namespace Todo.API
     {
         public static void AddDatabaseContext(this WebApplicationBuilder builder) => builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SQLServerLocalConnection")));
 
+        public static void AddBackgroundJobs(this WebApplicationBuilder builder)
+        {
+            builder.Services.AddHostedService<HelloBackgroundService>();
+        }
         public static void ConfigureJwtOptions(this WebApplicationBuilder builder) => builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("ApiSettings:JwtOptions"));
 
         public static void AddIdentity(this WebApplicationBuilder builder)
