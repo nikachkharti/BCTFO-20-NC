@@ -48,13 +48,16 @@ namespace Todo.Service.Implementations
                 throw new UnauthorizedAccessException("Can't delete different users todo");
         }
 
-        public async Task<TodoForGettingDto> GetTodoByIdAsync(int id)
+        public async Task<TodoForGettingDto> GetSingleTodoByUserId(int todoId, string userId)
         {
-            if (id <= 0)
+            if (todoId <= 0 || string.IsNullOrWhiteSpace(userId))
                 throw new ArgumentException("Invalid argument passed");
 
+            if (AuthenticatedUserId().Trim() != userId.Trim())
+                throw new UserNotFoundException();
+
             //TODO add include
-            var rawTodo = await _todoRepository.GetSingleTodoAsync(x => x.Id == id);
+            var rawTodo = await _todoRepository.GetSingleTodoAsync(x => x.Id == todoId && x.UserId.Trim() == userId.Trim());
 
             if (rawTodo == null)
                 throw new TodoNotFoundException();
@@ -88,7 +91,12 @@ namespace Todo.Service.Implementations
             throw new NotImplementedException();
         }
 
-        private string AuthenticatedUserId() => _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        private string AuthenticatedUserId()
+        {
+            var x = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return x;
+        }
+
         private string AuthenticatedUserRole()
         {
             if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)

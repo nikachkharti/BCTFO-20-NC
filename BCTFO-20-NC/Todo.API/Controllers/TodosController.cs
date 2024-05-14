@@ -8,6 +8,7 @@ namespace Todo.API.Controllers
 {
     [Route("api/todos")]
     [ApiController]
+    [Authorize]
     public class TodosController : ControllerBase
     {
         private readonly ITodoService _todoService;
@@ -25,7 +26,6 @@ namespace Todo.API.Controllers
 
 
         [HttpGet("{userId:guid}")]
-        [Authorize]
         public async Task<IActionResult> AllTodosOfUser([FromRoute] string userId)
         {
             try
@@ -69,6 +69,57 @@ namespace Todo.API.Controllers
             return StatusCode(_response.StatusCode, _response);
         }
 
+
+        [HttpGet("{userId:guid}/{todoId:int}")]
+        public async Task<IActionResult> SingleTodoOfUser([FromRoute] string userId, [FromRoute] int todoId)
+        {
+            try
+            {
+                var result = await _todoService.GetSingleTodoByUserId(todoId, userId);
+
+                _response.Result = result;
+                _response.IsSuccess = true;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
+                _response.Message = "Request completed successfully";
+            }
+            catch (UserNotFoundException ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.NotFound);
+                _response.Message = ex.Message;
+            }
+            catch (TodoNotFoundException ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.NotFound);
+                _response.Message = ex.Message;
+            }
+            catch (ArgumentException ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
+                _response.Message = ex.Message;
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.Forbidden);
+                _response.Message = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
+                _response.Message = ex.Message;
+            }
+
+            return StatusCode(_response.StatusCode, _response);
+        }
 
     }
 }
