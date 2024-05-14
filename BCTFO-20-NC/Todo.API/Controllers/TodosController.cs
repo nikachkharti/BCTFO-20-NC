@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using Todo.Contracts;
+using Todo.Models;
 using Todo.Service.Exceptions;
 
 namespace Todo.API.Controllers
@@ -108,6 +109,88 @@ namespace Todo.API.Controllers
                 _response.Result = null;
                 _response.IsSuccess = false;
                 _response.StatusCode = Convert.ToInt32(HttpStatusCode.Forbidden);
+                _response.Message = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
+                _response.Message = ex.Message;
+            }
+
+            return StatusCode(_response.StatusCode, _response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddTodo([FromBody] TodoForCreatingDto model)
+        {
+            try
+            {
+                await _todoService.AddTodoAsync(model);
+
+                _response.Result = model;
+                _response.IsSuccess = true;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.Created);
+                _response.Message = "Request completed successfully";
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.Forbidden);
+                _response.Message = ex.Message;
+            }
+            catch (ArgumentNullException ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
+                _response.Message = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
+                _response.Message = ex.Message;
+            }
+
+            return StatusCode(_response.StatusCode, _response);
+        }
+
+
+        [HttpDelete("{todoId:int}")]
+        public async Task<IActionResult> DeleteTodo([FromRoute] int todoId)
+        {
+            try
+            {
+                await _todoService.DeleteTodoAsync(todoId);
+
+                _response.Result = todoId;
+                _response.IsSuccess = true;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.NoContent);
+                _response.Message = "Request completed successfully";
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.Forbidden);
+                _response.Message = ex.Message;
+            }
+            catch (TodoNotFoundException ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.NotFound);
+                _response.Message = ex.Message;
+            }
+            catch (ArgumentException ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
                 _response.Message = ex.Message;
             }
             catch (Exception ex)

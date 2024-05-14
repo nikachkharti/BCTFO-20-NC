@@ -30,6 +30,7 @@ namespace Todo.Service.Implementations
 
             var result = _mapper.Map<TodoEntity>(todoForCreatingDto);
             await _todoRepository.AddTodoAsync(result);
+            await _todoRepository.Save();
         }
 
         public async Task DeleteTodoAsync(int id)
@@ -43,9 +44,14 @@ namespace Todo.Service.Implementations
                 throw new TodoNotFoundException();
 
             if (AuthenticatedUserId() == rawTodo.UserId || AuthenticatedUserRole().Trim() == "Admin")
+            {
                 _todoRepository.DeleteTodo(rawTodo);
+                await _todoRepository.Save();
+            }
             else
+            {
                 throw new UnauthorizedAccessException("Can't delete different users todo");
+            }
         }
 
         public async Task<TodoForGettingDto> GetSingleTodoByUserId(int todoId, string userId)
