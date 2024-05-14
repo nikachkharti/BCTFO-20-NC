@@ -8,7 +8,6 @@ namespace Todo.API.Controllers
 {
     [Route("api/todos")]
     [ApiController]
-    [Authorize]
     public class TodosController : ControllerBase
     {
         private readonly ITodoService _todoService;
@@ -25,12 +24,13 @@ namespace Todo.API.Controllers
         //TODO შექმენით endpoint რომელიც ბაზიდან წაშლის უკვე არსებულ საქმეს რომელიც გაწერილია რომელიმე user - ზე (გაითვალისწინეთ რომ დაადოთ შემდეგი ვალიდაცია: user  - მა საქმის წაშლა უნდა მოახერხოს მხოლოდ საკუთარი თავისთვის თუ ის არ არის ადმინი)
 
 
-        [HttpGet]
-        public async Task<IActionResult> AllTodos()
+        [HttpGet("{userId:guid}")]
+        [Authorize]
+        public async Task<IActionResult> AllTodosOfUser([FromRoute] string userId)
         {
             try
             {
-                var result = await _todoService.GetAllTodosAsync();
+                var result = await _todoService.GetTodosOfUserAsync(userId);
 
                 _response.Result = result;
                 _response.IsSuccess = true;
@@ -44,6 +44,20 @@ namespace Todo.API.Controllers
                 _response.StatusCode = Convert.ToInt32(HttpStatusCode.NotFound);
                 _response.Message = ex.Message;
             }
+            catch (ArgumentException ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
+                _response.Message = ex.Message;
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                _response.Result = null;
+                _response.IsSuccess = false;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.Forbidden);
+                _response.Message = ex.Message;
+            }
             catch (Exception ex)
             {
                 _response.Result = null;
@@ -54,6 +68,7 @@ namespace Todo.API.Controllers
 
             return StatusCode(_response.StatusCode, _response);
         }
+
 
     }
 }
