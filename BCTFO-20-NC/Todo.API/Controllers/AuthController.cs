@@ -22,22 +22,14 @@ namespace Todo.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromForm] RegistrationRequestDto model)
         {
-            try
-            {
-                await _authService.Register(model);
 
-                _response.Result = model;
-                _response.IsSuccess = true;
-                _response.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
-                _response.Message = "User registered succesfully";
-            }
-            catch (Exception ex)
-            {
-                _response.Result = null;
-                _response.IsSuccess = false;
-                _response.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
-                _response.Message = ex.Message;
-            }
+            await _authService.Register(model);
+
+            _response.Result = model;
+            _response.IsSuccess = true;
+            _response.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
+            _response.Message = "User registered succesfully";
+
 
             return StatusCode(_response.StatusCode, _response);
         }
@@ -45,32 +37,23 @@ namespace Todo.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromForm] LoginRequestDto model)
         {
-            try
-            {
-                var loginResponse = await _authService.Login(model);
+            var loginResponse = await _authService.Login(model);
 
-                if (loginResponse == null)
-                {
-                    _response.Result = null;
-                    _response.IsSuccess = false;
-                    _response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
-                    _response.Message = "Username or password is incorrect";
-
-                    return StatusCode(_response.StatusCode, _response);
-                }
-
-                _response.Result = loginResponse;
-                _response.IsSuccess = true;
-                _response.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
-                _response.Message = "User logged in successfully";
-            }
-            catch (Exception ex)
+            if (loginResponse == null)
             {
                 _response.Result = null;
                 _response.IsSuccess = false;
-                _response.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
-                _response.Message = ex.Message;
+                _response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
+                _response.Message = "Username or password is incorrect";
+
+                return StatusCode(_response.StatusCode, _response);
             }
+
+            _response.Result = loginResponse;
+            _response.IsSuccess = true;
+            _response.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
+            _response.Message = "User logged in successfully";
+
 
             return StatusCode(_response.StatusCode, _response);
         }
@@ -80,22 +63,13 @@ namespace Todo.API.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> RegisterAdmin([FromForm] RegistrationRequestDto model)
         {
-            try
-            {
-                await _authService.RegisterAdmin(model);
+            await _authService.RegisterAdmin(model);
 
-                _response.Result = model;
-                _response.IsSuccess = true;
-                _response.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
-                _response.Message = "Admin registered succesfully";
-            }
-            catch (Exception ex)
-            {
-                _response.Result = null;
-                _response.IsSuccess = false;
-                _response.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
-                _response.Message = ex.Message;
-            }
+            _response.Result = model;
+            _response.IsSuccess = true;
+            _response.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
+            _response.Message = "Admin registered succesfully";
+
 
             return StatusCode(_response.StatusCode, _response);
         }

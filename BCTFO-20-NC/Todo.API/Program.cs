@@ -26,6 +26,7 @@ namespace Todo.API
                 app.UseSwaggerUI();
             }
 
+            app.UseMiddleware<CustomExceptionHandlerMiddleware>();
             app.UseHttpsRedirection();
             app.UseCors(builder.Configuration.GetValue<string>("Cors:AllowOrigin"));
             app.UseAuthentication();
