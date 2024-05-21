@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using System.Security.Claims;
 using Todo.Contracts;
 using Todo.Entities;
@@ -89,9 +90,33 @@ namespace Todo.Service.Implementations
             return result;
         }
 
-        public Task UpdateTodoAsync(TodoForUpdatingDto todoForUpdatingDto)
+        public async Task UpdateTodoAsync(TodoForUpdatingDto todoForUpdatingDto)
         {
-            throw new NotImplementedException();
+            if (todoForUpdatingDto is null)
+                throw new ArgumentNullException("Invalid argument passed");
+
+            await _todoRepository.UpdateTodoAsync(_mapper.Map<TodoEntity>(todoForUpdatingDto));
+            await _todoRepository.Save();
+        }
+
+
+        public async Task UpdateTodoAsync(int todoId, JsonPatchDocument<TodoForUpdatingDto> patchDocument)
+        {
+            if (todoId <= 0)
+                throw new ArgumentException("Invalid argument passed");
+
+            //Check if todo exists
+            TodoEntity rawTodo = await _todoRepository.GetSingleTodoAsync(x => x.Id == todoId);
+
+            if (rawTodo == null)
+                throw new TodoNotFoundException();
+
+            TodoForUpdatingDto todoToPatch = _mapper.Map<TodoForUpdatingDto>(rawTodo);
+
+            patchDocument.ApplyTo(todoToPatch);
+            _mapper.Map(todoToPatch, rawTodo);
+
+            await _todoRepository.Save();
         }
 
 

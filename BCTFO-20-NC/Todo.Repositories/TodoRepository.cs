@@ -60,7 +60,7 @@ namespace Todo.Repositories
                 if (todoToUpdate != null)
                 {
                     todoToUpdate.Title = entity.Title;
-                    todoToUpdate.Descrtiption = entity.Descrtiption;
+                    todoToUpdate.Description = entity.Description;
                     todoToUpdate.StartDate = entity.StartDate;
                     todoToUpdate.EndDate = entity.EndDate;
                     todoToUpdate.Status = entity.Status;

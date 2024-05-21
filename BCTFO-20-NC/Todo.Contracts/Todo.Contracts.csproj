@@ -7,6 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="8.0.5" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\Todo.Entities\Todo.Entities.csproj" />
 	  <ProjectReference Include="..\Todo.Models\Todo.Models.csproj" />
 	</ItemGroup>

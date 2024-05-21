@@ -1,4 +1,5 @@
-﻿using Todo.Models;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Todo.Models;
 
 namespace Todo.Contracts
 {
@@ -9,5 +10,6 @@ namespace Todo.Contracts
         Task DeleteTodoAsync(int id);
         Task AddTodoAsync(TodoForCreatingDto todoForCreatingDto);
         Task UpdateTodoAsync(TodoForUpdatingDto todoForUpdatingDto);
+        Task UpdateTodoAsync(int todoId, JsonPatchDocument<TodoForUpdatingDto> patchDocument);
     }
 }

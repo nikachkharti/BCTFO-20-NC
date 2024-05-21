@@ -14,7 +14,7 @@ namespace Todo.Data
                     {
                         Id = 1,
                         Title = "პირველი საქმე",
-                        Descrtiption = "პირველი საქმის აღწერა...",
+                        Description = "პირველი საქმის აღწერა...",
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddHours(1),
                         Status = Status.Todo,
@@ -25,7 +25,7 @@ namespace Todo.Data
                     {
                         Id = 2,
                         Title = "მეორე საქმე",
-                        Descrtiption = "მეორე საქმის აღწერა...",
+                        Description = "მეორე საქმის აღწერა...",
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddHours(1),
                         Status = Status.Todo,
@@ -36,7 +36,7 @@ namespace Todo.Data
                     {
                         Id = 3,
                         Title = "მესამე საქმე",
-                        Descrtiption = "მესამე საქმის აღწერა...",
+                        Description = "მესამე საქმის აღწერა...",
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddHours(5),
                         Status = Status.Doing,
@@ -47,7 +47,7 @@ namespace Todo.Data
                     {
                         Id = 4,
                         Title = "მეოთხე საქმე",
-                        Descrtiption = "მეოთხე საქმის აღწერა...",
+                        Description = "მეოთხე საქმის აღწერა...",
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddDays(7),
                         Status = Status.Todo,
@@ -58,7 +58,7 @@ namespace Todo.Data
                     {
                         Id = 5,
                         Title = "მეხუთე საქმე",
-                        Descrtiption = "მეხუთე საქმის აღწერა...",
+                        Description = "მეხუთე საქმის აღწერა...",
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddDays(3),
                         Status = Status.Todo,
@@ -69,7 +69,7 @@ namespace Todo.Data
                     {
                         Id = 6,
                         Title = "მეექვსე საქმე",
-                        Descrtiption = "მეექვსე საქმის აღწერა...",
+                        Description = "მეექვსე საქმის აღწერა...",
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddDays(10),
                         Status = Status.Doing,

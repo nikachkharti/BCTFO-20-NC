@@ -16,7 +16,7 @@ namespace Todo.Models
         public string Title { get; set; }
 
         [Required]
-        public string Descrtiption { get; set; }
+        public string Description { get; set; }
 
         [Required]
         [DataType(DataType.Date)]

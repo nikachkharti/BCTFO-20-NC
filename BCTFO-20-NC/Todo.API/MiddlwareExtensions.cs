@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using Todo.Service.Jobs;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Todo.API
 {
@@ -81,7 +82,15 @@ namespace Todo.API
             builder.Services.AddScoped<IJwtGenerator, JwtTokenGenerator>();
         }
 
-        public static void AddControllers(this WebApplicationBuilder builder) => builder.Services.AddControllers();
+        public static void AddControllers(this WebApplicationBuilder builder)
+        {
+            builder.Services.AddControllers(options =>
+            {
+                options.ReturnHttpNotAcceptable = true;
+                options.Filters.Add(new ProducesAttribute("application/json", "text/plain"));
+            }).AddNewtonsoftJson();
+        }
+
         public static void AddEndpointsApiExplorer(this WebApplicationBuilder builder) => builder.Services.AddEndpointsApiExplorer();
         public static void AddSwagger(this WebApplicationBuilder builder)
         {
