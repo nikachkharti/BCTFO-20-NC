@@ -11,6 +11,7 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using Todo.Service.Jobs;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace Todo.API
 {
@@ -96,6 +97,12 @@ namespace Todo.API
         {
             builder.Services.AddSwaggerGen(options =>
             {
+                #region კოდის ავტოდოკუმენტაცია XML
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName()}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath); 
+                #endregion
+
                 options.AddSecurityDefinition(name: JwtBearerDefaults.AuthenticationScheme, securityScheme: new OpenApiSecurityScheme
                 {
                     Name = "Authorization",

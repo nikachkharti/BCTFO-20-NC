@@ -8,6 +8,7 @@ using Todo.Models;
 
 namespace Todo.API.Controllers
 {
+    [Produces("application/json")]
     [Route("api/todos")]
     [ApiController]
     [Authorize]
@@ -22,7 +23,16 @@ namespace Todo.API.Controllers
         }
 
 
+        /// <summary>
+        /// აბრუნებს კონკრეტული მომხმარებლის ყველა საქმეს
+        /// </summary>
+        /// <param name="userId">მომხმარებლის id</param>
+        /// <returns>List TodoForGettingDto</returns>
         [HttpGet("{userId:guid}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> AllTodosOfUser([FromRoute] string userId)
         {
             var result = await _todoService.GetTodosOfUserAsync(userId);
