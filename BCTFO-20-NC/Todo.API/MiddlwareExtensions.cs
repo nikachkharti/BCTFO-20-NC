@@ -98,9 +98,9 @@ namespace Todo.API
             builder.Services.AddSwaggerGen(options =>
             {
                 #region კოდის ავტოდოკუმენტაცია XML
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName()}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                options.IncludeXmlComments(xmlPath); 
+                //var xmlFile = $"{Assembly.GetExecutingAssembly().GetName()}.xml";
+                //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                //options.IncludeXmlComments(xmlPath);
                 #endregion
 
                 options.AddSecurityDefinition(name: JwtBearerDefaults.AuthenticationScheme, securityScheme: new OpenApiSecurityScheme
