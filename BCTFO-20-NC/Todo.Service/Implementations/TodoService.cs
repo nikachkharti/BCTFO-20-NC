@@ -32,7 +32,7 @@ namespace Todo.Service.Implementations
 
             var result = _mapper.Map<TodoEntity>(todoForCreatingDto);
             await _todoRepository.AddTodoAsync(result);
-            await _todoRepository.Save();
+            //await _todoRepository.Save();
         }
 
         public async Task DeleteTodoAsync(int id)
@@ -48,7 +48,7 @@ namespace Todo.Service.Implementations
             if (rawTodo.UserId.Trim() == AuthenticatedUserId().Trim() || AuthenticatedUserRole().Trim() == "Admin")
             {
                 _todoRepository.DeleteTodo(rawTodo);
-                await _todoRepository.Save();
+                //await _todoRepository.Save();
             }
             else
             {
@@ -96,7 +96,7 @@ namespace Todo.Service.Implementations
                 throw new ArgumentNullException("Invalid argument passed");
 
             await _todoRepository.UpdateTodoAsync(_mapper.Map<TodoEntity>(todoForUpdatingDto));
-            await _todoRepository.Save();
+            //await _todoRepository.Save();
         }
 
 
@@ -116,7 +116,7 @@ namespace Todo.Service.Implementations
             patchDocument.ApplyTo(todoToPatch);
             _mapper.Map(todoToPatch, rawTodo);
 
-            await _todoRepository.Save();
+            //await _todoRepository.Save();
         }
 
 

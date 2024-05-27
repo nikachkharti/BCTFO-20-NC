@@ -12,6 +12,7 @@ using Microsoft.OpenApi.Models;
 using Todo.Service.Jobs;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
+using Todo.Repositories.DapperImplementation;
 
 namespace Todo.API
 {
@@ -76,7 +77,7 @@ namespace Todo.API
 
         public static void AddScopedServices(this WebApplicationBuilder builder)
         {
-            builder.Services.AddScoped<ITodoRepository, TodoRepository>();
+            builder.Services.AddScoped<ITodoRepository, TodoDapperRepository>();
 
             builder.Services.AddScoped<ITodoService, TodoService>();
             builder.Services.AddScoped<IAuthService, AuthService>();
