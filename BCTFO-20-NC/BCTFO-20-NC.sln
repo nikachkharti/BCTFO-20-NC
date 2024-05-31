@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelProject.API", "HotelPr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TodoProject", "TodoProject", "{559A2B6A-6009-4E76-915D-D24527F5052C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Entities", "Todo.Entities\Todo.Entities.csproj", "{0FF4B5C1-115B-443C-AC94-D0C5F5858902}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Entities", "Todo.Entities\Todo.Entities.csproj", "{0FF4B5C1-115B-443C-AC94-D0C5F5858902}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{F6A7E94E-DEBB-4CA0-BE91-89EE0C0A387A}"
 EndProject
@@ -37,21 +37,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastucture", "Infrastuct
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presistence", "Presistence", "{C5AE8540-DE89-4523-B95B-B57FC254F9E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Data", "Todo.Data\Todo.Data.csproj", "{168F9E01-BF0E-4519-B6C3-4924DBAF4848}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Data", "Todo.Data\Todo.Data.csproj", "{168F9E01-BF0E-4519-B6C3-4924DBAF4848}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Repositories", "Todo.Repositories\Todo.Repositories.csproj", "{6BC27485-78A4-4983-9176-C43BF51586B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Repositories", "Todo.Repositories\Todo.Repositories.csproj", "{6BC27485-78A4-4983-9176-C43BF51586B5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{A4726BE9-C951-4315-B2EC-8DE65FF78136}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.API", "Todo.API\Todo.API.csproj", "{A0365ECD-A73B-46BE-A2D6-AFE9DE93ABE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.API", "Todo.API\Todo.API.csproj", "{A0365ECD-A73B-46BE-A2D6-AFE9DE93ABE8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{D36311D9-51C2-4042-8C46-99EF0A2C4E71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Contracts", "Todo.Contracts\Todo.Contracts.csproj", "{45515CF3-2C4C-454B-85B6-351EC876A4A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Contracts", "Todo.Contracts\Todo.Contracts.csproj", "{45515CF3-2C4C-454B-85B6-351EC876A4A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Models", "Todo.Models\Todo.Models.csproj", "{FEF72F03-0AB2-47E4-941D-A01D6BC34BE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Models", "Todo.Models\Todo.Models.csproj", "{FEF72F03-0AB2-47E4-941D-A01D6BC34BE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Service", "Todo.Service\Todo.Service.csproj", "{60F1C645-5D5F-4DE9-B1D1-88F7E7F23464}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Service", "Todo.Service\Todo.Service.csproj", "{60F1C645-5D5F-4DE9-B1D1-88F7E7F23464}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{7EDD3A61-A383-48C7-91B9-54F0B3ABE127}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Web", "Todo.Web\Todo.Web.csproj", "{454D18C6-42FB-48C8-ABCB-2853CBC4C6F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,6 +135,10 @@ Global
 		{60F1C645-5D5F-4DE9-B1D1-88F7E7F23464}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60F1C645-5D5F-4DE9-B1D1-88F7E7F23464}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60F1C645-5D5F-4DE9-B1D1-88F7E7F23464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{454D18C6-42FB-48C8-ABCB-2853CBC4C6F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{454D18C6-42FB-48C8-ABCB-2853CBC4C6F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{454D18C6-42FB-48C8-ABCB-2853CBC4C6F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{454D18C6-42FB-48C8-ABCB-2853CBC4C6F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,6 +161,8 @@ Global
 		{45515CF3-2C4C-454B-85B6-351EC876A4A5} = {D36311D9-51C2-4042-8C46-99EF0A2C4E71}
 		{FEF72F03-0AB2-47E4-941D-A01D6BC34BE4} = {D36311D9-51C2-4042-8C46-99EF0A2C4E71}
 		{60F1C645-5D5F-4DE9-B1D1-88F7E7F23464} = {D36311D9-51C2-4042-8C46-99EF0A2C4E71}
+		{7EDD3A61-A383-48C7-91B9-54F0B3ABE127} = {559A2B6A-6009-4E76-915D-D24527F5052C}
+		{454D18C6-42FB-48C8-ABCB-2853CBC4C6F2} = {7EDD3A61-A383-48C7-91B9-54F0B3ABE127}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {582F8089-CAD2-4AE5-98CC-27217FA6D1EA}
